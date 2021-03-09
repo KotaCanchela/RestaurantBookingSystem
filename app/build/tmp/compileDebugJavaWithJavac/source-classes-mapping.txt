@@ -1,2 +1,0 @@
-com/cs990/restaurantbookingapp/BuildConfig.java
- com.cs990.restaurantbookingapp.BuildConfig
