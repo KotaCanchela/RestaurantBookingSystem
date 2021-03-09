@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">library</string>
+    <declare-styleable name="ReadableBottomBar">
+        <attr format="reference" name="rbb_tabs"/>
+        <attr format="color" name="rbb_backgroundColor"/>
+        <attr format="color" name="rbb_indicatorColor"/>
+        <attr format="dimension" name="rbb_indicatorHeight"/>
+        <attr format="integer" name="rbb_initialIndex"/>
+        <attr format="color" name="rbb_textColor"/>
+        <attr format="color" name="rbb_iconColor"/>
+        <attr format="dimension" name="rbb_textSize"/>
+        <attr format="enum" name="rbb_activeItemType">
+            <enum name="text" value="0"/>
+            <enum name="icon" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

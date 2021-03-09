@@ -1,0 +1,2 @@
+com/iammert/library/readablebottombar/BuildConfig.java
+ com.iammert.library.readablebottombar.BuildConfig

@@ -1,0 +1,18 @@
+R_DEF: Internal format may change without notice
+local
+attr? rbb_activeItemType
+attr? rbb_backgroundColor
+attr? rbb_iconColor
+attr? rbb_indicatorColor
+attr? rbb_indicatorHeight
+attr? rbb_initialIndex
+attr? rbb_tabs
+attr? rbb_textColor
+attr? rbb_textSize
+id icon
+id imageView
+id text
+id textView
+layout layout_bottombar_item
+string app_name
+styleable ReadableBottomBar rbb_tabs rbb_backgroundColor rbb_indicatorColor rbb_indicatorHeight rbb_initialIndex rbb_textColor rbb_iconColor rbb_textSize rbb_activeItemType
