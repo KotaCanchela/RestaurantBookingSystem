@@ -1,10 +1,16 @@
 package com.cs990.restaurantbookingapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.BaseAdapter
+import android.widget.ListView
+import android.widget.TextView
+import androidx.fragment.app.ListFragment
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -21,7 +27,9 @@ class ThirdFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private lateinit var binding: FragmentThirdBinding;
+    private var _binding: FragmentThirdBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var profileListView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,14 +37,26 @@ class ThirdFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = FragmentThirdBinding.inflate(inflater, container, false)
+
+
+
+        profileListView = binding.profileListView
+
+//        var listViewAdapter: ArrayAdapter<String> = ArrayAdapter(this.requireActivity(), android.R.layout.simple_list_item_1, profileMenuItems)
+        profileListView.adapter = MyCustomAdapter(this.requireActivity())
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_third, container, false)
+
+        return binding.root
     }
 
     companion object {
@@ -58,4 +78,35 @@ class ThirdFragment : Fragment() {
                 }
             }
     }
+
+
+    private class MyCustomAdapter(context: Context): BaseAdapter() {
+
+        private val mContext: Context = context
+        var profileMenuItems = arrayListOf("Saved Restaurants", "Bookings", "Requests", "Payment Details", "Your ratings", "Logout")
+
+
+        override fun getCount(): Int {
+            return profileMenuItems.size
+        }
+
+        override fun getItem(position: Int): Any {
+            return "test string"
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getView(position: Int, convertView: View?, viewgroup: ViewGroup?): View {
+            val layoutInflater = LayoutInflater.from(mContext)
+            val rowMain = layoutInflater.inflate(R.layout.row_profile, viewgroup, false)
+
+            val positionTextView = rowMain.findViewById<TextView>(R.id.row_text)
+            positionTextView.text = profileMenuItems[position]
+
+            return rowMain
+        }
+    }
+
 }
