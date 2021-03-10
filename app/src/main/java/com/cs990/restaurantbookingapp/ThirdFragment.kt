@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.BaseAdapter
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.ListFragment
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
 
@@ -84,6 +81,12 @@ class ThirdFragment : Fragment() {
 
         private val mContext: Context = context
         var profileMenuItems = arrayListOf("Saved Restaurants", "Bookings", "Requests", "Payment Details", "Your ratings", "Logout")
+        var profileIcons = arrayListOf(R.drawable.ic_baseline_restaurant_24,
+                R.drawable.ic_baseline_menu_book_24,
+                R.drawable.ic_baseline_chat_bubble_24,
+                R.drawable.ic_baseline_credit_card_24,
+                R.drawable.ic_baseline_star_rate_24,
+                R.drawable.ic_baseline_exit_to_app_24)
 
 
         override fun getCount(): Int {
@@ -104,6 +107,9 @@ class ThirdFragment : Fragment() {
 
             val positionTextView = rowMain.findViewById<TextView>(R.id.row_text)
             positionTextView.text = profileMenuItems[position]
+
+            val positionImageView = rowMain.findViewById<ImageView>(R.id.row_image)
+            positionImageView.setImageResource(profileIcons[position])
 
             return rowMain
         }
