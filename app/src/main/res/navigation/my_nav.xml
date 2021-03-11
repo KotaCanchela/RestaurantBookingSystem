@@ -18,6 +18,6 @@
     <fragment
         android:id="@+id/thirdFragment"
         android:name="com.cs990.restaurantbookingapp.ThirdFragment"
-        android:label="Profile"
+        android:label="Username"
         tools:layout="@layout/fragment_third" />
 </navigation>

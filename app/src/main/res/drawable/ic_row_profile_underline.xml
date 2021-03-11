@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:gravity="bottom">
+        <shape>
+            <size android:height="3dp" />
+            <solid android:color="#BABABA" />
+        </shape>
+    </item>
+    <item android:gravity="bottom">
+        <shape>
+            <size android:height="2dp" />
+            <solid android:color="#E6E6E6" />
+        </shape>
+    </item>
     <item android:gravity="bottom">
         <shape>
             <size android:height="1dp" />
-            <solid android:color="#6E6E6E" />
+            <solid android:color="#FBFAFA" />
         </shape>
     </item>
 </layer-list>
