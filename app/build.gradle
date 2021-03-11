@@ -41,6 +41,8 @@ apply plugin: 'kotlin-android-extensions'
 
 
 dependencies {
+    implementation 'androidx.navigation:navigation-fragment:2.3.3'
+    implementation 'androidx.navigation:navigation-ui:2.3.3'
     compile fileTree(dir: 'libs', include: ['*.jar'])
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.google.firebase:firebase-analytics'

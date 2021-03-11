@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RestaurantDetailsActivity">
+
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_below="@id/imageBar"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Book Now" />
+
+    <TextView
+        android:id="@+id/telNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address3"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="tel: 12345678910" />
+
+    <TextView
+        android:id="@+id/address3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address2"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="14sp"
+        tools:text="Postcode" />
+
+    <TextView
+        android:id="@+id/address2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address1"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="14sp"
+        tools:text="Address line 2" />
+
+    <TextView
+        android:id="@+id/ResName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="RestaurantName"
+        android:textSize="24sp" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_below="@id/ResName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/reviewCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ratingBar"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:text="### Reviews" />
+
+    <TextView
+        android:id="@+id/address1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reviewCount"
+        android:layout_centerHorizontal="true"
+        android:text="TextView"
+        android:textSize="14sp"
+        tools:text="Address line 1" />
+
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telNo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="View Menu" />
+
+    <HorizontalScrollView
+        android:id="@+id/imageBar"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_below="@id/menuButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp">
+
+        <LinearLayout
+            android:id="@+id/imageList"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+</RelativeLayout>

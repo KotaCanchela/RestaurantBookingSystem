@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookingConfirmationActivity">
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/addText5"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_toRightOf="@id/editButton"
+        android:text="Edit Booking"
+        android:textSize="8sp" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/addText5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Edit Booking"
+        android:textSize="8sp" />
+
+    <TextView
+        android:id="@+id/addText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addText4"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="tel: 12345678910" />
+
+    <TextView
+        android:id="@+id/addText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addText3"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="address line 3" />
+
+    <TextView
+        android:id="@+id/addText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addText2"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="address line 2" />
+
+    <TextView
+        android:id="@+id/addText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addText"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="address line 1" />
+
+    <TextView
+        android:id="@+id/TimeAndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/restName"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="Table for 4 on Thursday, March 4, 2021 at 5:00pm"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/addText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TimeAndDate"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Address:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/restName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmSent2"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Restaurant Name"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/confirmSent2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirmSent"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Booking Number: #12345678910" />
+
+    <TextView
+        android:id="@+id/confirmSent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Your Booking request has been sent"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/CalendarButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/addText5"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@id/editButton"
+        android:text="Calendar"
+        android:textSize="8sp" />
+</RelativeLayout>
