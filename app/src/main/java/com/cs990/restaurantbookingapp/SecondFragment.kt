@@ -6,10 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ListView
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
 
@@ -78,9 +75,10 @@ class SecondFragment : Fragment() {
     private class MyCustomAdapter(context: Context) : BaseAdapter() {
 
         private val mContext: Context = context
-        var searchItems = arrayListOf("McDonalds", "Burger King", "KFC", "Pizza Hut", "Taco Bell", "Bread Meats Bread")
+        var searchItems = arrayListOf("McDonalds", "Maggie Mays", "Bucks Bar", "Pizza Punks", "Five Guys", "Bread Meats Bread")
         var rating = arrayListOf(4,3,4,4,3,4)
-        var distance = arrayListOf("3km","4 km","2 km","2.5 km","3 km","2 km")
+        var distance = arrayListOf("10km","7 km","12 km","17 km","10km","2 km")
+        var restaurantPicture = arrayListOf(R.drawable.ic_mcdonalds,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant)
 
 
         override fun getCount(): Int {
@@ -105,6 +103,8 @@ class SecondFragment : Fragment() {
             restaurantRating.numStars = rating[position]
             val restaurantDisTextView = rowMain.findViewById<TextView>(R.id.tv_distance)
             restaurantDisTextView.text = distance[position]
+            val restaurantImageView = rowMain.findViewById<ImageView>(R.id.iv_image)
+            restaurantImageView.setImageResource(restaurantPicture[position])
 
             return rowMain
         }

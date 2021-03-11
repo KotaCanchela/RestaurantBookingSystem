@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/restaurant_content_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2C2C2C"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+   <androidx.appcompat.widget.AppCompatEditText
+       android:id="@+id/et_search"
+       android:layout_width="300dp"
+       android:gravity="center_vertical"
+       android:layout_height="wrap_content"
+       android:hint="All Restaurants"
+       android:translationX="50dp"
+       android:padding="6dp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_searchLocation"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_below="@id/et_search"
+        android:hint="Location"
+        android:translationX="50dp"
+        android:padding="6dp"/>
     <ListView
         android:id="@+id/search_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight = "1"
+        android:layout_below="@id/et_searchLocation"
+        android:smoothScrollbar="true">
 
 
 
 
     </ListView>
-</LinearLayout>
+</RelativeLayout>
