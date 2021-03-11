@@ -1,10 +1,15 @@
 package com.cs990.restaurantbookingapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.ListView
+import android.widget.RatingBar
+import android.widget.TextView
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
 
@@ -24,6 +29,7 @@ class SecondFragment : Fragment() {
     private var param2: String? = null
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
+    private lateinit var restaurantListView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +49,10 @@ class SecondFragment : Fragment() {
 
         // Inflate the layout for this fragment
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        restaurantListView = binding.searchListView
+
+//        var listViewAdapter: ArrayAdapter<String> = ArrayAdapter(this.requireActivity(), android.R.layout.simple_list_item_1, profileMenuItems)
+        restaurantListView.adapter = MyCustomAdapter(this.requireActivity())
         return binding.root
     }
 
@@ -64,5 +74,46 @@ class SecondFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+    private class MyCustomAdapter(context: Context) : BaseAdapter() {
+
+        private val mContext: Context = context
+        var searchItems = arrayListOf(
+            "McDonalds",
+            "Burger King",
+            "KFC",
+            "Pizza Hut",
+            "Taco Bell",
+            "Bread Meats Bread"
+        )
+        var rating = arrayListOf<Int>(4,3,4,4,3,4)
+        var distance = arrayListOf<String>("3km","4 km","2 km","2.5 km","3 km","2 km")
+
+
+        override fun getCount(): Int {
+            return searchItems.size
+        }
+
+        override fun getItem(position: Int): Any {
+            return "test string"
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getView(position: Int, convertView: View?, viewgroup: ViewGroup?): View {
+            val layoutInflater = LayoutInflater.from(mContext)
+            val rowMain = layoutInflater.inflate(R.layout.search_layout, viewgroup, false)
+
+            val restaurantTextView = rowMain.findViewById<TextView>(R.id.tv_title)
+            restaurantTextView.text = searchItems[position]
+            val restaurantRating = rowMain.findViewById<RatingBar>(R.id.rb_ratingBar)
+            restaurantRating.numStars = rating[position]
+            val restaurantDisTextView = rowMain.findViewById<TextView>(R.id.tv_distance)
+            restaurantDisTextView.text = distance[position]
+
+            return rowMain
+        }
     }
 }
