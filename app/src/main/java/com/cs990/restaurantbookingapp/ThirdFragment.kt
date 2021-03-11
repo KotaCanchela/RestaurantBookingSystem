@@ -45,9 +45,8 @@ class ThirdFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = FragmentThirdBinding.inflate(inflater, container, false)
-
-
 
         profileListView = binding.profileListView
 
@@ -80,10 +79,17 @@ class ThirdFragment : Fragment() {
     }
 
 
-    private class MyCustomAdapter(context: Context): BaseAdapter() {
+    private class MyCustomAdapter(context: Context) : BaseAdapter() {
 
         private val mContext: Context = context
-        var profileMenuItems = arrayListOf("Saved Restaurants", "Bookings", "Requests", "Payment Details", "Your ratings", "Logout")
+        var profileMenuItems = arrayListOf(
+            "Saved Restaurants",
+            "Bookings",
+            "Requests",
+            "Payment Details",
+            "Your ratings",
+            "Logout"
+        )
 
 
         override fun getCount(): Int {
