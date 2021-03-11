@@ -75,10 +75,10 @@ class SecondFragment : Fragment() {
     private class MyCustomAdapter(context: Context) : BaseAdapter() {
 
         private val mContext: Context = context
-        var searchItems = arrayListOf("McDonalds", "Maggie Mays", "Bucks Bar", "Pizza Punks", "Five Guys", "Bread Meats Bread")
-        var rating = arrayListOf(4,3,4,4,3,4)
-        var distance = arrayListOf("10km","7 km","12 km","17 km","10km","2 km")
-        var restaurantPicture = arrayListOf(R.drawable.ic_mcdonalds,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant)
+        var searchItems = arrayListOf("McDonalds", "Maggie Mays", "Bucks Bar", "Pizza Punks", "Five Guys", "Bread Meats Bread","Topolabama")
+        var rating = arrayListOf(4,3,4,4,3,4,4)
+        var distance = arrayListOf("10km","7 km","12 km","17 km","10km","2 km","6 km")
+        var restaurantPicture = arrayListOf(R.drawable.ic_mcdonalds,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant, R.drawable.ic_restaurant)
 
 
         override fun getCount(): Int {
@@ -99,10 +99,13 @@ class SecondFragment : Fragment() {
 
             val restaurantTextView = rowMain.findViewById<TextView>(R.id.tv_title)
             restaurantTextView.text = searchItems[position]
+
             val restaurantRating = rowMain.findViewById<RatingBar>(R.id.rb_ratingBar)
             restaurantRating.numStars = rating[position]
+
             val restaurantDisTextView = rowMain.findViewById<TextView>(R.id.tv_distance)
             restaurantDisTextView.text = distance[position]
+
             val restaurantImageView = rowMain.findViewById<ImageView>(R.id.iv_image)
             restaurantImageView.setImageResource(restaurantPicture[position])
 

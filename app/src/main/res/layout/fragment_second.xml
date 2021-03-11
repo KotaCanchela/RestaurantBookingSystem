@@ -5,6 +5,7 @@
     android:id="@+id/restaurant_content_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -15,6 +16,7 @@
        android:layout_height="wrap_content"
        android:hint="All Restaurants"
        android:translationX="50dp"
+       android:translationY="50dp"
        android:padding="6dp"/>
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -23,19 +25,27 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_below="@id/et_search"
-        android:hint="Location"
+        android:hint="My Location"
         android:translationX="50dp"
+        android:translationY="70dp"
         android:padding="6dp"/>
-    <ListView
-        android:id="@+id/search_list_view"
-        android:layout_width="fill_parent"
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_weight = "1"
         android:layout_below="@id/et_searchLocation"
-        android:smoothScrollbar="true">
+        android:fillViewport="true"
+        android:translationY="100dp">
 
+        <ListView
+            android:id="@+id/search_list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight = "1"
+            android:smoothScrollbar="true">
 
+        </ListView>
 
+    </ScrollView>
 
-    </ListView>
 </RelativeLayout>
