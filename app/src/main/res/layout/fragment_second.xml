@@ -9,6 +9,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:translationX="350dp"
+        android:translationY="20dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/ic_account_circle_black_24dp"/>
+
    <androidx.appcompat.widget.AppCompatEditText
        android:id="@+id/et_search"
        android:layout_width="300dp"
