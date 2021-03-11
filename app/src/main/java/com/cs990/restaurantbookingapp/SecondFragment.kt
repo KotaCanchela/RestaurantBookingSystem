@@ -78,16 +78,9 @@ class SecondFragment : Fragment() {
     private class MyCustomAdapter(context: Context) : BaseAdapter() {
 
         private val mContext: Context = context
-        var searchItems = arrayListOf(
-            "McDonalds",
-            "Burger King",
-            "KFC",
-            "Pizza Hut",
-            "Taco Bell",
-            "Bread Meats Bread"
-        )
-        var rating = arrayListOf<Int>(4,3,4,4,3,4)
-        var distance = arrayListOf<String>("3km","4 km","2 km","2.5 km","3 km","2 km")
+        var searchItems = arrayListOf("McDonalds", "Burger King", "KFC", "Pizza Hut", "Taco Bell", "Bread Meats Bread")
+        var rating = arrayListOf(4,3,4,4,3,4)
+        var distance = arrayListOf("3km","4 km","2 km","2.5 km","3 km","2 km")
 
 
         override fun getCount(): Int {
