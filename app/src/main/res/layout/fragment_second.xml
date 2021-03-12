@@ -13,10 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:foregroundGravity="center"
-        android:translationX="350dp"
-        android:translationY="20dp"
-        android:scaleX="2"
-        android:scaleY="2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/ic_account_circle_black_24dp"/>
 
    <androidx.appcompat.widget.AppCompatEditText
@@ -49,8 +48,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_restaurantList"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         </androidx.recyclerview.widget.RecyclerView>
 
