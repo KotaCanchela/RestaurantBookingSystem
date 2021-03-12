@@ -88,15 +88,15 @@ class SecondFragment : Fragment() {
 
 
         val searchIcon = binding.root.findViewById<ImageView>(R.id.search_mag_icon)
-        searchIcon.setColorFilter(Color.WHITE)
+        searchIcon.setColorFilter(Color.BLACK)
 
 
         val cancelIcon = binding.root.findViewById<ImageView>(R.id.search_close_btn)
-        cancelIcon.setColorFilter(Color.WHITE)
+        cancelIcon.setColorFilter(Color.GRAY)
 
 
         val textView = binding.root.findViewById<TextView>(R.id.search_src_text)
-        textView.setTextColor(Color.WHITE)
+        textView.setTextColor(Color.BLACK)
     }
 
     fun initListView(){
