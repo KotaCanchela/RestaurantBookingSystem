@@ -45,10 +45,6 @@ class SecondFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-
-
-
         // Inflate the layout for this fragment
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         recyclerView = binding.rvRestaurantList
@@ -70,58 +66,18 @@ class SecondFragment : Fragment() {
         val restaurantList = ArrayList<RestaurantItems>()
 
         restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+        restaurantList.add(RestaurantItems("Bucks Bar","23 kM",3,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Maggie Mays","7 kM",4,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Five Guys","3 kM",2,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Pizza Punks","43 kM",3,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Topolabama","13 kM",3,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Bread Meats Bread","3 kM",2,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Gamba","3 kM",2,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Alston Bar & Beef","43 kM",3,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Picnic","13 kM",3,R.drawable.ic_restaurant))
+        restaurantList.add(RestaurantItems("Mini Grill Steakhouse","3 kM",2,R.drawable.ic_restaurant))
 
         return restaurantList
     }
 
-
-    /*
-    private class MyCustomAdapter(context: Context) : BaseAdapter() {
-
-        private val mContext: Context = context
-        var searchItems = arrayListOf("McDonalds", "Maggie Mays", "Bucks Bar", "Pizza Punks", "Five Guys", "Bread Meats Bread","Topolabama")
-        var rating = arrayListOf(4,3,4,4,3,4,4)
-        var distance = arrayListOf("10km","7 km","12 km","17 km","10km","2 km","6 km")
-        var restaurantPicture = arrayListOf(R.drawable.ic_mcdonalds,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant,R.drawable.ic_restaurant, R.drawable.ic_restaurant)
-
-
-        override fun getCount(): Int {
-            return searchItems.size
-        }
-
-        override fun getItem(position: Int): Any {
-            return "test string"
-        }
-
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
-        override fun getView(position: Int, convertView: View?, viewgroup: ViewGroup?): View {
-            val layoutInflater = LayoutInflater.from(mContext)
-            val rowMain = layoutInflater.inflate(R.layout.search_layout, viewgroup, false)
-
-            val restaurantTextView = rowMain.findViewById<TextView>(R.id.tv_title)
-            restaurantTextView.text = searchItems[position]
-
-            val restaurantRating = rowMain.findViewById<RatingBar>(R.id.rb_ratingBar)
-            restaurantRating.numStars = rating[position]
-
-            val restaurantDisTextView = rowMain.findViewById<TextView>(R.id.tv_distance)
-            restaurantDisTextView.text = distance[position]
-
-            val restaurantImageView = rowMain.findViewById<ImageView>(R.id.iv_image)
-            restaurantImageView.setImageResource(restaurantPicture[position])
-
-            return rowMain
-        }
-    }
-
-     */
 }
