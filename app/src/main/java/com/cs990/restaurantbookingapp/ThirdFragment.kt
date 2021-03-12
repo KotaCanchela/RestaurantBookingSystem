@@ -1,14 +1,16 @@
 package com.cs990.restaurantbookingapp
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.fragment.app.ListFragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.cs990.restaurantbookingapp.Adapters.ProfileItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
+import com.cs990.restaurantbookingapp.models.ProfileItem
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,9 +26,14 @@ class ThirdFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    //View bindings
     private var _binding: FragmentThirdBinding? = null
     private val binding get() = _binding!!
-    private lateinit var profileListView: ListView
+
+    //adapter and recyclerview for list
+    private lateinit var profileListView: RecyclerView
+    lateinit var itemAdapter: ProfileItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +41,6 @@ class ThirdFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
     }
 
     override fun onCreateView(
@@ -43,76 +48,47 @@ class ThirdFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentThirdBinding.inflate(inflater, container, false)
-
-
-
         profileListView = binding.profileListView
 
-//        var listViewAdapter: ArrayAdapter<String> = ArrayAdapter(this.requireActivity(), android.R.layout.simple_list_item_1, profileMenuItems)
-        profileListView.adapter = MyCustomAdapter(this.requireActivity())
-
-        // Inflate the layout for this fragment
+        listView()
 
         return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ThirdFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ThirdFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    /**
+     * function which defines the listView, the adapter used
+     */
+
+    fun listView(){
+        //set the layout manager that the recycler view will use
+        profileListView.layoutManager = LinearLayoutManager(this.requireActivity())
+        // adapter class is initialized and list is passed in the parameter
+        itemAdapter = ProfileItemAdapter(this.requireActivity(), getItemsList())
+        // adapter instance is set to the recyclerview to inflate the items
+        profileListView.adapter = itemAdapter
+
+    }
+
+    /**
+     * List of items being displayed
+     */
+
+    private fun getItemsList(): ArrayList<ProfileItem> {
+        val list = ArrayList<ProfileItem>()
+
+        list.add(ProfileItem("Saved Restaurants", R.drawable.ic_baseline_restaurant_24))
+        list.add(ProfileItem("Bookings", R.drawable.ic_baseline_menu_book_24))
+        list.add(ProfileItem("Requests", R.drawable.ic_baseline_chat_bubble_24))
+        list.add(ProfileItem("Payment Details", R.drawable.ic_baseline_credit_card_24))
+        list.add(ProfileItem("Your ratings", R.drawable.ic_baseline_star_rate_24))
+        list.add(ProfileItem("Logout", R.drawable.ic_baseline_exit_to_app_24))
+
+        return list
     }
 
 
-    private class MyCustomAdapter(context: Context): BaseAdapter() {
 
-        private val mContext: Context = context
-        var profileMenuItems = arrayListOf("Saved Restaurants", "Bookings", "Requests", "Payment Details", "Your ratings", "Logout")
-        var profileIcons = arrayListOf(R.drawable.ic_baseline_restaurant_24,
-                R.drawable.ic_baseline_menu_book_24,
-                R.drawable.ic_baseline_chat_bubble_24,
-                R.drawable.ic_baseline_credit_card_24,
-                R.drawable.ic_baseline_star_rate_24,
-                R.drawable.ic_baseline_exit_to_app_24)
-
-
-        override fun getCount(): Int {
-            return profileMenuItems.size
-        }
-
-        override fun getItem(position: Int): Any {
-            return "test string"
-        }
-
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
-        override fun getView(position: Int, convertView: View?, viewgroup: ViewGroup?): View {
-            val layoutInflater = LayoutInflater.from(mContext)
-            val rowMain = layoutInflater.inflate(R.layout.row_profile, viewgroup, false)
-
-            val positionTextView = rowMain.findViewById<TextView>(R.id.row_text)
-            positionTextView.text = profileMenuItems[position]
-
-            val positionImageView = rowMain.findViewById<ImageView>(R.id.row_image)
-            positionImageView.setImageResource(profileIcons[position])
-
-            return rowMain
-        }
-    }
 
 }
+

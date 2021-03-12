@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.RatingBar
 import android.widget.TextView
 
-class RestaurantDetailsActivity : AppCompatActivity() {
+class RestaurantDetailsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
