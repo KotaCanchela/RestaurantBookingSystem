@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
 
@@ -26,7 +28,10 @@ class SecondFragment : Fragment() {
     private var param2: String? = null
     private var _binding: FragmentSecondBinding? = null
     private val binding get() = _binding!!
-    private lateinit var restaurantListView: ListView
+
+    //RecyclerView and adpater
+    private lateinit var recyclerView: RecyclerView
+    lateinit var rvAdapter: RecyclerView_Adapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,32 +51,37 @@ class SecondFragment : Fragment() {
 
         // Inflate the layout for this fragment
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
-        restaurantListView = binding.searchListView
+        recyclerView = binding.rvRestaurantList
 
-//        var listViewAdapter: ArrayAdapter<String> = ArrayAdapter(this.requireActivity(), android.R.layout.simple_list_item_1, profileMenuItems)
-        restaurantListView.adapter = MyCustomAdapter(this.requireActivity())
+        // Don't forget this!
+        initListView()
+
         return binding.root
     }
+    fun initListView(){
+        recyclerView.layoutManager = LinearLayoutManager(this.requireActivity())
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SecondFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SecondFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        rvAdapter = RecyclerView_Adapter(this.requireActivity(), getRestaurantList())
+
+        recyclerView.adapter = rvAdapter
     }
+
+    private fun getRestaurantList() : ArrayList<RestaurantItems>{
+        val restaurantList = ArrayList<RestaurantItems>()
+
+        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+        restaurantList.add(RestaurantItems("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
+
+        return restaurantList
+    }
+
+
+    /*
     private class MyCustomAdapter(context: Context) : BaseAdapter() {
 
         private val mContext: Context = context
@@ -112,4 +122,6 @@ class SecondFragment : Fragment() {
             return rowMain
         }
     }
+
+     */
 }
