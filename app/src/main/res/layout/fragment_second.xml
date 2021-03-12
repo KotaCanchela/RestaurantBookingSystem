@@ -47,14 +47,12 @@
         android:fillViewport="true"
         android:translationY="100dp">
 
-        <ListView
-            android:id="@+id/search_list_view"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_weight = "1"
-            android:smoothScrollbar="true">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_restaurantList"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
 
-        </ListView>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </ScrollView>
 
