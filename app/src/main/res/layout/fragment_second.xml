@@ -19,22 +19,23 @@
         android:scaleY="2"
         android:src="@drawable/ic_account_circle_black_24dp"/>
 
-   <androidx.appcompat.widget.AppCompatEditText
-       android:id="@+id/et_search"
-       android:layout_width="300dp"
-       android:gravity="center_vertical"
-       android:layout_height="wrap_content"
-       android:hint="All Restaurants"
-       android:translationX="50dp"
-       android:translationY="50dp"
-       android:padding="6dp"/>
+  <androidx.appcompat.widget.SearchView
+      android:id="@+id/searchRestaurant"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:translationY="60dp"
+      android:textCursorDrawable="@null"
+      app:iconifiedByDefault="false"
+      app:queryBackground="@null" />
+
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_searchLocation"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:layout_below="@id/et_search"
+        android:layout_below="@id/searchRestaurant"
         android:hint="My Location"
         android:translationX="50dp"
         android:translationY="70dp"

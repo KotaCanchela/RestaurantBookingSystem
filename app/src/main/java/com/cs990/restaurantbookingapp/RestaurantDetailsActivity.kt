@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import androidx.fragment.app.Fragment
+import com.cs990.restaurantbookingapp.databinding.ActivityMainBinding
+import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 
 class RestaurantDetailsActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -46,4 +51,5 @@ class RestaurantDetailsActivity : AppCompatActivity() {
             this.startActivity(intent)
         }
     }
+
 }

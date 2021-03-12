@@ -1,16 +1,20 @@
 package com.cs990.restaurantbookingapp
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cs990.restaurantbookingapp.R.id.searchRestaurant
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
+import kotlinx.android.synthetic.main.fragment_second.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,6 +37,9 @@ class SecondFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     lateinit var rvAdapter: RecyclerView_Adapter
 
+    //searchView
+    private lateinit var search : SearchView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -49,11 +56,49 @@ class SecondFragment : Fragment() {
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
         recyclerView = binding.rvRestaurantList
 
+        //search view
+        search = binding.searchRestaurant
+
+        val searchTest = binding.root.findViewById<SearchView>(R.id.searchRestaurant)
+
+
+        searchTest.setOnQueryTextListener(
+            object : SearchView.OnQueryTextListener,
+                android.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    rvAdapter.filter.filter(newText)
+                    return false
+                }
+
+            },
+        )
+
         // Don't forget this!
         initListView()
+        initSearch()
 
         return binding.root
     }
+
+    private fun initSearch() {
+
+
+        val searchIcon = binding.root.findViewById<ImageView>(R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.WHITE)
+
+
+        val cancelIcon = binding.root.findViewById<ImageView>(R.id.search_close_btn)
+        cancelIcon.setColorFilter(Color.WHITE)
+
+
+        val textView = binding.root.findViewById<TextView>(R.id.search_src_text)
+        textView.setTextColor(Color.WHITE)
+    }
+
     fun initListView(){
         recyclerView.layoutManager = LinearLayoutManager(this.requireActivity())
 
@@ -61,6 +106,7 @@ class SecondFragment : Fragment() {
 
         recyclerView.adapter = rvAdapter
     }
+
 
     private fun getRestaurantList() : ArrayList<RestaurantItems>{
         val restaurantList = ArrayList<RestaurantItems>()
