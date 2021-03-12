@@ -3,24 +3,20 @@ package com.cs990.restaurantbookingapp
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_third.view.*
 import kotlinx.android.synthetic.main.search_layout.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class RecyclerView_Adapter(val context: Context, val restaurants: ArrayList<RestaurantItems>) :
-    RecyclerView.Adapter<RecyclerView_Adapter.RestaurantHolder>() {
+    RecyclerView.Adapter<RecyclerView_Adapter.RestaurantHolder>(), Filterable {
 
-   // var restaurantFilterList = ArrayList<RestaurantItems>()
-
-    lateinit var mcontext: Context
+    var restaurantFilterList = ArrayList<RestaurantItems>()
 
     class RestaurantHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val restaurantNameText: TextView = itemView.tv_restaurantName
@@ -60,23 +56,22 @@ class RecyclerView_Adapter(val context: Context, val restaurants: ArrayList<Rest
         }
     }
 
-/*
+    //filter object
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charSearch = constraint.toString()
+                val charSearch = constraint.toString().toUpperCase()
+
                 if (charSearch.isEmpty()) {
-                    restaurantFilterList = restaurantList
 
+                    restaurantFilterList = restaurants
                 } else {
-                    val resultList = ArrayList<String>()
+                    val resultList = ArrayList<RestaurantItems>()
 
+                    for ( row in restaurantFilterList.indices) {
+                        if (restaurantFilterList.get(row).getRestaurantName().toUpperCase(Locale.ROOT).contains(charSearch)) {
 
-                    for (row in restaurantList) {
-                        if (row.toLowerCase(Locale.ROOT)
-                                .contains(charSearch.toLowerCase(Locale.ROOT))
-                        ) {
-                            resultList.add(row)
+                            resultList.add(restaurantFilterList.get(row))
 
                         }
                     }
@@ -90,14 +85,15 @@ class RecyclerView_Adapter(val context: Context, val restaurants: ArrayList<Rest
 
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                restaurantFilterList = results?.values as ArrayList<String>
+                restaurantFilterList = results?.values as ArrayList<RestaurantItems>
                 notifyDataSetChanged()
             }
 
         }
     }
+    }
 
- */
 
-}
+
+
 

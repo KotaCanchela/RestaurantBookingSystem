@@ -1,6 +1,7 @@
 package com.cs990.restaurantbookingapp
 
 import android.content.Context
+import java.util.*
 
 class RestaurantItems(name: String, distance: String, rating: Int, restaurantImage: Int) {
 
@@ -21,5 +22,6 @@ class RestaurantItems(name: String, distance: String, rating: Int, restaurantIma
     fun getRestaurantImage(): Int{
         return this.restaurantImage
     }
+
 
 }
