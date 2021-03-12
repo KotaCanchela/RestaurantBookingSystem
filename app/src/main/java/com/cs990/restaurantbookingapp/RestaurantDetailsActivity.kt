@@ -1,19 +1,18 @@
 package com.cs990.restaurantbookingapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RatingBar
-import android.widget.TextView
+import android.widget.*
 
 class RestaurantDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_details)
+
         val textView0 = findViewById<View>(R.id.ResName) as TextView
         textView0.text = "Restaurant Name"
         val textView1 = findViewById<View>(R.id.address1) as TextView
@@ -28,7 +27,9 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         textView5.text = "tel: 12345678910"
         val rate = findViewById<View>(R.id.ratingBar) as RatingBar
         rate.rating = 3.7f
+
         val imageList = findViewById<LinearLayout>(R.id.imageList)
+
         val inflate = LayoutInflater.from(this)
         for (i in 0..7)
         {
@@ -36,6 +37,13 @@ class RestaurantDetailsActivity : AppCompatActivity() {
             val imageView = view.findViewById<ImageView>(R.id.imageView)
             imageView.setImageResource(R.mipmap.ic_launcher)
             imageList.addView(view)
+        }
+
+        val button = findViewById<Button>(R.id.bookButton)
+
+        button.setOnClickListener(){
+            val intent = Intent(this, BookingConfirmationActivity::class.java)
+            this.startActivity(intent)
         }
     }
 }
