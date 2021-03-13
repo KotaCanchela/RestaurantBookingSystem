@@ -1,4 +1,4 @@
-package com.cs990.restaurantbookingapp.Adapters
+package com.cs990.restaurantbookingapp.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.row_profile.view.*
 
 class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>):
-    RecyclerView.Adapter<ProfileItemAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ProfileItemAdapter.ProfileViewHolder>() {
 
 
     /**
@@ -25,8 +25,8 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
      * create a new
      * {@link ViewHolder} and initializes some private fields to be used by RecyclerView.
      */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
+        return ProfileViewHolder(
             LayoutInflater.from(context).inflate(
                 R.layout.row_profile,
                 parent,
@@ -46,13 +46,13 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
      * layout file.
      */
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = items.get(position)
+    override fun onBindViewHolder(holderProfile: ProfileViewHolder, position: Int) {
+        val item = items[position]
 
-        holder.profileItemText.row_text.text = item.getText()
-        holder.profileItemImage.row_image.setImageDrawable(getDrawable(context, item.getIcon()))
+        holderProfile.profileItemText.row_text.text = item.getText()
+        holderProfile.profileItemImage.row_image.setImageDrawable(getDrawable(context, item.getIcon()))
 
-        holder.itemView.setOnClickListener{
+        holderProfile.itemView.setOnClickListener{
             if(position == 5) {
                 FirebaseAuth.getInstance().signOut()
                 val loginPage = Intent(context, LoginActivity::class.java)
@@ -76,7 +76,7 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
      * Inner class that describes an item view
      */
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ProfileViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
         val profileItemText: TextView = view.profile_item.row_text
         val profileItemImage: ImageView = view.profile_item.row_image

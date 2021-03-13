@@ -1,5 +1,7 @@
 package com.cs990.restaurantbookingapp.firebase
 
+import android.app.Activity
+import android.provider.SyncStateContract
 import android.util.Log
 import com.cs990.restaurantbookingapp.LoginActivity
 import com.cs990.restaurantbookingapp.RegisterActivity
@@ -40,6 +42,11 @@ class FirestoreClass {
         }.addOnFailureListener {
             e -> Log.e("SignInUser", "Error writing document", e)
             }
+    }
+
+    fun getRestaurantsList(activity: Activity){
+        mFireStore.collection("Restaurants")
+            .whereArrayContains("Assigned to", getCurrentUserId())
     }
 
 }

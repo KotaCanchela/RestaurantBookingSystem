@@ -15,7 +15,7 @@ import com.cs990.restaurantbookingapp.firebase.FirestoreClass
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding;
 
@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
 
         super.onCreate(savedInstanceState)
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
