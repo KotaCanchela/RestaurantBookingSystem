@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cs990.restaurantbookingapp.Adapters.ProfileItemAdapter
+import com.cs990.restaurantbookingapp.adapters.ProfileItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
 import com.cs990.restaurantbookingapp.models.ProfileItem
 

@@ -1,6 +1,8 @@
 package com.cs990.restaurantbookingapp
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cs990.restaurantbookingapp.Adapters.RestaurantItemAdapter
+import com.cs990.restaurantbookingapp.adapters.RestaurantItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -41,7 +43,7 @@ class SecondFragment : Fragment() {
 
     //Firestore
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    var restaurantRef: CollectionReference = db.collection("Restaurants")
+    var query: CollectionReference = db.collection("Restaurants")
 
     //adapter
     lateinit var restaurantAdapter: RestaurantItemAdapter
@@ -63,6 +65,7 @@ class SecondFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentSecondBinding.inflate(inflater, container, false)
 
+        recyclerView = binding.rvRestaurantList
 
         // Don't forget this!
         setupRecyclerView()
@@ -74,35 +77,28 @@ class SecondFragment : Fragment() {
     fun setupRecyclerView(){
 
         //Query
-        var query: Query = restaurantRef.orderBy("priority", Query.Direction.DESCENDING)
 
-//        restaurantRef
-//            .get()
-//            .addOnSuccessListener { document ->
-//            if (document != null) {
-//                Toast.makeText(
-//                    this.requireContext(),"Success and full",
-//                    Toast.LENGTH_LONG).show()
-//            } else {
-//                Toast.makeText(
-//                    this.requireContext(),"Success but empty",
-//                    Toast.LENGTH_LONG).show()
-//            }
-//        }
-//            .addOnFailureListener { exception ->
-//                Toast.makeText(
-//                    this.requireContext(),"you are a failure",
-//                    Toast.LENGTH_LONG).show()
-//            }
+        // If you look in the logcat (run tab) you will see the data coming from the database
+        query
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
 
         //RecyclerOptions
         var options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
             .setQuery(query, RestaurantItem::class.java)
                 .build()
 
-        restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
+
         //ViewHolder
-        recyclerView = binding.rvRestaurantList
+
+        restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
 
         recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
 
@@ -123,9 +119,9 @@ class SecondFragment : Fragment() {
 
 
 
-    private fun getRestaurantList() : ArrayList<RestaurantItem>{
-        val restaurantList = ArrayList<RestaurantItem>()
-
+//    private fun getRestaurantList() : ArrayList<RestaurantItem>{
+//        val restaurantList = ArrayList<RestaurantItem>()
+//
 //        restaurantList.add(RestaurantItem("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
 //        restaurantList.add(RestaurantItem("Bucks Bar","23 kM",3,R.drawable.ic_restaurant))
 //        restaurantList.add(RestaurantItem("Maggie Mays","7 kM",4,R.drawable.ic_restaurant))
@@ -137,8 +133,8 @@ class SecondFragment : Fragment() {
 //        restaurantList.add(RestaurantItem("Alston Bar & Beef","43 kM",3,R.drawable.ic_restaurant))
 //        restaurantList.add(RestaurantItem("Picnic","13 kM",3,R.drawable.ic_restaurant))
 //        restaurantList.add(RestaurantItem("Mini Grill Steakhouse","3 kM",2,R.drawable.ic_restaurant))
-
-        return restaurantList
-    }
+//
+//        return restaurantList
+//    }
 
 }

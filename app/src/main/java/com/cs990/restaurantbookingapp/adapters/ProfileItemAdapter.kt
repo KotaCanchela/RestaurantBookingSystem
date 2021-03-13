@@ -1,4 +1,4 @@
-package com.cs990.restaurantbookingapp.Adapters
+package com.cs990.restaurantbookingapp.adapters
 
 import android.content.Context
 import android.content.Intent
