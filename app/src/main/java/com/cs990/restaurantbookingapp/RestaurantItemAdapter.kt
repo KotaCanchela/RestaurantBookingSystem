@@ -1,19 +1,15 @@
-package com.cs990.restaurantbookingapp.adapters
+package com.cs990.restaurantbookingapp
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
-import com.cs990.restaurantbookingapp.R
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import kotlinx.android.synthetic.main.card_restaurant.view.*
-import java.net.URL
 
 
 class RestaurantItemAdapter(val context: Context, val options: FirestoreRecyclerOptions<RestaurantItem>) :
@@ -24,6 +20,8 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
+
+
         return RestaurantViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.card_restaurant,
@@ -38,9 +36,9 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 
 
 //          Changed name to show image string (everything else is being reset to zero
-            holder.restaurantNameText.tv_restaurantName.text = model.getRestaurantImage()
-            holder.restaurantDistanceText.tv_distance.text = model.getRestaurantGeohash()
-            holder.restaurantRatingBar.rb_ratingBar.numStars = model.getRestaurantRating()!!
+        holder.restaurantNameText.tv_restaurantName.text = model.getName()
+        holder.restaurantDistanceText.tv_distance.text = model.getGeohash()
+        holder.restaurantRatingBar.rb_ratingBar.numStars = model.getRating()?.toInt()!!
 
             // Trying to set image from database but strict mode preventing internet calls
 //            var url: URL = URL(model.getRestaurantImage())

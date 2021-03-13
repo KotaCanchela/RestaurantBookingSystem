@@ -10,13 +10,11 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.cs990.restaurantbookingapp.adapters.RestaurantItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_second.*
 
 // TODO: Rename parameter arguments, choose names that match
