@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.R
-import com.cs990.restaurantbookingapp.RestaurantDetailsActivity
+import com.cs990.restaurantbookingapp.RestaurantPageActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -45,7 +45,7 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 //            holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bmp)
 
         holder.itemView.setOnClickListener{
-            val intent = Intent(context, RestaurantDetailsActivity::class.java)
+            val intent = Intent(context, RestaurantPageActivity::class.java)
             intent.putExtra("model", model)
             context.startActivity(intent)
         }

@@ -1,28 +1,36 @@
 package com.cs990.restaurantbookingapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import com.cs990.restaurantbookingapp.databinding.ActivityRestaurantPageBinding
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 
-class RestaurantDetailsActivity : AppCompatActivity() {
+class RestaurantPageActivity : BaseActivity() {
 
-//    val restaurant: RestaurantItem = intent.getParcelableExtra<RestaurantItem>("model")!!
+    private lateinit var binding: ActivityRestaurantPageBinding
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_restaurant_details)
+
+        binding = ActivityRestaurantPageBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         var intent: Intent = getIntent()
-        var restaurant = intent.getParcelableExtra<RestaurantItem>("model")
+        var restaurant = intent.getParcelableExtra<RestaurantItem>("model")!!
 
-        val textView0 = findViewById<View>(R.id.res_name) as TextView
-        if (restaurant != null) {
-            textView0.text = restaurant.getName()
-        }
+        val restaurantName = binding.resName
+        restaurantName.text = restaurant.getName()
+
+        val restaurantRating = binding.ratingBar
+        restaurantRating.numStars = restaurant.getRating().toInt()
+
+        val restaurantPrice = binding.priceBar
+        restaurantPrice.numStars = restaurant.getPrice().toInt()
+
         val textView1 = findViewById<View>(R.id.address1) as TextView
         textView1.text = "12/28"
         val textView2 = findViewById<View>(R.id.address2) as TextView
@@ -33,8 +41,8 @@ class RestaurantDetailsActivity : AppCompatActivity() {
         textView4.text = "1,024 reviews"
         val textView5 = findViewById<View>(R.id.tel_no) as TextView
         textView5.text = "tel: 12345678910"
-        val rate = findViewById<View>(R.id.rating_bar) as RatingBar
-        rate.rating = 3.7f
+//        val rate = findViewById<View>(R.id.rating_bar) as RatingBar
+//        rate.rating = 3.7f
 
 //        val imageList = findViewById<LinearLayout>(R.id.imageList)
 //

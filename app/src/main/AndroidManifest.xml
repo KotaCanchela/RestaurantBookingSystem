@@ -11,7 +11,7 @@
         android:theme="@style/Theme.RestaurantBooking">
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".RestaurantDetailsActivity" />
+        <activity android:name=".RestaurantPageActivity" />
         <activity android:name=".BookingConfirmationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
