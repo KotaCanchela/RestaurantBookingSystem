@@ -6,38 +6,46 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
+import com.cs990.restaurantbookingapp.models.RestaurantItem
 
 class RestaurantDetailsActivity : AppCompatActivity() {
+
+//    val restaurant: RestaurantItem = intent.getParcelableExtra<RestaurantItem>("model")!!
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_restaurant_details)
 
-        val textView0 = findViewById<View>(R.id.ResName) as TextView
-        textView0.text = "Restaurant Name"
+        var intent: Intent = getIntent()
+        var restaurant = intent.getParcelableExtra<RestaurantItem>("model")
+
+        val textView0 = findViewById<View>(R.id.res_name) as TextView
+        if (restaurant != null) {
+            textView0.text = restaurant.getName()
+        }
         val textView1 = findViewById<View>(R.id.address1) as TextView
         textView1.text = "12/28"
         val textView2 = findViewById<View>(R.id.address2) as TextView
         textView2.text = "Livingstone Tower"
         val textView3 = findViewById<View>(R.id.address3) as TextView
         textView3.text = "G1 G2G"
-        val textView4 = findViewById<View>(R.id.reviewCount) as TextView
+        val textView4 = findViewById<View>(R.id.review_count) as TextView
         textView4.text = "1,024 reviews"
-        val textView5 = findViewById<View>(R.id.telNo) as TextView
+        val textView5 = findViewById<View>(R.id.tel_no) as TextView
         textView5.text = "tel: 12345678910"
-        val rate = findViewById<View>(R.id.ratingBar) as RatingBar
+        val rate = findViewById<View>(R.id.rating_bar) as RatingBar
         rate.rating = 3.7f
 
-        val imageList = findViewById<LinearLayout>(R.id.imageList)
-
-        val inflate = LayoutInflater.from(this)
-        for (i in 0..7)
-        {
-            val view = inflate.inflate(R.layout.imageitem, imageList, false)
-            val imageView = view.findViewById<ImageView>(R.id.imageView)
-            imageView.setImageResource(R.mipmap.ic_launcher)
-            imageList.addView(view)
-        }
+//        val imageList = findViewById<LinearLayout>(R.id.imageList)
+//
+//        val inflate = LayoutInflater.from(this)
+//        for (i in 0..7)
+//        {
+//            val view = inflate.inflate(R.layout.imageitem, imageList, false)
+//            val imageView = view.findViewById<ImageView>(R.id.imageView)
+//            imageView.setImageResource(R.mipmap.ic_launcher)
+//            imageList.addView(view)
+//        }
 
         val button = findViewById<Button>(R.id.bookButton)
 

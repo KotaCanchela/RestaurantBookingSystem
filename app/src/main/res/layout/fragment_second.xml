@@ -18,15 +18,16 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/ic_account_circle_black_24dp"/>
 
-  <androidx.appcompat.widget.SearchView
-      android:id="@+id/searchRestaurant"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_alignParentTop="true"
-      android:translationY="60dp"
-      android:textCursorDrawable="@null"
-      app:iconifiedByDefault="false"
-      app:queryBackground="@null" />
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:translationY="60dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null" />
 
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -44,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/et_searchLocation"
+        android:clipToPadding="false"
         android:fillViewport="true"
         android:translationY="100dp">
 

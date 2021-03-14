@@ -6,21 +6,142 @@
     android:layout_height="match_parent"
     tools:context=".RestaurantDetailsActivity">
 
-    <Button
-        android:id="@+id/bookButton"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:layout_below="@id/imageBar"
-        android:layout_alignParentBottom="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="Book Now" />
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="fill_parent"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:layout_height="200dp"-->
+<!--            android:src="@drawable/mirazur_world_2019_dish1_min"-->
+<!--            ></ImageView>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
 
     <TextView
-        android:id="@+id/telNo"
+        android:id="@+id/res_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="20dp"
+        android:text="RestaurantName"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_below="@id/res_name"
+        android:id="@+id/rating_container"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:outlineSpotShadowColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/address3"
+        android:layout_marginTop="10dp"
+        android:theme="@style/RatingBar"/>
+
+    <RatingBar
+        android:id="@+id/price_bar"
+        style="?android:attr/ratingBarStyleSmall"
+        android:progressDrawable="@drawable/ic_baseline_price_rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/restaurant_image_bar"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_below="@id/rating_container">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/restaurant_image_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true">
+
+    <TextView
+        android:paddingStart="30dp"
+        android:id="@+id/review_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:text="Reviews ( xx)"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        android:id="@+id/menu_and_booking"
+        android:layout_below="@id/restaurant_image_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:layout_marginRight="40dp"
+        android:id="@+id/bookButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Now" />
+
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Menu" />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/menu_and_booking"
+        android:orientation="vertical"
+        android:id="@+id/address_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tel_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="TextView"
         android:textSize="14sp"
@@ -28,89 +149,33 @@
         tools:text="tel: 12345678910" />
 
     <TextView
-        android:id="@+id/address3"
+        android:id="@+id/address1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/address2"
         android:layout_centerHorizontal="true"
         android:text="TextView"
         android:textSize="14sp"
-        tools:text="Postcode" />
+        tools:text="Address line 1" />
 
     <TextView
         android:id="@+id/address2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/address1"
         android:layout_centerHorizontal="true"
         android:text="TextView"
         android:textSize="14sp"
         tools:text="Address line 2" />
 
     <TextView
-        android:id="@+id/ResName"
+        android:id="@+id/address3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:text="RestaurantName"
-        android:textSize="24sp" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignWithParentIfMissing="false"
-        android:layout_below="@id/ResName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/reviewCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ratingBar"
-        android:layout_centerHorizontal="true"
-        android:text="TextView"
-        android:textSize="18sp"
-        tools:text="### Reviews" />
-
-    <TextView
-        android:id="@+id/address1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/reviewCount"
         android:layout_centerHorizontal="true"
         android:text="TextView"
         android:textSize="14sp"
-        tools:text="Address line 1" />
+        tools:text="Postcode" />
 
-    <Button
-        android:id="@+id/menuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/telNo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="View Menu" />
+    </LinearLayout>
 
-    <HorizontalScrollView
-        android:id="@+id/imageBar"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_below="@id/menuButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp">
 
-        <LinearLayout
-            android:id="@+id/imageList"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
 </RelativeLayout>

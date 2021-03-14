@@ -1,8 +1,6 @@
 package com.cs990.restaurantbookingapp
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cs990.restaurantbookingapp.adapters.RestaurantItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -65,7 +64,6 @@ class SecondFragment : Fragment() {
 
         recyclerView = binding.rvRestaurantList
 
-        // Don't forget this!
         setupRecyclerView()
 
         return binding.root
@@ -74,19 +72,6 @@ class SecondFragment : Fragment() {
 
     fun setupRecyclerView(){
 
-        //Query
-
-        // If you look in the logcat (run tab) you will see the data coming from the database
-        query
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
 
         //RecyclerOptions
         var options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
@@ -116,23 +101,5 @@ class SecondFragment : Fragment() {
 
 
 
-
-//    private fun getRestaurantList() : ArrayList<RestaurantItem>{
-//        val restaurantList = ArrayList<RestaurantItem>()
-//
-//        restaurantList.add(RestaurantItem("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-//        restaurantList.add(RestaurantItem("Bucks Bar","23 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Maggie Mays","7 kM",4,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Five Guys","3 kM",2,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Pizza Punks","43 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Topolabama","13 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Bread Meats Bread","3 kM",2,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Gamba","3 kM",2,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Alston Bar & Beef","43 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Picnic","13 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Mini Grill Steakhouse","3 kM",2,R.drawable.ic_restaurant))
-//
-//        return restaurantList
-//    }
 
 }
