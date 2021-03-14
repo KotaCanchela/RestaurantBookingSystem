@@ -1,6 +1,7 @@
 package com.cs990.restaurantbookingapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +18,12 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 
 
 
-
-
+    class RestaurantViewHolder(view:View): RecyclerView.ViewHolder(view){
+        val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName)
+        val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_restaurantImage)
+        val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.rb_ratingBar)
+        val restaurantDistanceText: TextView = itemView.findViewById(R.id.tv_distance)
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
 
 
@@ -41,32 +46,33 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
         holder.restaurantRatingBar.rb_ratingBar.numStars = model.getRating()?.toInt()!!
 
             // Trying to set image from database but strict mode preventing internet calls
-//            var url: URL = URL(model.getRestaurantImage())
-//            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-//            holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bmp)
+        /*
+           var url: URL = URL(model.getRestaurantImage())
+           var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+            holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bmp)
+
+         */
 
 
 
-//            holder.itemView.setOnClickListener {
-//
-//                if(onClickListener!= null){
-//                    onClickListener!!.onClick(position, model)
-//                }
-//                val intent = Intent(context, RestaurantDetailsActivity::class.java)
-//                context.startActivity(intent)
-//
-//            }
-//        }
-    }
+            holder.itemView.setOnClickListener {
+                /*
+               if(onClickListener!= null){
+                   onClickListener!!.onClick(position, model)
+               }
 
-
-    class RestaurantViewHolder(view:View): RecyclerView.ViewHolder(view){
-        val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName)
-        val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_restaurantImage)
-        val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.rb_ratingBar)
-        val restaurantDistanceText: TextView = itemView.findViewById(R.id.tv_distance)
-    }
+                 */
+               val intent = Intent(context, RestaurantDetailsActivity::class.java)
+               context.startActivity(intent)
+           }
+       }
 
 
 }
+
+
+
+
+
+
 

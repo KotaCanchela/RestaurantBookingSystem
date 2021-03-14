@@ -5,7 +5,6 @@
     android:id="@+id/restaurant_content_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="50dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -18,33 +17,35 @@
         android:layout_marginTop="30dp"
         android:src="@drawable/ic_account_circle_black_24dp"/>
 
-   <androidx.appcompat.widget.AppCompatEditText
-       android:id="@+id/et_search"
-       android:layout_width="300dp"
-       android:gravity="center_vertical"
-       android:layout_height="wrap_content"
-       android:hint="All Restaurants"
-       android:translationX="50dp"
-       android:translationY="50dp"
-       android:padding="6dp"/>
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/restaurant_search"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentTop="true"
+        android:background="#C4C2C5"
+        android:textCursorDrawable="@null"
+        app:iconifiedByDefault="false"
+        app:queryBackground="@null" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_searchLocation"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:layout_below="@id/et_search"
+        android:layout_below="@id/restaurant_search"
         android:hint="My Location"
-        android:translationX="50dp"
-        android:translationY="70dp"
-        android:padding="6dp"/>
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/et_searchLocation"
         android:fillViewport="true"
-        android:translationY="100dp">
+        android:layout_marginTop="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_restaurantList"
@@ -54,5 +55,16 @@
         </androidx.recyclerview.widget.RecyclerView>
 
     </ScrollView>
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="170dp"
+        android:gravity="center"
+        style="@style/Widget.MaterialComponents.Chip.Action"
+        android:text="Filters"/>
 
 </RelativeLayout>

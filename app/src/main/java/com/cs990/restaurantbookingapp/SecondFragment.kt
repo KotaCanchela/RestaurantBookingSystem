@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
@@ -39,6 +40,9 @@ class SecondFragment : Fragment() {
     //recyclerview for list
     lateinit var recyclerView: RecyclerView
 
+    //searchView
+    lateinit var searchView: SearchView
+
     //Firestore
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     var query: CollectionReference = db.collection("Restaurants")
@@ -65,6 +69,8 @@ class SecondFragment : Fragment() {
 
         recyclerView = binding.rvRestaurantList
 
+        searchView = binding.restaurantSearch
+
         // Don't forget this!
         setupRecyclerView()
 
@@ -72,7 +78,7 @@ class SecondFragment : Fragment() {
     }
 
 
-    fun setupRecyclerView(){
+    fun setupRecyclerView() {
 
         //Query
 
@@ -89,8 +95,9 @@ class SecondFragment : Fragment() {
             }
 
         //RecyclerOptions
-        var options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
-            .setQuery(query, RestaurantItem::class.java)
+        var options: FirestoreRecyclerOptions<RestaurantItem> =
+            FirestoreRecyclerOptions.Builder<RestaurantItem>()
+                .setQuery(query, RestaurantItem::class.java)
                 .build()
 
 
@@ -113,7 +120,6 @@ class SecondFragment : Fragment() {
         super.onStop()
         restaurantAdapter.stopListening()
     }
-
 
 
 

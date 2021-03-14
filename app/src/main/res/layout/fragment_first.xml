@@ -7,107 +7,26 @@
     android:orientation="vertical"
     tools:context=".FirstFragment">
 
-    <TextView
-        android:id="@+id/ScottishText"
-        android:layout_width="wrap_content"
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rv_homeRestaurant"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="150dp"
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+       android:orientation="horizontal">
+
+   </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cuisineHome"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="584dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal">
 
-        android:text="Scottish" />
-    <TextView
-        android:id="@+id/AvailableText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:textSize="18sp"
-        android:layout_marginLeft="15dp"
-
-        android:text="Available for dinner now" />
-    <TextView
-        android:id="@+id/ViewText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:textSize="16sp"
-        android:textColor="#bf3d64"
-        android:layout_marginLeft="300dp"
-
-        android:text="View All" />
-
-
-    <TextView
-        android:id="@+id/ItalianText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="584dp"
-        android:layout_marginLeft="315dp"
-        android:text="Italian" />
-
-    <TextView
-        android:id="@+id/FrenchText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="584dp"
-        android:layout_marginLeft="175dp"
-        android:text="French" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="500dp"
-        android:src="@drawable/full_traditional_scottish_breakfast_lauripatterson" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="500dp"
-        android:src="@drawable/gourmet_food" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="280dp"
-        android:layout_marginTop="500dp"
-        android:src="@drawable/italian" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_marginTop="120dp"
-        android:src="@drawable/mirazur_world_2019_dish1_min" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="2 • Tonight at 22:30"
-        />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Glasgow City" />
-
-    <TextView
-        android:id="@+id/EditTextBrowse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="480dp"
-        android:text="Browse by cuisine"
-        android:textSize="18sp" />
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
