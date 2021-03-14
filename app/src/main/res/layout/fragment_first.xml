@@ -7,23 +7,46 @@
     android:orientation="vertical"
     tools:context=".FirstFragment">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bookings Available Now"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_alignTop="@id/rv_homeRestaurant"
+        android:layout_marginTop="-40dp"
+        android:layout_marginLeft="12dp"/>
+
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/rv_homeRestaurant"
-       android:layout_width="match_parent"
+       android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_alignParentTop="true"
-       android:layout_marginTop="150dp"
+       android:layout_marginTop="170dp"
+       android:layout_marginHorizontal="20dp"
        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
        android:orientation="horizontal">
 
    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search by Cuisine"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_alignTop="@id/rv_cuisineHome"
+        android:layout_marginTop="-40dp"
+        android:layout_marginLeft="12dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_cuisineHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="120dp"
+        android:layout_marginHorizontal="20dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="horizontal">
 

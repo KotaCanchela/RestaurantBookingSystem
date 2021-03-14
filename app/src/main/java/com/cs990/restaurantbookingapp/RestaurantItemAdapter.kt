@@ -43,7 +43,7 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 //          Changed name to show image string (everything else is being reset to zero
         holder.restaurantNameText.tv_restaurantName.text = model.getName()
         holder.restaurantDistanceText.tv_distance.text = model.getGeohash()
-        holder.restaurantRatingBar.rb_ratingBar.numStars = model.getRating()?.toInt()!!
+        holder.restaurantRatingBar.rb_ratingBar.rating = model.getRating()?.toFloat()!!
 
             // Trying to set image from database but strict mode preventing internet calls
         /*
