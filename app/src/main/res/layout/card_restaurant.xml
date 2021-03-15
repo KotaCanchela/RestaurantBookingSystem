@@ -8,7 +8,8 @@
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:id="@+id/rl_wrapper"
@@ -18,20 +19,19 @@
 
         <ImageView
             android:id="@+id/iv_restaurantImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:src="@mipmap/ic_launcher_round"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignTop="@+id/iv_restaurantImage"
             android:layout_alignBottom="@id/iv_restaurantImage"
             android:layout_toEndOf="@id/iv_restaurantImage"
-            android:orientation="vertical"
-            android:layout_toRightOf="@id/iv_restaurantImage">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_restaurantName"
@@ -40,8 +40,7 @@
                 android:layout_marginStart="10dp"
                 android:text="Restaurant"
                 android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:layout_marginLeft="10dp" />
+                android:textSize="20sp" />
             <RatingBar
                 android:id="@+id/rb_ratingBar"
                 style="@style/Widget.AppCompat.RatingBar.Small"
@@ -49,7 +48,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
                 android:progressTint="#FFEB3B" />
 
             <TextView
@@ -58,9 +56,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:text="Distance"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14sp"
-                android:layout_marginLeft="10dp" />
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
 
         </LinearLayout>
     </RelativeLayout>

@@ -71,6 +71,7 @@
 
     <TextView
         android:id="@+id/TimeAndDate"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/restName"
@@ -99,7 +100,6 @@
         android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
-        android:text="Restaurant Name"
         android:textStyle="bold" />
 
     <TextView
@@ -134,4 +134,13 @@
         android:layout_toLeftOf="@id/editButton"
         android:text="Calendar"
         android:textSize="8sp" />
+
+    <Button
+        android:id="@+id/btn_home"
+        android:layout_marginTop="30dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/CalendarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"/>
 </RelativeLayout>

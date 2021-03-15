@@ -1,16 +1,14 @@
 package com.cs990.restaurantbookingapp
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.cs990.restaurantbookingapp.adapters.RestaurantItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -40,9 +38,6 @@ class SecondFragment : Fragment() {
     //recyclerview for list
     lateinit var recyclerView: RecyclerView
 
-    //searchView
-    lateinit var searchView: SearchView
-
     //Firestore
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     var query: CollectionReference = db.collection("Restaurants")
@@ -69,39 +64,23 @@ class SecondFragment : Fragment() {
 
         recyclerView = binding.rvRestaurantList
 
-        searchView = binding.restaurantSearch
-
-        // Don't forget this!
         setupRecyclerView()
 
         return binding.root
     }
 
 
-    fun setupRecyclerView() {
+    fun setupRecyclerView(){
 
-        //Query
-
-        // If you look in the logcat (run tab) you will see the data coming from the database
-        query
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
 
         //RecyclerOptions
-        var options: FirestoreRecyclerOptions<RestaurantItem> =
-            FirestoreRecyclerOptions.Builder<RestaurantItem>()
-                .setQuery(query, RestaurantItem::class.java)
+        var options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
+            .setQuery(query, RestaurantItem::class.java)
                 .build()
 
 
         //ViewHolder
+
         restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
 
         recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
@@ -119,5 +98,8 @@ class SecondFragment : Fragment() {
         super.onStop()
         restaurantAdapter.stopListening()
     }
+
+
+
 
 }

@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RestaurantBooking">
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".RestaurantDetailsActivity" />
+        <activity android:name=".RestaurantPageActivity" />
         <activity android:name=".BookingConfirmationActivity" />
         <activity android:name=".SearchFiltersActivity" />
         <activity android:name=".SearchFilterActivity" />
