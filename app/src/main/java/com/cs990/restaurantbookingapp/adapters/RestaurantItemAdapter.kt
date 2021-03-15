@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cs990.restaurantbookingapp.R
 import com.cs990.restaurantbookingapp.RestaurantPageActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
@@ -28,7 +29,6 @@ class RestaurantItemAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
-
 
         return RestaurantViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -51,9 +51,15 @@ class RestaurantItemAdapter(
         holder.restaurantNameText.tv_restaurantName.text = model.getName()
         holder.restaurantDistanceText.tv_distance.text = model.getGeoHash()
         holder.restaurantRatingBar.rb_ratingBar.rating = model.getRating()?.toFloat()!!
+<<<<<<< HEAD
 
 
 
+=======
+
+
+
+>>>>>>> aSync
         // Trying to set image from database but strict mode preventing internet calls
 //            var url: URL = URL(model.getRestaurantImage())
 //            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
@@ -68,17 +74,41 @@ class RestaurantItemAdapter(
 //                holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bitmap)
 //            }
 //        }
+<<<<<<< HEAD
+=======
+//
+
+        val url = model.getRestaurantImage()
+        Glide
+            .with(holder.restaurantImageItem)
+            .load(url)
+            .into(holder.restaurantImageItem.iv_restaurantImage)
+>>>>>>> aSync
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, RestaurantPageActivity::class.java)
             intent.putExtra("model", model)
+
             context.startActivity(intent)
+
         }
 
+        runAsync {
+            runCatching {
+                val url = model.getRestaurantImage()
+                Glide
+                    .with(holder.restaurantImageItem)
+                    .load(url)
+                    .into(holder.restaurantImageItem.iv_restaurantImage)
 
+            }
+        }
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aSync
     inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_restaurantImage)
