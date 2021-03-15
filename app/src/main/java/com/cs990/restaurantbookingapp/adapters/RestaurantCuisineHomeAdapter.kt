@@ -79,13 +79,8 @@ class RestaurantCuisineHomeAdapter(
 
 
         holder.itemView.setOnClickListener {
-            /*
-           if(onClickListener!= null){
-               onClickListener!!.onClick(position, model)
-           }
-
-             */
             val intent = Intent(context, RestaurantPageActivity::class.java)
+            intent.putExtra("model", model)
             context.startActivity(intent)
         }
     }

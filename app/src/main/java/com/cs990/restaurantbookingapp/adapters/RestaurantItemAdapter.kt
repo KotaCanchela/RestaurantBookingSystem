@@ -50,7 +50,7 @@ class RestaurantItemAdapter(
 
         holder.restaurantNameText.tv_restaurantName.text = model.getName()
         holder.restaurantDistanceText.tv_distance.text = model.getGeoHash()
-        holder.restaurantRatingBar.rb_ratingBar.numStars = model.getRating()?.toInt()!!
+        holder.restaurantRatingBar.rb_ratingBar.rating = model.getRating()?.toFloat()!!
 
         // Trying to set image from database but strict mode preventing internet calls
 //            var url: URL = URL(model.getRestaurantImage())
