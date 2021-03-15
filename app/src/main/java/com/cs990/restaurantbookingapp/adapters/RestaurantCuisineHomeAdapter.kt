@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.R
-import com.cs990.restaurantbookingapp.RestaurantDetailsActivity
+import com.cs990.restaurantbookingapp.RestaurantPageActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -85,7 +85,7 @@ class RestaurantCuisineHomeAdapter(
            }
 
              */
-            val intent = Intent(context, RestaurantDetailsActivity::class.java)
+            val intent = Intent(context, RestaurantPageActivity::class.java)
             context.startActivity(intent)
         }
     }

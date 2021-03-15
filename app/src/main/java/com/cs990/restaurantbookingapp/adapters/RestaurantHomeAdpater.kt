@@ -80,7 +80,7 @@ class RestaurantHomeAdapter(
            }
 
              */
-            val intent = Intent(context, RestaurantDetailsActivity::class.java)
+            val intent = Intent(context, RestaurantPageActivity::class.java)
             context.startActivity(intent)
         }
     }
