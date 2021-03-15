@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" >
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical">
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="12dp"
+         android:text="Search Fitlers"
+         android:textSize="24sp" />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="12dp"
+         android:text="Number of People"
+         android:textSize="20sp"/>
+     <Spinner
+         android:id="@+id/spinner"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_alignParentTop="true"
+         android:layout_margin="10dp" />
+
+     <TextView
+         android:id="@+id/tv_priceTitle"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="12dp"
+         android:text="Price"
+         android:textSize="18dp"/>
+
+     <SeekBar
+         android:id="@+id/seek_bar_price"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:max="5000"
+         android:layout_margin="25dp"
+         />
+
+     <TextView
+         android:id="@+id/tv_priceFilter"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+         android:layout_marginTop="20dp"
+         android:layout_gravity="center_horizontal"
+         />
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Dietary Requirements"
+         android:textSize="18sp"
+         android:layout_margin="12dp"/>
+
+     <com.google.android.material.chip.ChipGroup
+         android:id="@+id/chip_group"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center">
+
+         <com.google.android.material.chip.Chip
+             android:id="@+id/chip_glutenFilter"
+             style="@style/Widget.MaterialComponents.Chip.Filter"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Gluten Free" />
+
+         <com.google.android.material.chip.Chip
+             android:id="@+id/chip_veganFilter"
+             style="@style/Widget.MaterialComponents.Chip.Filter"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Vegan" />
+
+         <com.google.android.material.chip.Chip
+             android:id="@+id/chip_HalalFilter"
+             style="@style/Widget.MaterialComponents.Chip.Filter"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Halal" />
+
+         <com.google.android.material.chip.Chip
+             android:id="@+id/chip_dairyFilter"
+             style="@style/Widget.MaterialComponents.Chip.Filter"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Dairy Free" />
+
+         <com.google.android.material.chip.Chip
+             android:id="@+id/chip_nutFilter"
+             style="@style/Widget.MaterialComponents.Chip.Filter"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Nut Free" />
+
+     </com.google.android.material.chip.ChipGroup>
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="48dp"
+         android:layout_marginLeft="12dp"
+         android:text="Distance"
+         android:textSize="18sp"/>
+     <SeekBar
+         android:id="@+id/seek_bar_distance"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:max="50"
+         android:layout_margin="50dp"
+         />
+ </LinearLayout>
+
+
+
+
+</ScrollView>

@@ -20,8 +20,6 @@ import kotlinx.android.synthetic.main.row_profile.view.*
 class RestaurantPageImageAdapter(val context: Context, val items: ArrayList<Int>):
     RecyclerView.Adapter<RestaurantPageImageAdapter.RestaurantPageImageViewHolder>() {
 
-
-
     /**
      * Inflates the item views which is designed in xml layout file
      *
@@ -58,10 +56,6 @@ class RestaurantPageImageAdapter(val context: Context, val items: ArrayList<Int>
     override fun getItemCount(): Int {
         return items.size
     }
-
-
-
-
 
 
     /**
