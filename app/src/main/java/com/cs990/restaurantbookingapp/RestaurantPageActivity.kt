@@ -64,13 +64,13 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         restaurantName.text = restaurant.getName()
 
         val restaurantRating = binding.ratingBar
-        restaurantRating.numStars = restaurant.getRating().toInt()
+        restaurantRating.rating = restaurant.getRating().toFloat()
 
         val restaurantLargeRating = binding.largeRatingBar
-        restaurantLargeRating.numStars = restaurant.getRating().toInt()
+        restaurantLargeRating.rating = restaurant.getRating().toFloat()
 
         val restaurantPrice = binding.priceBar
-        restaurantPrice.numStars = restaurant.getPrice().toInt()
+        restaurantPrice.rating = restaurant.getPrice().toFloat()
 
         val restaurantCuisine = binding.restaurantCuisine
         restaurantCuisine.text = restaurant.getCuisine()

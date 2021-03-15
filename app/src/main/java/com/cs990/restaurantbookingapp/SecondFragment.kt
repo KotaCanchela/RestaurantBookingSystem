@@ -1,6 +1,8 @@
 package com.cs990.restaurantbookingapp
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -37,6 +39,7 @@ class SecondFragment : Fragment() {
 
     //recyclerview for list
     lateinit var recyclerView: RecyclerView
+    lateinit var btnFilter: Button
 
     //Firestore
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -65,8 +68,19 @@ class SecondFragment : Fragment() {
         recyclerView = binding.rvRestaurantList
 
         setupRecyclerView()
+        setupUI()
 
         return binding.root
+    }
+
+    fun setupUI(){
+        binding.btnFilter.setOnClickListener(){
+
+            val dialog = FilterDialog(this.requireContext())
+            dialog.show()
+
+            }
+
     }
 
 

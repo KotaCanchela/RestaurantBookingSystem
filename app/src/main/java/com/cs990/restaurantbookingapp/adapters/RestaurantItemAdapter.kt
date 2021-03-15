@@ -50,6 +50,8 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 //            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 //            holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bmp)
 
+
+        //causing an error
         runAsync {
             runCatching {
                 val bitmap = URL(model.getRestaurantImage()).openStream()
