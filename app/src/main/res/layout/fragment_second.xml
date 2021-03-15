@@ -49,6 +49,7 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_bar"
+        app:queryHint="Search"
         android:background="@drawable/search_bar_background"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
@@ -58,19 +59,32 @@
         app:iconifiedByDefault="false"
         app:queryBackground="@null" />
 
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_searchLocation"
-        android:background="@drawable/search_bar_background"
-        android:layout_width="fill_parent"
-        android:layout_marginLeft="70dp"
-        android:layout_marginRight="70dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:layout_below="@id/search_bar"
-        android:hint="My Location"
-        android:padding="6dp"/>
+            <Button
+                android:id="@+id/btn_filter"
+                android:drawableTop="@drawable/ic_baseline_filter_alt_24"
+                android:layout_width="35dp"
+                android:layout_height="40dp"/>
+
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_searchLocation"
+                android:gravity="center"
+                android:background="@drawable/search_bar_background"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_height="40dp"
+                android:hint="My Location"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
