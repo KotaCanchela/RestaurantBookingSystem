@@ -102,7 +102,6 @@ class SecondFragment : Fragment() {
 
 
         //ViewHolder
-
         restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
 
         recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
@@ -120,7 +119,6 @@ class SecondFragment : Fragment() {
         super.onStop()
         restaurantAdapter.stopListening()
     }
-
 
 
 //    private fun getRestaurantList() : ArrayList<RestaurantItem>{
