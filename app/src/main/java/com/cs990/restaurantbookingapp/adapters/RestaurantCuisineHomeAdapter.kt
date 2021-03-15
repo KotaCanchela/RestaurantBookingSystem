@@ -66,26 +66,22 @@ class RestaurantCuisineHomeAdapter(
            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
          */
-        runAsync {
-            runCatching {
-                val bitmap = URL(model.getRestaurantImage()).openStream()
-                    .use { BitmapFactory.decodeStream(it) }
-                holder.restaurantImageItem.iv_home_cuisine.setImageBitmap(bitmap)
-            }
-        }
+//        runAsync {
+//            runCatching {
+//                val bitmap = URL(model.getRestaurantImage()).openStream()
+//                    .use { BitmapFactory.decodeStream(it) }
+//                holder.restaurantImageItem.iv_home_cuisine.setImageBitmap(bitmap)
+//            }
+//        }
 
       //  holder.restaurantImageItem.iv_home_cuisine.setImageResource(item.getRestaurantImage())
 
 
 
         holder.itemView.setOnClickListener {
-            /*
-           if(onClickListener!= null){
-               onClickListener!!.onClick(position, model)
-           }
 
-             */
             val intent = Intent(context, RestaurantPageActivity::class.java)
+            intent.putExtra("model", model)
             context.startActivity(intent)
         }
     }

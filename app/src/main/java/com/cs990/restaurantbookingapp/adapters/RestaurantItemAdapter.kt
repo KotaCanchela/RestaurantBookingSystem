@@ -52,6 +52,8 @@ class RestaurantItemAdapter(
         holder.restaurantDistanceText.tv_distance.text = model.getGeoHash()
         holder.restaurantRatingBar.rb_ratingBar.numStars = model.getRating()?.toInt()!!
 
+
+
         // Trying to set image from database but strict mode preventing internet calls
 //            var url: URL = URL(model.getRestaurantImage())
 //            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
@@ -59,13 +61,13 @@ class RestaurantItemAdapter(
 
 
         //causing an error
-        runAsync {
-            runCatching {
-                val bitmap = URL(model.getRestaurantImage()).openStream()
-                    .use { BitmapFactory.decodeStream(it) }
-                holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bitmap)
-            }
-        }
+//        runAsync {
+//            runCatching {
+//                val bitmap = URL(model.getRestaurantImage()).openStream()
+//                    .use { BitmapFactory.decodeStream(it) }
+//                holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bitmap)
+//            }
+//        }
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, RestaurantPageActivity::class.java)
