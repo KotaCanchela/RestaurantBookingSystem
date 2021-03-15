@@ -15,4 +15,37 @@
     <string name="password">password</string>
     <string name="registerHere">Don\'t have an account? <u>Register here.</u></string>
     <string name="please_wait">Please Wait&#8230;</string>
+
+    <!-- Dummy Data for drop down in the Home Page -->
+    <integer-array name="number_of_people">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+
+    <string-array name="time">
+        <item>"00:00"</item>
+        <item>"00:15"</item>
+        <item>"00:30"</item>
+        <item>"01:00"</item>
+        <item>"01:15"</item>
+        <item>"01:30"</item>
+        <item>"02:00"</item>
+        <item>"02:15"</item>
+        <item>"02:30"</item>
+        <item>"03:00"</item>
+        <item>"03:15"</item>
+        <item>"03:30"</item>
+        <item>"04:00"</item>
+        <item>"04:15"</item>
+        <item>"04:30"</item>
+
+    </string-array>
 </resources>
