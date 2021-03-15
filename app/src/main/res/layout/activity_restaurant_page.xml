@@ -57,7 +57,6 @@
                     android:stepSize="1"
                     android:id="@+id/rating_bar"
                     style="@style/Widget.AppCompat.RatingBar.Small"
-                    android:outlineSpotShadowColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -95,7 +94,8 @@
                     android:isIndicator="true"
                     android:theme="@style/RatingBar"
                     android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    app:layout_collapseMode="parallax"/>
             </LinearLayout>
 
 

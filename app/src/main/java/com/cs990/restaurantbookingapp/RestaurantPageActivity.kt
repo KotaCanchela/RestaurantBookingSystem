@@ -125,7 +125,7 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
     private fun getItemsList(): ArrayList<Int> {
         var list = ArrayList<Int>()
 
-        list.add(R.drawable.italian)
+        list.add(R.drawable.gourmet_food)
         list.add(R.drawable.full_traditional_scottish_breakfast_lauripatterson)
         list.add(R.drawable.italian)
         list.add(R.drawable.blur1)
