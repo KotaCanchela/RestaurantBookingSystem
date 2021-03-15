@@ -67,24 +67,18 @@ class RestaurantHomeAdapter(
             runCatching {
                 val bitmap = URL(model.getRestaurantImage()).openStream()
                     .use { BitmapFactory.decodeStream(it) }
-                  holder.restaurantImageItem.iv_home_restaurant.setImageBitmap(bitmap)
+                holder.restaurantImageItem.iv_home_restaurant.setImageBitmap(bitmap)
             }
         }
 
         // holder.restaurantImageItem.iv_home_restaurant.setImageBitmap(bmp)
 
         holder.itemView.setOnClickListener {
-            /*
-           if(onClickListener!= null){
-               onClickListener!!.onClick(position, model)
-           }
-
-             */
             val intent = Intent(context, RestaurantPageActivity::class.java)
+            intent.putExtra("model", model)
             context.startActivity(intent)
         }
     }
-
 }
 
 

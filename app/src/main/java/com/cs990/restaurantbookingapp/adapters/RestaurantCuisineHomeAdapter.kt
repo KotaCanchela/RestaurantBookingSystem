@@ -27,7 +27,8 @@ class RestaurantCuisineHomeAdapter(
     val options: FirestoreRecyclerOptions<RestaurantItem>
 ) :
     FirestoreRecyclerAdapter<RestaurantItem, RestaurantCuisineHomeAdapter.RestaurantViewHolder>(
-        options) {
+        options
+    ) {
 
 
     class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -74,18 +75,11 @@ class RestaurantCuisineHomeAdapter(
             }
         }
 
-      //  holder.restaurantImageItem.iv_home_cuisine.setImageResource(item.getRestaurantImage())
-
-
+        //  holder.restaurantImageItem.iv_home_cuisine.setImageResource(item.getRestaurantImage())
 
         holder.itemView.setOnClickListener {
-            /*
-           if(onClickListener!= null){
-               onClickListener!!.onClick(position, model)
-           }
-
-             */
             val intent = Intent(context, RestaurantPageActivity::class.java)
+            intent.putExtra("model", model)
             context.startActivity(intent)
         }
     }
