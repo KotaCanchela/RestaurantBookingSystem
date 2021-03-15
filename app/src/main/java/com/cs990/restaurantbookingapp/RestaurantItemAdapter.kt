@@ -2,15 +2,21 @@ package com.cs990.restaurantbookingapp
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import kotlinx.android.synthetic.main.card_home_restaurant.view.*
 import kotlinx.android.synthetic.main.card_restaurant.view.*
+import java.net.URL
+import java.util.concurrent.CompletableFuture.runAsync as runAsync
 
 
 class RestaurantItemAdapter(val context: Context, val options: FirestoreRecyclerOptions<RestaurantItem>) :
@@ -37,6 +43,7 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int, model: RestaurantItem) {
 
 
@@ -53,6 +60,13 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 
          */
 
+        runAsync {
+            runCatching {
+                val bitmap = URL(model.getRestaurantImage()).openStream()
+                    .use { BitmapFactory.decodeStream(it) }
+                holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bitmap)
+            }
+        }
 
 
             holder.itemView.setOnClickListener {

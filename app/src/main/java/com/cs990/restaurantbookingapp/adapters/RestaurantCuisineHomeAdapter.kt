@@ -2,27 +2,35 @@ package com.cs990.restaurantbookingapp.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.R
 import com.cs990.restaurantbookingapp.RestaurantDetailsActivity
-import com.cs990.restaurantbookingapp.RestaurantHomeAdapter
-import com.cs990.restaurantbookingapp.models.RestaurantItems
+import com.cs990.restaurantbookingapp.models.RestaurantItem
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter
+import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import kotlinx.android.synthetic.main.card_home_cuisine.view.*
 import kotlinx.android.synthetic.main.card_home_restaurant.view.*
-import kotlinx.android.synthetic.main.card_home_restaurant.view.iv_home_restaurant
+import java.net.URL
+import java.util.concurrent.CompletableFuture
+import java.util.concurrent.CompletableFuture.runAsync as runAsync
 
-class RestaurantCuisineHomeAdapter(val context: Context, val options: ArrayList<RestaurantItems>) :
-    RecyclerView.Adapter<RestaurantCuisineHomeAdapter.RestaurantViewHolder>() {
+class RestaurantCuisineHomeAdapter(
+    val context: Context,
+    val options: FirestoreRecyclerOptions<RestaurantItem>
+) :
+    FirestoreRecyclerAdapter<RestaurantItem, RestaurantCuisineHomeAdapter.RestaurantViewHolder>(
+        options) {
 
 
-
-    class RestaurantViewHolder(view: View): RecyclerView.ViewHolder(view){
+    class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantCuisine_home)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_home_cuisine)
     }
@@ -40,12 +48,16 @@ class RestaurantCuisineHomeAdapter(val context: Context, val options: ArrayList<
     }
 
 
-    override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
-        val item = options.get(index = position)
+    @RequiresApi(Build.VERSION_CODES.N)
+    override fun onBindViewHolder(
+        holder: RestaurantViewHolder,
+        position: Int,
+        model: RestaurantItem
+    ) {
 
 
 //          Changed name to show image string (everything else is being reset to zero
-        holder.restaurantNameText.tv_restaurantCuisine_home.text = item.getRestaurantName()
+        holder.restaurantNameText.tv_restaurantCuisine_home.text = model.getCuisine()
         // holder.restaurantDistanceText.tv_distance.text = model.getGeohash()
 
         // Trying to set image from database but strict mode preventing internet calls
@@ -54,9 +66,15 @@ class RestaurantCuisineHomeAdapter(val context: Context, val options: ArrayList<
            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
          */
-        holder.restaurantImageItem.iv_home_cuisine.setImageResource(item.getRestaurantImage())
+        runAsync {
+            runCatching {
+                val bitmap = URL(model.getRestaurantImage()).openStream()
+                    .use { BitmapFactory.decodeStream(it) }
+                holder.restaurantImageItem.iv_home_cuisine.setImageBitmap(bitmap)
+            }
+        }
 
-
+      //  holder.restaurantImageItem.iv_home_cuisine.setImageResource(item.getRestaurantImage())
 
 
 
@@ -70,10 +88,6 @@ class RestaurantCuisineHomeAdapter(val context: Context, val options: ArrayList<
             val intent = Intent(context, RestaurantDetailsActivity::class.java)
             context.startActivity(intent)
         }
-    }
-
-    override fun getItemCount(): Int {
-        return options.size
     }
 }
 
