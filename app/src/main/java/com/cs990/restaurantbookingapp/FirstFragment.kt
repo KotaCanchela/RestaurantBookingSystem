@@ -138,7 +138,6 @@ class FirstFragment : Fragment() {
         restaurantAdapter2 =
             RestaurantCuisineHomeAdapter(this.requireContext(), options)
 
-
         val layoutManager =
             LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
@@ -179,7 +178,6 @@ class FirstFragment : Fragment() {
 
         recyclerView.adapter = restaurantAdapter
 
-
     }
 
 
@@ -197,58 +195,6 @@ class FirstFragment : Fragment() {
 
     }
 
-/*
-
-    private fun getRestaurantList(): ArrayList<RestaurantItems> {
-        val restaurantList = ArrayList<RestaurantItems>()
-
-        restaurantList.add(RestaurantItems("McDonalds", 5, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Bucks Bar", 3, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Maggie Mays", 4, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Five Guys", 2, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Pizza Punks", 3, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Topolabama", 3, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Bread Meats Bread", 2, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Gamba", 2, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Alston Bar & Beef", 3, R.drawable.ic_restaurant))
-        restaurantList.add(RestaurantItems("Picnic", 3, R.drawable.ic_restaurant))
-        restaurantList.add(
-            RestaurantItems(
-                "Mini Grill Steakhouse",
-                2,
-                R.drawable.ic_restaurant
-            )
-        )
-
-        return restaurantList
-    }
-
-    private fun getCuisineList(): ArrayList<RestaurantItems> {
-        val restaurantList = ArrayList<RestaurantItems>()
-
-        restaurantList.add(RestaurantItems("Italian", 5, R.drawable.italian))
-        restaurantList.add(RestaurantItems("American", 3, R.drawable.gourmet_food))
-        restaurantList.add(RestaurantItems("Mexican", 4, R.drawable.italian))
-        restaurantList.add(
-            RestaurantItems(
-                "Japanese",
-                2,
-                R.drawable.mirazur_world_2019_dish1_min
-            )
-        )
-        restaurantList.add(
-            RestaurantItems(
-                "Korean",
-                3,
-                R.drawable.full_traditional_scottish_breakfast_lauripatterson
-            )
-        )
-        restaurantList.add(RestaurantItems("Steak House", 3, R.drawable.italian))
-
-        return restaurantList
-    }
-
- */
 }
 
 

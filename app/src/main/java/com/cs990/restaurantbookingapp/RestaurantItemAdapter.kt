@@ -46,19 +46,10 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int, model: RestaurantItem) {
 
-
 //          Changed name to show image string (everything else is being reset to zero
         holder.restaurantNameText.tv_restaurantName.text = model.getName()
         holder.restaurantDistanceText.tv_distance.text = model.getGeohash()
         holder.restaurantRatingBar.rb_ratingBar.rating = model.getRating()?.toFloat()!!
-
-            // Trying to set image from database but strict mode preventing internet calls
-        /*
-           var url: URL = URL(model.getRestaurantImage())
-           var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-            holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bmp)
-
-         */
 
         runAsync {
             runCatching {
@@ -74,7 +65,6 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
                if(onClickListener!= null){
                    onClickListener!!.onClick(position, model)
                }
-
                  */
                val intent = Intent(context, RestaurantDetailsActivity::class.java)
                context.startActivity(intent)

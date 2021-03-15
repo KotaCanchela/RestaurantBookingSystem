@@ -14,16 +14,9 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.models.RestaurantItem
-import com.cs990.restaurantbookingapp.models.RestaurantItems
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import kotlinx.android.synthetic.main.card_home_restaurant.view.*
-import kotlinx.android.synthetic.main.card_restaurant.view.*
-import kotlinx.android.synthetic.main.card_restaurant.view.tv_restaurantName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.net.URL
 import java.util.concurrent.CompletableFuture.runAsync as runAsync
 

@@ -120,23 +120,4 @@ class SecondFragment : Fragment() {
         restaurantAdapter.stopListening()
     }
 
-
-//    private fun getRestaurantList() : ArrayList<RestaurantItem>{
-//        val restaurantList = ArrayList<RestaurantItem>()
-//
-//        restaurantList.add(RestaurantItem("McDonalds","3 kM",5,R.drawable.ic_mcdonalds))
-//        restaurantList.add(RestaurantItem("Bucks Bar","23 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Maggie Mays","7 kM",4,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Five Guys","3 kM",2,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Pizza Punks","43 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Topolabama","13 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Bread Meats Bread","3 kM",2,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Gamba","3 kM",2,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Alston Bar & Beef","43 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Picnic","13 kM",3,R.drawable.ic_restaurant))
-//        restaurantList.add(RestaurantItem("Mini Grill Steakhouse","3 kM",2,R.drawable.ic_restaurant))
-//
-//        return restaurantList
-//    }
-
 }
