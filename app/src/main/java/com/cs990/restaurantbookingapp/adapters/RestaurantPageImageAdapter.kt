@@ -60,10 +60,6 @@ class RestaurantPageImageAdapter(val context: Context, val items: ArrayList<Int>
     }
 
 
-
-
-
-
     /**
      * Inner class that describes an item view
      */

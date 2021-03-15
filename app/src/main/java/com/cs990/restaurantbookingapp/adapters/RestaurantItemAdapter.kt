@@ -20,7 +20,10 @@ import java.net.URL
 import java.util.concurrent.CompletableFuture.runAsync
 
 
-class RestaurantItemAdapter(val context: Context, val options: FirestoreRecyclerOptions<RestaurantItem>) :
+class RestaurantItemAdapter(
+    val context: Context,
+    val options: FirestoreRecyclerOptions<RestaurantItem>
+) :
     FirestoreRecyclerAdapter<RestaurantItem, RestaurantItemAdapter.RestaurantViewHolder>(options) {
 
 
@@ -38,14 +41,18 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
 
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int, model: RestaurantItem) {
+    override fun onBindViewHolder(
+        holder: RestaurantViewHolder,
+        position: Int,
+        model: RestaurantItem
+    ) {
 
 
         holder.restaurantNameText.tv_restaurantName.text = model.getName()
         holder.restaurantDistanceText.tv_distance.text = model.getGeoHash()
         holder.restaurantRatingBar.rb_ratingBar.numStars = model.getRating()?.toInt()!!
 
-            // Trying to set image from database but strict mode preventing internet calls
+        // Trying to set image from database but strict mode preventing internet calls
 //            var url: URL = URL(model.getRestaurantImage())
 //            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 //            holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bmp)
@@ -58,7 +65,7 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
             }
         }
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             val intent = Intent(context, RestaurantPageActivity::class.java)
             intent.putExtra("model", model)
             context.startActivity(intent)
@@ -68,15 +75,13 @@ class RestaurantItemAdapter(val context: Context, val options: FirestoreRecycler
     }
 
 
-
-    inner class RestaurantViewHolder(itemView:View): RecyclerView.ViewHolder(itemView){
+    inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_restaurantImage)
         val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.rb_ratingBar)
         val restaurantDistanceText: TextView = itemView.findViewById(R.id.tv_distance)
 
     }
-
 
 
 }
