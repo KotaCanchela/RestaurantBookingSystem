@@ -81,36 +81,6 @@ class FirstFragment : Fragment() {
         return binding.root
 
     }
-
-    //TODO: Finish implementing this: NullPointerException ERROR
-    /*
-    fun setupSpinner() {
-        //spinners
-        val spinner = binding.spinnerParty
-      val adapter = ArrayAdapter(activity as Context,R.layout.support_simple_spinner_dropdown_item, resources.getStringArray(R.array.number_of_people)) as SpinnerAdapter?
-        spinner.adapter = adapter
-
-        spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                println("Error")
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val type = parent?.getItemAtPosition(position).toString()
-                Toast.makeText(activity, type, Toast.LENGTH_LONG).show()
-                println(type)
-            }
-
-        }
-
-    }
-
-     */
     fun setupRecyclerView2() {
 
         //Query
