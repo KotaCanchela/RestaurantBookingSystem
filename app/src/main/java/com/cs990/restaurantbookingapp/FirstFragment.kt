@@ -17,7 +17,6 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_searchfilter.*
 import kotlinx.android.synthetic.main.fragment_first.*
-import android.widget.ArrayAdapter as ArrayAdapter
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
