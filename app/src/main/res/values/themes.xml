@@ -25,7 +25,7 @@
     </style>
 
 
-    <style name="CustomRatingBar" parent="Theme.AppCompat">
+    <style name="CustomRatingBar" parent="Widget.AppCompat.RatingBar">
         <item name="android:progressDrawable">@drawable/pricebar</item>
         <item name="android:minHeight">18dp</item>
         <item name="android:maxHeight">18dp</item>

@@ -11,10 +11,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 import com.bumptech.glide.Glide
->>>>>>> aSync
+//>>>>>>> aSync
 import com.cs990.restaurantbookingapp.R
 import com.cs990.restaurantbookingapp.RestaurantPageActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
@@ -80,14 +80,14 @@ class RestaurantCuisineHomeAdapter(
 
       //  holder.restaurantImageItem.iv_home_cuisine.setImageResource(item.getRestaurantImage())
 
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
         val url = model.getRestaurantImage()
         Glide
             .with(holder.restaurantImageItem)
             .load(url)
             .into(holder.restaurantImageItem.iv_home_cuisine)
->>>>>>> aSync
+//>>>>>>> aSync
 
 
         holder.itemView.setOnClickListener {

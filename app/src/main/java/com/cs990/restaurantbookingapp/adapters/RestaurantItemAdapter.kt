@@ -51,15 +51,15 @@ class RestaurantItemAdapter(
         holder.restaurantNameText.tv_restaurantName.text = model.getName()
         holder.restaurantDistanceText.tv_distance.text = model.getGeoHash()
         holder.restaurantRatingBar.rb_ratingBar.rating = model.getRating()?.toFloat()!!
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 
 
-=======
+//=======
 
 
 
->>>>>>> aSync
+//>>>>>>> aSync
         // Trying to set image from database but strict mode preventing internet calls
 //            var url: URL = URL(model.getRestaurantImage())
 //            var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
@@ -74,8 +74,8 @@ class RestaurantItemAdapter(
 //                holder.restaurantImageItem.iv_restaurantImage.setImageBitmap(bitmap)
 //            }
 //        }
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 //
 
         val url = model.getRestaurantImage()
@@ -83,7 +83,7 @@ class RestaurantItemAdapter(
             .with(holder.restaurantImageItem)
             .load(url)
             .into(holder.restaurantImageItem.iv_restaurantImage)
->>>>>>> aSync
+//>>>>>>> aSync
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, RestaurantPageActivity::class.java)
@@ -105,10 +105,10 @@ class RestaurantItemAdapter(
         }
     }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
-=======
->>>>>>> aSync
+//=======
+//>>>>>>> aSync
     inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_restaurantImage)
