@@ -61,27 +61,13 @@ class RestaurantHomeAdapter(
         holder.restaurantNameText.tv_restaurantName_home.text = model.getName()
         holder.restaurantRatingBar.rb_ratingBarHome.rating = model.getRating()?.toFloat()!!
 
-        // Trying to set image from database but strict mode preventing internet calls
-        // var url: URL = URL(model.getRestaurantImage())
-        // var bmp: Bitmap = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
-//        runAsync {
-//            runCatching {
-//                val bitmap = URL(model.getRestaurantImage()).openStream()
-//                    .use { BitmapFactory.decodeStream(it) }
-//                  holder.restaurantImageItem.iv_home_restaurant.setImageBitmap(bitmap)
-//            }
-//        }
-
-        // holder.restaurantImageItem.iv_home_restaurant.setImageBitmap(bmp)
-
-//        Causing crashes on the page
         val url = model.getRestaurantImage()
         Glide
             .with(holder.restaurantImageItem)
             .load(url)
             .into(holder.restaurantImageItem.iv_home_restaurant)
-//
+
 
 
 
