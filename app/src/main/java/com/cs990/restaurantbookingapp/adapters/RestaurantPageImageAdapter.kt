@@ -1,21 +1,13 @@
 package com.cs990.restaurantbookingapp.adapters
 
 import android.content.Context
-import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.cs990.restaurantbookingapp.LoginActivity
 import com.cs990.restaurantbookingapp.R
-import com.cs990.restaurantbookingapp.models.ProfileItem
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.restaurant_page_image.view.*
-import kotlinx.android.synthetic.main.row_profile.view.*
 
 class RestaurantPageImageAdapter(val context: Context, val items: ArrayList<Int>):
     RecyclerView.Adapter<RestaurantPageImageAdapter.RestaurantPageImageViewHolder>() {

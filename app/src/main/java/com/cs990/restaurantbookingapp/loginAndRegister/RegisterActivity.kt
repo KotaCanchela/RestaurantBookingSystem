@@ -1,17 +1,17 @@
-package com.cs990.restaurantbookingapp
+package com.cs990.restaurantbookingapp.loginAndRegister
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
+import com.cs990.restaurantbookingapp.BaseActivity
+import com.cs990.restaurantbookingapp.MainActivity
 import com.cs990.restaurantbookingapp.databinding.ActivityRegisterBinding
 import com.cs990.restaurantbookingapp.firebase.FirestoreClass
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
 import com.cs990.restaurantbookingapp.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : BaseActivity() {
 

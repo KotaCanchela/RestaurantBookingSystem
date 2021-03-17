@@ -9,8 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
-import com.cs990.restaurantbookingapp.LoginActivity
-import com.cs990.restaurantbookingapp.R
+import com.cs990.restaurantbookingapp.*
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
+import com.cs990.restaurantbookingapp.profilePages.MyBookings
+import com.cs990.restaurantbookingapp.profilePages.MyPaymentDetails
+import com.cs990.restaurantbookingapp.profilePages.MyRatings
+import com.cs990.restaurantbookingapp.profilePages.MyRequests
 import com.cs990.restaurantbookingapp.models.ProfileItem
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.row_profile.view.*
@@ -53,10 +57,34 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
         holderProfile.profileItemImage.row_image.setImageDrawable(getDrawable(context, item.getIcon()))
 
         holderProfile.itemView.setOnClickListener{
+            if(position == 2) {
+                FirebaseAuth.getInstance().signOut()
+                val myTable = Intent(context, MyBookings::class.java)
+                context.startActivity(myTable)
+//                context.finish()
+            }
+            if(position == 2) {
+                FirebaseAuth.getInstance().signOut()
+                val myTable = Intent(context, MyRequests::class.java)
+                context.startActivity(myTable)
+//                context.finish()
+            }
+            if(position == 3) {
+                FirebaseAuth.getInstance().signOut()
+                val myTable = Intent(context, MyPaymentDetails::class.java)
+                context.startActivity(myTable)
+//                context.finish()
+            }
             if(position == 5) {
                 FirebaseAuth.getInstance().signOut()
-                val loginPage = Intent(context, LoginActivity::class.java)
-                context.startActivity(loginPage)
+                val logout = Intent(context, LoginActivity::class.java)
+                context.startActivity(logout)
+//                context.finish()
+            }
+            if(position == 4) {
+                FirebaseAuth.getInstance().signOut()
+                val myTable = Intent(context, MyRatings::class.java)
+                context.startActivity(myTable)
 //                context.finish()
             }
         }

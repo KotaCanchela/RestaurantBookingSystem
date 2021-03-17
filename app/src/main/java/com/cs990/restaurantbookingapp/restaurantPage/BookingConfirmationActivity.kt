@@ -1,12 +1,12 @@
-package com.cs990.restaurantbookingapp
+package com.cs990.restaurantbookingapp.restaurantPage
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.cs990.restaurantbookingapp.models.BookingItem
-import com.cs990.restaurantbookingapp.models.RestaurantItem
+import com.cs990.restaurantbookingapp.BaseActivity
+import com.cs990.restaurantbookingapp.MainActivity
+import com.cs990.restaurantbookingapp.R
 
 class BookingConfirmationActivity : BaseActivity() {
 

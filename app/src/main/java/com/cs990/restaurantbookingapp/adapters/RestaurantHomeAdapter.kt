@@ -2,11 +2,7 @@ package com.cs990.restaurantbookingapp
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Build
-import android.provider.MediaStore.Images.Media.getBitmap
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +11,10 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cs990.restaurantbookingapp.models.RestaurantItem
+import com.cs990.restaurantbookingapp.restaurantPage.RestaurantPageActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import kotlinx.android.synthetic.main.card_home_restaurant.view.*
-import kotlinx.android.synthetic.main.card_restaurant.view.*
-import java.net.URL
-import java.util.concurrent.CompletableFuture.runAsync as runAsync
 
 
 class RestaurantHomeAdapter(

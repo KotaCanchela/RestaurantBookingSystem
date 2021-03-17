@@ -2,7 +2,6 @@ package com.cs990.restaurantbookingapp.adapters
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +11,11 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cs990.restaurantbookingapp.R
-import com.cs990.restaurantbookingapp.RestaurantPageActivity
+import com.cs990.restaurantbookingapp.restaurantPage.RestaurantPageActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import kotlinx.android.synthetic.main.card_restaurant.view.*
-import java.net.URL
 import java.util.concurrent.CompletableFuture.runAsync
 
 
