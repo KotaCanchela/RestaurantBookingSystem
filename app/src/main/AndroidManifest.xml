@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RestaurantBooking">
-        <activity android:name=".profilePages.MyPaymentDetails"></activity>
+        <activity android:name=".profilePages.MySavedRestaurants"></activity>
         <activity android:name=".profilePages.MyRequests" />
         <activity android:name=".profilePages.MyRatings" />
         <activity android:name=".profilePages.MyBookings" />
