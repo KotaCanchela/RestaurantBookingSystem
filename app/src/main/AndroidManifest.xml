@@ -15,6 +15,7 @@
         <activity android:name=".profilePages.MyRequests" />
         <activity android:name=".profilePages.MyRatings" />
         <activity android:name=".profilePages.MyBookings" />
+        <activity android:name=".profilePages.MyPaymentActivity" />
         <activity android:name=".loginAndRegister.LoginActivity" />
         <activity android:name=".loginAndRegister.RegisterActivity" />
         <activity android:name=".restaurantPage.RestaurantPageActivity" />

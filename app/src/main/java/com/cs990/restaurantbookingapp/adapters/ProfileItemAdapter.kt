@@ -55,13 +55,13 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
 
         holderProfile.itemView.setOnClickListener{
             if(position == 0) {
-                val myTable = Intent(context, MySavedRestaurants::class.java)
-                context.startActivity(myTable)
+                val mySavedRestaurants = Intent(context, MySavedRestaurants::class.java)
+                context.startActivity(mySavedRestaurants)
 //                context.finish()
             }
             if(position == 1) {
-                val myTable = Intent(context, MyBookings::class.java)
-                context.startActivity(myTable)
+                val myBookings = Intent(context, MyBookings::class.java)
+                context.startActivity(myBookings)
 //                context.finish()
             }
             if(position == 2) {
@@ -70,13 +70,13 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
 //                context.finish()
             }
             if(position == 3) {
-                val myTable = Intent(context, MyPaymentActivity::class.java)
-                context.startActivity(myTable)
+                val myPaymentActivity = Intent(context, MyPaymentActivity::class.java)
+                context.startActivity(myPaymentActivity)
 //                context.finish()
             }
             if(position == 4) {
-                val myTable = Intent(context, MyRatings::class.java)
-                context.startActivity(myTable)
+                val myRatings = Intent(context, MyRatings::class.java)
+                context.startActivity(myRatings)
 //                context.finish()
             }
             if(position == 5) {
