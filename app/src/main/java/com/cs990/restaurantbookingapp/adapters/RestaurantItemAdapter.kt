@@ -46,15 +46,15 @@ class RestaurantItemAdapter(
     ) {
 
 
-        holder.restaurantNameText.tv_restaurantName.text = model.getName()
-        holder.restaurantDistanceText.tv_distance.text = model.getGeoHash()
-        holder.restaurantRatingBar.rb_ratingBar.rating = model.getRating()?.toFloat()!!
+        holder.restaurantNameText.booking_restaurant_name.text = model.getName()
+        holder.restaurantDistanceText.booking_distance.text = model.getGeoHash()
+        holder.restaurantRatingBar.booking_ratingBar.rating = model.getRating()?.toFloat()!!
 
         val url = model.getRestaurantImage()
         Glide
             .with(holder.restaurantImageItem)
             .load(url)
-            .into(holder.restaurantImageItem.iv_restaurantImage)
+            .into(holder.restaurantImageItem.booking_restaurantImage)
 
 
         holder.itemView.setOnClickListener {
@@ -71,7 +71,7 @@ class RestaurantItemAdapter(
                 Glide
                     .with(holder.restaurantImageItem)
                     .load(url)
-                    .into(holder.restaurantImageItem.iv_restaurantImage)
+                    .into(holder.restaurantImageItem.booking_restaurantImage)
 
             }
         }
@@ -79,10 +79,10 @@ class RestaurantItemAdapter(
 
 
     inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName)
-        val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_restaurantImage)
-        val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.rb_ratingBar)
-        val restaurantDistanceText: TextView = itemView.findViewById(R.id.tv_distance)
+        val restaurantNameText: TextView = itemView.findViewById(R.id.booking_restaurant_name)
+        val restaurantImageItem: ImageView = itemView.findViewById(R.id.booking_restaurantImage)
+        val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.booking_ratingBar)
+        val restaurantDistanceText: TextView = itemView.findViewById(R.id.booking_distance)
 
     }
 

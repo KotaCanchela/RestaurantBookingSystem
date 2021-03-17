@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.ProfileItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
 import com.cs990.restaurantbookingapp.models.ProfileItem
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.fragment_third.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +29,8 @@ class ThirdFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var username: TextView
+    private var currentUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
     //View bindings
     private var _binding: FragmentThirdBinding? = null
@@ -49,6 +54,7 @@ class ThirdFragment : Fragment() {
     ): View? {
         _binding = FragmentThirdBinding.inflate(inflater, container, false)
         profileListView = binding.profileListView
+        username = binding.usernameText
 
         listView()
 

@@ -1,6 +1,9 @@
 package com.cs990.restaurantbookingapp.models
 
-class BookingItem(restaurantItem: RestaurantItem, guestNumber: String, day: String, month: String, year: String, hour: String, minute: String) {
+class BookingItem(restaurantItem: RestaurantItem, guestNumber: String, day: String,
+                  month: String, year: String, hour: String, minute: String) {
+
+    constructor(): this(RestaurantItem(), "", "", "", "", "","")
 
     private var restaurantItem: RestaurantItem = restaurantItem
     private var guestNumber: String = guestNumber

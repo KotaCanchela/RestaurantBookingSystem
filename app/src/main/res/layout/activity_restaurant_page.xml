@@ -270,13 +270,13 @@
                 android:layout_marginBottom="40dp">
 
                 <RelativeLayout
-                    android:id="@+id/rl_wrapper"
+                    android:id="@+id/booking_wrapper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="20dp">
 
                     <ImageView
-                        android:id="@+id/iv_restaurantImage"
+                        android:id="@+id/booking_restaurantImage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_centerVertical="true"
@@ -286,9 +286,9 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/iv_restaurantImage"
-                        android:layout_alignBottom="@id/iv_restaurantImage"
-                        android:layout_toEndOf="@id/iv_restaurantImage"
+                        android:layout_alignTop="@+id/booking_restaurantImage"
+                        android:layout_alignBottom="@id/booking_restaurantImage"
+                        android:layout_toEndOf="@id/booking_restaurantImage"
                         android:orientation="vertical">
 
                         <TextView
