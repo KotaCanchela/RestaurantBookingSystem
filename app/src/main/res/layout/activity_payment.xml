@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentActivity">
+
+    <TextView
+        android:id="@+id/cvc_text"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/exp_and_cvc_view"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/exp_and_cvc_view"
+        android:layout_alignBottom="@+id/exp_and_cvc_view"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="64dp"
+        android:text="CVC Number:"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/cvc_input"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/exp_and_cvc_view"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/exp_and_cvc_view"
+        android:layout_alignBottom="@+id/exp_and_cvc_view"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="-88dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="11dp"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="3"
+        android:maxLines="1"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/expiry_date_input"
+        android:layout_width="290dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/exp_and_cvc_view"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/exp_and_cvc_view"
+        android:layout_alignBottom="@+id/exp_and_cvc_view"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-88dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
+        android:layout_marginBottom="11dp"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="4"
+        android:maxLines="1"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/expiry_text"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/exp_and_cvc_view"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/exp_and_cvc_view"
+        android:layout_alignBottom="@+id/exp_and_cvc_view"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="198dp"
+        android:layout_marginRight="198dp"
+        android:layout_marginBottom="64dp"
+        android:text="Expiry Date:"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/exp_and_cvc_view"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/card_number_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/card_number_input"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/card_number_view"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/card_number_view"
+        android:layout_alignBottom="@+id/card_number_view"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-88dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:inputType="number"
+        android:maxLength="16"
+        android:maxLines="1"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/card_number_text"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/card_number_view"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/card_number_view"
+        android:layout_alignBottom="@+id/card_number_view"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="198dp"
+        android:layout_marginRight="198dp"
+        android:layout_marginBottom="64dp"
+        android:text="Card Number:"
+        android:textSize="12sp" />
+
+    <View
+        android:id="@+id/card_number_view"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/cardholder_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp" />
+
+    <ImageView
+        android:id="@+id/pay_icons_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@drawable/payoptions" />
+
+    <TextView
+        android:id="@+id/pay_amount_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pay_icons_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Payment Amount:"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/pay_amount_dynamic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pay_amount_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:text="£0.00"
+        android:textSize="30sp" />
+
+    <View
+        android:id="@+id/cardholder_view"
+        android:layout_width="320dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/pay_amount_dynamic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"></View>
+
+    <TextView
+        android:id="@+id/cardholder_name_text"
+        android:layout_width="106dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/cardholder_view"
+        android:layout_alignTop="@+id/cardholder_view"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/cardholder_view"
+        android:layout_alignBottom="@+id/cardholder_view"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="198dp"
+        android:layout_marginRight="198dp"
+        android:layout_marginBottom="64dp"
+        android:text="Name on Card:"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/card_name_input"
+        android:layout_width="289dp"
+        android:layout_height="48dp"
+        android:layout_alignStart="@+id/cardholder_view"
+        android:layout_alignLeft="@+id/cardholder_view"
+        android:layout_alignTop="@id/cardholder_name_text"
+        android:layout_alignEnd="@+id/cardholder_view"
+        android:layout_alignRight="@+id/cardholder_view"
+        android:layout_alignBottom="@+id/cardholder_view"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="16dp"
+        android:maxLines="1"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/pay_button"
+        android:layout_width="280dp"
+        android:layout_height="64dp"
+        android:layout_below="@id/exp_and_cvc_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Pay £0.00"
+        android:textSize="24sp" />
+</RelativeLayout>
