@@ -12,7 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.RestaurantPageImageAdapter
 import com.cs990.restaurantbookingapp.databinding.ActivityRestaurantPageBinding
+import com.cs990.restaurantbookingapp.models.BookingItem
 import com.cs990.restaurantbookingapp.models.RestaurantItem
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.booking_dialog.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -21,6 +26,11 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
 
     private lateinit var binding: ActivityRestaurantPageBinding
     private lateinit var restaurant: RestaurantItem
+
+    // Firebase
+    private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private var bookingRef: CollectionReference = db.collection("Users")
+    private var currentUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
     //adapter and recyclerview for images
     private lateinit var restaurantImageView: RecyclerView
@@ -164,6 +174,17 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         savedHour = hour
         savedMinute = minute
 
+        //Get the current user id
+
+
+        //creating instance of bookingItem and writing to database
+        var bookingItem: BookingItem = BookingItem(restaurant, numberGuests, day.toString(), month.toString(), year.toString(), hour.toString(), minute.toString())
+        bookingRef.document(currentUser.uid)
+                .collection("Bookings")
+                .add(bookingItem)
+
+
+        //changing activity to display confirmation
         var timeString: String = "${restaurant.getName()} \n\n for $numberGuests people \n\n at $savedHour:$savedMinute on $savedDay/$savedMonth/$savedYear"
         val intent = Intent(applicationContext, BookingConfirmationActivity::class.java)
         intent.putExtra("timeString", timeString)
