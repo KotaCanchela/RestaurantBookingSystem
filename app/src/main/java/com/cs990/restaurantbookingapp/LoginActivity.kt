@@ -141,7 +141,7 @@ class LoginActivity : BaseActivity() {
 
         }
 
-        binding.registerText.setOnClickListener {
+        binding.registerText2.setOnClickListener {
 
             val homePage = Intent(this, RegisterActivity::class.java)
             startActivity(homePage)

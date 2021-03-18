@@ -83,12 +83,26 @@
                 app:layout_constraintTop_toBottomOf="@+id/editPassword" />
 
             <TextView
-                android:id="@+id/registerText"
+                android:id="@+id/registerText1"
                 android:layout_width="238dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="text"
-                android:text="@string/registerHere"
+                android:text="@string/registerHere1"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="97dp"
+                tools:layout_editor_absoluteY="555dp" />
+
+            <TextView
+                android:id="@+id/registerText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:text="@string/registerHere2"
+                android:textAlignment="center"
+                android:textColor="#0000EE"
+                android:textSize="18sp"
                 tools:layout_editor_absoluteX="97dp"
                 tools:layout_editor_absoluteY="555dp" />
 
