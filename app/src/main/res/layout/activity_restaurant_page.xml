@@ -48,7 +48,7 @@
                     android:text="Hello"/>
 
                 <RatingBar
-                    android:progressTint="@color/starYellow"
+                    android:progressTint="@color/starYellow2"
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
@@ -61,7 +61,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:theme="@style/RatingBar"
                     app:layout_collapseMode="parallax"/>
 
             </LinearLayout>
@@ -322,7 +321,10 @@
                     android:layout_marginTop="75dp"
                     android:id="@+id/large_rating_bar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/RatingBar"
+                    android:isIndicator="true"
+                    android:progressTint="@color/starYellow2"/>
 
             </androidx.cardview.widget.CardView>
 
