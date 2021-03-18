@@ -97,6 +97,8 @@
                     android:isIndicator="true"
                     android:theme="@style/RatingBar"
                     app:layout_collapseMode="parallax" />
+
+
             </LinearLayout>
 
 

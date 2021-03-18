@@ -14,6 +14,7 @@ import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.cs990.restaurantbookingapp.restaurantPage.RestaurantPageActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import kotlinx.android.synthetic.main.card_home_cuisine.view.*
 import kotlinx.android.synthetic.main.card_home_restaurant.view.*
 
 
@@ -26,6 +27,7 @@ class RestaurantHomeAdapter(
 
     class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName_home)
+        val restaurantCuisineText: TextView = itemView.findViewById(R.id.tv_cuisine_home)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_home_restaurant)
         val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.rb_ratingBarHome)
 
@@ -54,14 +56,13 @@ class RestaurantHomeAdapter(
 //          Changed name to show image string (everything else is being reset to zero
         holder.restaurantNameText.tv_restaurantName_home.text = model.getName()
         holder.restaurantRatingBar.rb_ratingBarHome.rating = model.getRating()?.toFloat()!!
-
+        holder.restaurantCuisineText.tv_cuisine_home.text = model.getCuisine()
 
         val url = model.getRestaurantImage()
         Glide
             .with(holder.restaurantImageItem)
             .load(url)
             .into(holder.restaurantImageItem.iv_home_restaurant)
-
 
 
 
