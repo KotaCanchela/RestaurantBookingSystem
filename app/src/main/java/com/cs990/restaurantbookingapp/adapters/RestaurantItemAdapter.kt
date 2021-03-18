@@ -91,13 +91,13 @@ class RestaurantItemAdapter(
 
         firstQuery.get().addOnCompleteListener {
             if (it.result?.isEmpty == false) {
-                Toast.makeText(context, "found something", Toast.LENGTH_SHORT).show()
+
                 for (document in it.result!!) {
                     favouriteID = document.id
                 }
                 holder.restaurantIsFavourite.isChecked = true
             } else {
-                Toast.makeText(context, "found nothing", Toast.LENGTH_SHORT).show()
+
                 holder.restaurantIsFavourite.isChecked = false
             }
         }
@@ -105,18 +105,16 @@ class RestaurantItemAdapter(
         holder.restaurantIsFavourite.setOnClickListener{
             //If the restaurant is already a favourite
             if(holder.restaurantIsFavourite.isChecked) {
-                // this block will check if they query returns anything
-                // if it returns something, then it will delete that from the db and uncheck box
-                // if it returns nothing, then it will add the model to the db and check the box
+                /** this block will check if the query returns anything
+                 if it returns something, then it will delete that from the db and uncheck box
+                 if it returns nothing, then it will add the model to the db and check the box **/
                 firstQuery.get().addOnCompleteListener {
                     if (it.result?.isEmpty == false) {
-                        Toast.makeText(context, "found something", Toast.LENGTH_SHORT).show()
                         for (document in it.result!!) {
                             favouriteID = document.id
                         }
                         holder.restaurantIsFavourite.isChecked = true
                     } else {
-                        Toast.makeText(context, "found nothing", Toast.LENGTH_SHORT).show()
                         holder.restaurantIsFavourite.isChecked = false
                     }
                 }
@@ -126,13 +124,11 @@ class RestaurantItemAdapter(
             } else { //If the restaurant is not yet a favourite
                 firstQuery.get().addOnCompleteListener {
                     if (it.result?.isEmpty == false) {
-                        Toast.makeText(context, "found something", Toast.LENGTH_SHORT).show()
                         for (document in it.result!!) {
                             favouriteID = document.id
                         }
                         holder.restaurantIsFavourite.isChecked = true
                     } else {
-                        Toast.makeText(context, "found nothing", Toast.LENGTH_SHORT).show()
                         holder.restaurantIsFavourite.isChecked = false
                     }
                 }
