@@ -48,6 +48,9 @@ class SecondFragment : Fragment() {
     //adapter
     lateinit var restaurantAdapter: RestaurantItemAdapter
 
+//    //Favourite button
+//    private var favourite: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

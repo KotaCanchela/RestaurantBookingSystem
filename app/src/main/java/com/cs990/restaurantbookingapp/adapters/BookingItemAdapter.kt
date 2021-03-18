@@ -18,7 +18,6 @@ import com.cs990.restaurantbookingapp.restaurantPage.RestaurantPageActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import kotlinx.android.synthetic.main.card_booking.view.*
-import kotlinx.android.synthetic.main.card_restaurant.view.*
 import kotlinx.android.synthetic.main.card_restaurant.view.booking_distance
 import kotlinx.android.synthetic.main.card_restaurant.view.booking_ratingBar
 import kotlinx.android.synthetic.main.card_restaurant.view.booking_restaurantImage
@@ -48,14 +47,14 @@ class BookingItemAdapter(
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int, model: BookingItem) {
-        holder.restaurantNameText.booking_restaurant_name.text = model.getRestaurant().getName()
-        holder.restaurantDistanceText.booking_distance.text = model.getRestaurant().getGeoHash()
-        holder.restaurantRatingBar.booking_ratingBar.rating = model.getRestaurant().getRating()?.toFloat()!!
+        holder.restaurantNameText.booking_restaurant_name.text = model.getRestaurantItem().getName()
+        holder.restaurantDistanceText.booking_distance.text = model.getRestaurantItem().getGeoHash()
+        holder.restaurantRatingBar.booking_ratingBar.rating = model.getRestaurantItem().getRating()?.toFloat()!!
         holder.bookingDate.booking_date.text = "${model.getDay()}/${model.getMonth()}/${model.getYear()}"
         holder.bookingTime.booking_time.text = "${model.getHour()}:${model.getMinute()}"
         holder.numberGuests.number_guests.text = model.getGuestNumber()
 
-        val url = model.getRestaurant().getRestaurantImage()
+        val url = model.getRestaurantItem().getRestaurantImage()
         Glide
             .with(holder.restaurantImageItem)
             .load(url)
@@ -63,7 +62,7 @@ class BookingItemAdapter(
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, RestaurantPageActivity::class.java)
-            intent.putExtra("model", model.getRestaurant())
+            intent.putExtra("model", model.getRestaurantItem())
 
             context.startActivity(intent)
 
@@ -71,7 +70,7 @@ class BookingItemAdapter(
 
         CompletableFuture.runAsync {
             runCatching {
-                val url = model.getRestaurant().getRestaurantImage()
+                val url = model.getRestaurantItem().getRestaurantImage()
                 Glide
                     .with(holder.restaurantImageItem)
                     .load(url)

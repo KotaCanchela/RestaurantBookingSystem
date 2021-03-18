@@ -3,9 +3,29 @@ package com.cs990.restaurantbookingapp.models
 class BookingItem(restaurantItem: RestaurantItem, guestNumber: String, day: String,
                   month: String, year: String, hour: String, minute: String) {
 
-    constructor(): this(RestaurantItem(), "", "", "", "", "","")
+    constructor(): this(RestaurantItem("", "", 0, 0,
+            "", "", "", "", false), "", "", "", "", "","")
 
-    private var restaurantItem: RestaurantItem = restaurantItem
+    private var restaurantItemName = restaurantItem.getName()
+    private var restaurantItemImage = restaurantItem.getRestaurantImage()
+    private var restaurantItemPrice = restaurantItem.getPrice()
+    private var restaurantItemRating = restaurantItem.getRating()
+    private var restaurantItemGeohash = restaurantItem.getGeoHash()
+    private var restaurantItemLongitude = restaurantItem.getLongitude()
+    private var restaurantItemLatitude = restaurantItem.getLatitude()
+    private var restaurantItemCuisine = restaurantItem.getCuisine()
+    private var restaurantItemDietary = restaurantItem.getDietaryFriendly()
+    private var restaurantItem: RestaurantItem = RestaurantItem(
+            restaurantItemName,
+            restaurantItemImage,
+            restaurantItemPrice,
+            restaurantItemRating,
+            restaurantItemGeohash,
+            restaurantItemLongitude,
+            restaurantItemLatitude,
+            restaurantItemCuisine,
+            restaurantItemDietary)
+
     private var guestNumber: String = guestNumber
     private var day: String = day
     private var month: String = month
@@ -15,7 +35,16 @@ class BookingItem(restaurantItem: RestaurantItem, guestNumber: String, day: Stri
 
 
 
-    fun getRestaurant(): RestaurantItem{
+    fun getRestaurantItem(): RestaurantItem{
+        this.restaurantItem.getName()
+        this.restaurantItem.getRestaurantImage()
+        this.restaurantItem.getPrice()
+        this.restaurantItem.getRating()
+        this.restaurantItem.getGeoHash()
+        this.restaurantItem.getLongitude()
+        this.restaurantItem.getLatitude()
+        this.restaurantItem.getCuisine()
+        this.restaurantItem.getDietaryFriendly()
         return this.restaurantItem
     }
     fun getGuestNumber(): String {
