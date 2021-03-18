@@ -73,9 +73,11 @@
 
             <CheckBox
                 android:id="@+id/btn_favourite"
+                android:button="@drawable/custom_checkbox_fav"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="40dp"
                 android:layout_height="wrap_content"
+                style="@style/CustomFav"
                 android:layout_width="wrap_content"/>
 
         </LinearLayout>
