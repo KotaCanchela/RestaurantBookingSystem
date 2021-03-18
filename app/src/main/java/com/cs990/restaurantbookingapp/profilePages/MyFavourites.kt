@@ -5,21 +5,20 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.R
-import com.cs990.restaurantbookingapp.adapters.BookingItemAdapter
-import com.cs990.restaurantbookingapp.adapters.ProfileItemAdapter
 import com.cs990.restaurantbookingapp.adapters.RestaurantItemAdapter
-import com.cs990.restaurantbookingapp.databinding.ActivityMainBinding
 import com.cs990.restaurantbookingapp.databinding.ActivityMyBookingsBinding
+import com.cs990.restaurantbookingapp.databinding.ActivityMyFavouritesBinding
 import com.cs990.restaurantbookingapp.models.BookingItem
+import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 
-class MyBookings : AppCompatActivity() {
+class MyFavourites : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMyBookingsBinding
+    private lateinit var binding: ActivityMyFavouritesBinding
 
     //recyclerview for list
     lateinit var recyclerView: RecyclerView
@@ -29,18 +28,16 @@ class MyBookings : AppCompatActivity() {
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     var query: CollectionReference = db
-        .collection("Users")
-        .document(currentUser.uid)
-        .collection("Bookings")
+            .collection("Users")
+            .document(currentUser.uid)
+            .collection("Favourites")
 
     //adapter
-    lateinit var bookingAdapter: BookingItemAdapter
+    lateinit var restaurantAdapter: RestaurantItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-        binding = ActivityMyBookingsBinding.inflate(layoutInflater)
+        binding = ActivityMyFavouritesBinding.inflate(layoutInflater)
         val view = binding.root
         setupUI()
         setContentView(view)
@@ -51,33 +48,31 @@ class MyBookings : AppCompatActivity() {
 
 
     private fun setupUI() {
-        recyclerView = binding.bookingList
+        recyclerView = binding.favouriteList
     }
 
+    private fun setupRecyclerView() {
 
-    private fun setupRecyclerView(){
+        val options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
+                .setQuery(query, RestaurantItem::class.java)
+                .build()
 
-        val options: FirestoreRecyclerOptions<BookingItem> = FirestoreRecyclerOptions.Builder<BookingItem>()
-            .setQuery(query, BookingItem::class.java)
-            .build()
 
-        bookingAdapter = BookingItemAdapter(this, options)
+        restaurantAdapter = RestaurantItemAdapter(this, options)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        recyclerView.adapter = bookingAdapter
-
+        recyclerView.adapter = restaurantAdapter
     }
 
     override fun onStart() {
         super.onStart()
-        bookingAdapter.startListening()
+        restaurantAdapter.startListening()
     }
 
     override fun onStop() {
         super.onStop()
-        bookingAdapter.stopListening()
+        restaurantAdapter.stopListening()
     }
-
 
 }

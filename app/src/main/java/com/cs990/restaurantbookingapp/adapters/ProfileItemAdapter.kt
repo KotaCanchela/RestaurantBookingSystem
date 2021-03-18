@@ -55,7 +55,7 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
 
         holderProfile.itemView.setOnClickListener{
             if(position == 0) {
-                val mySavedRestaurants = Intent(context, MySavedRestaurants::class.java)
+                val mySavedRestaurants = Intent(context, MyFavourites::class.java)
                 context.startActivity(mySavedRestaurants)
 //                context.finish()
             }
