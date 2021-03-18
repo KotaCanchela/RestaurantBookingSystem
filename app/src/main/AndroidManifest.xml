@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RestaurantBooking">
-        <activity android:name=".profilePages.MySavedRestaurants"></activity>
+        <activity android:name=".profilePages.MySavedRestaurants" />
         <activity android:name=".profilePages.MyRequests" />
         <activity android:name=".profilePages.MyRatings" />
         <activity android:name=".profilePages.MyBookings" />
@@ -20,7 +20,9 @@
         <activity android:name=".loginAndRegister.RegisterActivity" />
         <activity android:name=".restaurantPage.RestaurantPageActivity" />
         <activity android:name=".restaurantPage.BookingConfirmationActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".SplashScreenActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

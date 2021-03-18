@@ -91,12 +91,16 @@
                     style="@style/CustomRatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="7dp"
                     android:layout_marginBottom="10dp"
                     android:isIndicator="true"
-                    android:theme="@style/RatingBar"
+                    android:progressBackgroundTintMode="multiply"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:theme="@style/CustomRatingBar"
                     app:layout_collapseMode="parallax" />
+
+
             </LinearLayout>
 
 
