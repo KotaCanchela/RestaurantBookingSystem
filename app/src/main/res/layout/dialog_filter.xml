@@ -1,209 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FilterDialog">
+    tools:context=".FilterDialog"
+    android:orientation="vertical">
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
+        <TextView
+            android:id="@+id/num_people_text"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:text="Party" />
+
+        <NumberPicker
+            android:id="@+id/num_people_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:layout_marginHorizontal="80dp"
+            android:layout_marginTop="-70dp"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/price_sort_text"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-48dp"
+            android:layout_marginLeft="180dp"
+            android:textSize="16sp"
+            android:text="Price" />
+
+        <NumberPicker
+            android:id="@+id/price_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="-55dp"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/rating_text"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="16sp"
+            android:text="Rating" />
+        <RadioButton
+            android:id="@+id/rating_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/rating_text"
+            android:layout_marginLeft="182dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginBottom="20dp"
+            android:onClick="ratingRadioButtonOnClick"
+            android:text="Yes" />
+
+        <SeekBar
+            android:id="@+id/ratingSeekBar"
+            android:layout_width="192dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rating_text"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="8dp" />
+        <TextView
+            android:id="@+id/one_star_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="0dp"
+            android:text="1 Star"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/five_star_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratingSeekBar"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="false"
+            android:layout_marginTop="-20dp"
+            android:layout_marginLeft="150dp"
+            android:text="5 Stars"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/spec_diet_text"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:textSize="16sp"
+            android:text="Special Dietary Needs" />
+
+        <RadioButton
+            android:id="@+id/spec_diet_radio_button"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/five_star_text"
+            android:layout_alignBaseline="@id/spec_diet_text"
+            android:layout_marginTop="-55dp"
+            android:layout_marginHorizontal="180dp"
+            android:layout_toEndOf="@+id/spec_diet_text"
+            android:layout_toRightOf="@+id/spec_diet_text"
+            android:onClick="specDietRadioButtonOnClick"
+            android:text="Yes" />
+
+        <RadioButton
+            android:id="@+id/vegan_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spec_diet_text"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:text="Vegan" />
+
+        <RadioButton
+            android:id="@+id/halal_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vegan_button"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:text="Halal" />
+
+        <RadioButton
+            android:id="@+id/dairy_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/halal_button"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:text="Dairy Free" />
+
+
+        <RadioButton
+            android:id="@+id/gluten_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dairy_button"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:text="Gluten Free" />
+
+
+        <RadioButton
+            android:id="@+id/nut_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gluten_button"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:text="Nut Free" />
 
 
 
-    <TextView
-        android:id="@+id/price_sort_text"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_below="@id/num_people_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Sort by Price" />
 
-    <TextView
-        android:id="@+id/num_people_text"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_below="@id/nut_button"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Number of People" />
 
-    <RadioButton
-        android:id="@+id/nut_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/glutton_button"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="Nut Free" />
 
-    <RadioButton
-        android:id="@+id/glutton_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/dairy_button"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="Glutton Free" />
+    </LinearLayout>
 
-    <RadioButton
-        android:id="@+id/dairy_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/halal_button"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="Dairy Free" />
+</ScrollView>
 
-    <RadioButton
-        android:id="@+id/halal_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/vegan_button"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="Halal" />
 
-    <TextView
-        android:id="@+id/spec_diet_text"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_below="@+id/one_star_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Special Dietry Needs" />
 
-    <RadioButton
-        android:id="@+id/spec_diet_radio_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/five_star_text"
-        android:layout_alignBaseline="@id/spec_diet_text"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="-103dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_toEndOf="@+id/spec_diet_text"
-        android:layout_toRightOf="@+id/spec_diet_text"
-        android:onClick="specDietRadioButtonOnClick"
-        android:text="Yes" />
 
-    <TextView
-        android:id="@+id/one_star_text"
-        android:layout_width="36dp"
-        android:layout_height="16dp"
-        android:layout_below="@+id/ratingSeekBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="false"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="0dp"
-        android:text="1 Star"
-        android:textSize="10sp" />
-
-    <RadioButton
-        android:id="@+id/rating_radio_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/rating_text"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="-6dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_toRightOf="@id/rating_text"
-        android:onClick="ratingRadioButtonOnClick"
-        android:text="Yes" />
-
-    <TextView
-        android:id="@+id/five_star_text"
-        android:layout_width="36dp"
-        android:layout_height="16dp"
-        android:layout_below="@+id/ratingSeekBar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentBottom="false"
-        android:layout_marginStart="180dp"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="8dp"
-        android:text="5 Stars"
-        android:textSize="10sp" />
-
-    <TextView
-        android:id="@+id/rating_text"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
-        android:layout_marginStart="102dp"
-        android:layout_marginLeft="102dp"
-        android:layout_marginTop="8dp"
-        android:text="Sort by Rating" />
-
-    <SeekBar
-        android:id="@+id/ratingSeekBar"
-        android:layout_width="192dp"
-        android:layout_height="24dp"
-        android:layout_below="@+id/rating_text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginBottom="8dp" />
-
-    <RadioButton
-        android:id="@+id/vegan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/spec_diet_text"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:text="Vegan" />
-
-    <NumberPicker
-        android:id="@+id/num_people_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:layout_below="@id/nut_button"
-        android:layout_toRightOf="@id/num_people_text"
-        android:ems="10"
-        android:inputType="numberDecimal" />
-
-    <NumberPicker
-        android:id="@+id/price_picker"
-        android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:layout_below="@id/num_people_picker"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@id/num_people_text"
-        android:ems="10"
-        android:inputType="numberDecimal" />
-
-</RelativeLayout>
+</LinearLayout>

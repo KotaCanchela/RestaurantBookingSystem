@@ -34,7 +34,8 @@
         android:paddingLeft="10dp"
         android:text="Cuisine"
         android:textSize="14dp"
-        android:textStyle="bold">
+        android:textStyle="bold"
+        android:textColor="@color/orange_Theme">
     </TextView>
 
     <androidx.appcompat.widget.AppCompatRatingBar
@@ -43,7 +44,7 @@
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_gravity="bottom"
-        android:progressTint="#FFEB3B"
+        android:progressTint="@color/starYellow2"
         android:rating="4"
         android:numStars="5"
         android:layout_margin="10dp">
