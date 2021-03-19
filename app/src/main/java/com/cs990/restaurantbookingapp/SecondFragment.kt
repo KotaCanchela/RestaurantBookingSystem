@@ -1,13 +1,17 @@
 package com.cs990.restaurantbookingapp
 
 import android.app.AlertDialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.RestaurantItemAdapter
@@ -16,6 +20,7 @@ import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_second.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -43,7 +48,8 @@ class SecondFragment : Fragment() {
 
     //Firestore
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    var query: CollectionReference = db.collection("Restaurants")
+    var searchQuery: Query = db.collection("Restaurants").orderBy("name").startAt("").endAt("\uf8ff")
+
 
     //adapter
     lateinit var restaurantAdapter: RestaurantItemAdapter
@@ -73,6 +79,7 @@ class SecondFragment : Fragment() {
         setupRecyclerView()
         setupUI()
 
+
         return binding.root
     }
 
@@ -82,7 +89,38 @@ class SecondFragment : Fragment() {
             val dialog = FilterDialog(this.requireContext())
             dialog.show()
 
-            }
+        }
+
+        binding.btnSearch.setOnClickListener {
+            setupRecyclerView2(binding.searchBar.query.toString())
+
+            //hides keyboard
+            val imm = view?.let { ContextCompat.getSystemService(it.context, InputMethodManager::class.java) }
+            imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+        }
+
+
+    }
+
+
+
+    private fun setupRecyclerView2(searchText: String){
+
+        searchQuery = db.collection("Restaurants").orderBy("name").startAt(searchText).endAt("$searchText\uf8ff")
+
+        var options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
+                .setQuery(searchQuery, RestaurantItem::class.java)
+                .build()
+
+        restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
+
+        recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+
+//        recyclerView.adapter = restaurantAdapter
+        restaurantAdapter.notifyDataSetChanged()
+
+
+//        recyclerView.notify
 
     }
 
@@ -92,7 +130,7 @@ class SecondFragment : Fragment() {
 
         //RecyclerOptions
         var options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
-            .setQuery(query, RestaurantItem::class.java)
+            .setQuery(searchQuery, RestaurantItem::class.java)
                 .build()
 
 
