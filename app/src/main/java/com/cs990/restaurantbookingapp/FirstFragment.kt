@@ -160,6 +160,7 @@ class FirstFragment : Fragment() {
             // do something when click navigation
 
         }
+
         myToolbar.inflateMenu(R.menu.menu_home)
         myToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
