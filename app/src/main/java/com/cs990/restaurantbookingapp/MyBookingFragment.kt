@@ -34,7 +34,7 @@ class myBookingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_booking, container, false)
+        return inflater.inflate(R.layout.activity_my_bookings, container, false)
     }
 
     companion object {

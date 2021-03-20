@@ -2,16 +2,20 @@ package com.cs990.restaurantbookingapp.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
-import com.cs990.restaurantbookingapp.LoginActivity
-import com.cs990.restaurantbookingapp.R
+import com.cs990.restaurantbookingapp.*
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
 import com.cs990.restaurantbookingapp.models.ProfileItem
+import com.cs990.restaurantbookingapp.profilePages.*
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.row_profile.view.*
 
@@ -53,10 +57,38 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
         holderProfile.profileItemImage.row_image.setImageDrawable(getDrawable(context, item.getIcon()))
 
         holderProfile.itemView.setOnClickListener{
+            if(position == 0) {
+                val mySavedRestaurants = Intent(context, MyFavourites::class.java)
+                context.startActivity(mySavedRestaurants)
+//                context.finish()
+            }
+            if(position == 1) {
+                val myBookings = Intent(context, MyBookings::class.java)
+                context.startActivity(myBookings)
+//                context.finish()
+            }
+            if(position == 2) {
+                val myTable = Intent(context, MyRequests::class.java)
+                context.startActivity(myTable)
+//                context.finish()
+            }
+            if(position == 3) {
+                val myPaymentActivity = Intent(context, MyPaymentActivity::class.java)
+                context.startActivity(myPaymentActivity)
+//                context.finish()
+            }
+            if(position == 4) {
+                val myRatings = Intent(context, MyRatings::class.java)
+                context.startActivity(myRatings)
+//                context.finish()
+            }
             if(position == 5) {
-                FirebaseAuth.getInstance().signOut()
-                val loginPage = Intent(context, LoginActivity::class.java)
-                context.startActivity(loginPage)
+                Toast.makeText(context, "Successfully logged out", Toast.LENGTH_SHORT).show()
+                Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                    FirebaseAuth.getInstance().signOut()
+                    val logout = Intent(context, LoginActivity::class.java)
+                    context.startActivity(logout)
+                }, 1000)
 //                context.finish()
             }
         }

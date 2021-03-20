@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cs990.restaurantbookingapp.databinding.ActivityMainBinding
 import com.cs990.restaurantbookingapp.firebase.FirestoreClass
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.toolbar.*
 

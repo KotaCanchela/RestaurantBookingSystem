@@ -1,7 +1,6 @@
 package com.cs990.restaurantbookingapp
 
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.RestaurantCuisineHomeAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentFirstBinding
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
+import com.cs990.restaurantbookingapp.profilePages.MyBookings
+import com.cs990.restaurantbookingapp.profilePages.MyFavourites
+import com.cs990.restaurantbookingapp.profilePages.MyRequests
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -157,24 +159,31 @@ class FirstFragment : Fragment() {
         restaurantAdapter.startListening()
         restaurantAdapter2.startListening()
         myToolbar.setNavigationOnClickListener {
-            // do something when click navigation
-
+            super.onCreate(null)
         }
 
         myToolbar.inflateMenu(R.menu.menu_home)
         myToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
-                R.id.action_profile -> {
-
+                R.id.action_request -> {
+                    super.onCreate(null)
+                    val goRequests = Intent(this.requireContext(), MyRequests::class.java)
+                    startActivity(goRequests)
 
                     true
                 }
                 R.id.action_book -> {
-                    // do something
+                    super.onCreate(null)
+                    val goBook = Intent(this.requireContext(), MyBookings::class.java)
+                    startActivity(goBook)
+
                     true
                 }
                 R.id.action_favourite -> {
-                    // do something
+                    super.onCreate(null)
+                    val goFavourite = Intent(this.requireContext(), MyFavourites::class.java)
+                    startActivity(goFavourite)
+
                     true
                 }
                 R.id.action_log_out -> {
@@ -190,6 +199,7 @@ class FirstFragment : Fragment() {
 
             }
         }
+
     }
 
         override fun onStop() {

@@ -1,5 +1,6 @@
 package com.cs990.restaurantbookingapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.ProfileItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentThirdBinding
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
 import com.cs990.restaurantbookingapp.models.ProfileItem
+import com.cs990.restaurantbookingapp.profilePages.MyBookings
+import com.cs990.restaurantbookingapp.profilePages.MyFavourites
+import com.cs990.restaurantbookingapp.profilePages.MyRequests
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.fragment_first.*
+import kotlinx.android.synthetic.main.fragment_third.*
+import kotlinx.android.synthetic.main.fragment_third.myToolbar
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +36,8 @@ class ThirdFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var username: TextView
+    private var currentUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
 
     //View bindings
     private var _binding: FragmentThirdBinding? = null
@@ -71,6 +83,54 @@ class ThirdFragment : Fragment() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        toolbar()
+    }
+    fun toolbar() {
+        myToolbar.setNavigationOnClickListener {
+            super.onCreate(null)
+        }
+
+        myToolbar.inflateMenu(R.menu.menu_home)
+        myToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_request -> {
+                    super.onCreate(null)
+                    val goRequests = Intent(this.requireContext(), MyRequests::class.java)
+                    startActivity(goRequests)
+
+                    true
+                }
+                R.id.action_book -> {
+                    super.onCreate(null)
+                    val goBook = Intent(this.requireContext(), MyBookings::class.java)
+                    startActivity(goBook)
+
+                    true
+                }
+                R.id.action_favourite -> {
+                    super.onCreate(null)
+                    val goFavourite = Intent(this.requireContext(), MyFavourites::class.java)
+                    startActivity(goFavourite)
+
+                    true
+                }
+                R.id.action_log_out -> {
+                    val log = Intent(this.requireContext(), LoginActivity::class.java)
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(log)
+
+                    true
+                }
+                else -> {
+                    super.onOptionsItemSelected(it)
+                }
+
+            }
+        }
+
+    }
     /**
      * List of items being displayed
      */
@@ -78,7 +138,7 @@ class ThirdFragment : Fragment() {
     private fun getItemsList(): ArrayList<ProfileItem> {
         val list = ArrayList<ProfileItem>()
 
-        list.add(ProfileItem("Saved Restaurants", R.drawable.ic_baseline_restaurant_24))
+        list.add(ProfileItem("Favourites", R.drawable.ic_baseline_restaurant_24))
         list.add(ProfileItem("Bookings", R.drawable.ic_baseline_menu_book_24))
         list.add(ProfileItem("Requests", R.drawable.ic_baseline_chat_bubble_24))
         list.add(ProfileItem("Payment Details", R.drawable.ic_baseline_credit_card_24))

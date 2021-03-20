@@ -1,10 +1,9 @@
 package com.cs990.restaurantbookingapp.firebase
 
 import android.app.Activity
-import android.provider.SyncStateContract
 import android.util.Log
-import com.cs990.restaurantbookingapp.LoginActivity
-import com.cs990.restaurantbookingapp.RegisterActivity
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
+import com.cs990.restaurantbookingapp.loginAndRegister.RegisterActivity
 import com.cs990.restaurantbookingapp.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

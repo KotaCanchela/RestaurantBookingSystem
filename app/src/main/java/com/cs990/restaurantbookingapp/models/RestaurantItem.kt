@@ -62,7 +62,7 @@ class RestaurantItem(name: String, restaurantImage: String, price: Long, rating:
         return this.cuisine
     }
 
-    // are you actually calling this somewhere?
+
     fun setName(name: String) {
         this.name = name
     }

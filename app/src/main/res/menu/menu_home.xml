@@ -7,8 +7,8 @@
         app:showAsAction="always">
         <menu>
     <item
-        android:id="@+id/action_profile"
-        android:title="@string/action_profile"
+        android:id="@+id/action_request"
+        android:title="@string/action_request"
         app:showAsAction="never" />
 
     <item

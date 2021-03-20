@@ -15,10 +15,13 @@
     <string name="password">password</string>
     <string name="registerHere">Don\'t have an account? <u>Register here.</u></string>
     <string name="please_wait">Please Wait&#8230;</string>
-    <string name="action_profile">Profile</string>
     <string name="My_Bookings">My Bookings</string>
     <string name="My_Favourites">My Favourites</string>
     <string name="Log_out">Log out</string>
+    <string name="title_activity_my_table">MyTable</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="action_request">My Requests</string>
 
 
 </resources>
