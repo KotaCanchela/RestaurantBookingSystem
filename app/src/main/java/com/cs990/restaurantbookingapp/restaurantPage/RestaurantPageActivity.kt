@@ -25,7 +25,7 @@ import kotlin.collections.ArrayList
 class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     private lateinit var binding: ActivityRestaurantPageBinding
-    private lateinit var restaurant: RestaurantItem
+    private lateinit var restaurantItem: RestaurantItem
 
     // Firebase
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -59,7 +59,7 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         setContentView(view)
 
         var intent: Intent = getIntent()
-        restaurant = intent.getParcelableExtra<RestaurantItem>("model")!!
+        restaurantItem = intent.getParcelableExtra<RestaurantItem>("model")!!
 
         setupUIViews()
 
@@ -71,19 +71,19 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         restaurantImageView = binding.restaurantPageImageList
 
         val restaurantName = binding.restaurantName
-        restaurantName.text = restaurant.getName()
+        restaurantName.text = restaurantItem.getName()
 
         val restaurantRating = binding.ratingBar
-        restaurantRating.rating = restaurant.getRating().toFloat()
+        restaurantRating.rating = restaurantItem.getRating().toFloat()
 
         val restaurantLargeRating = binding.largeRatingBar
-        restaurantLargeRating.rating = restaurant.getRating().toFloat()
+        restaurantLargeRating.rating = restaurantItem.getRating().toFloat()
 
         val restaurantPrice = binding.priceBar
-        restaurantPrice.rating = restaurant.getPrice().toFloat()
+        restaurantPrice.rating = restaurantItem.getPrice().toFloat()
 
         val restaurantCuisine = binding.restaurantCuisine
-        restaurantCuisine.text = restaurant.getCuisine()
+        restaurantCuisine.text = restaurantItem.getCuisine()
 
         val textView1 = binding.address1
         textView1.text = "12/28"
@@ -178,15 +178,16 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
 
 
         //creating instance of bookingItem and writing to database
-        var bookingItem: BookingItem = BookingItem(restaurant, numberGuests, day.toString(), month.toString(), year.toString(), hour.toString(), minute.toString())
+        var bookingItem: BookingItem = BookingItem(restaurantItem, numberGuests, day.toString(), month.toString(), year.toString(), hour.toString(), minute.toString())
         bookingRef.document(currentUser.uid)
                 .collection("Bookings")
                 .add(bookingItem)
 
 
         //changing activity to display confirmation
-        var timeString: String = "${restaurant.getName()} \n\n for $numberGuests people \n\n at $savedHour:$savedMinute on $savedDay/$savedMonth/$savedYear"
+        var timeString: String = "${restaurantItem.getName()} \n\n for $numberGuests people \n\n at $savedHour:$savedMinute on $savedDay/$savedMonth/$savedYear"
         val intent = Intent(applicationContext, BookingConfirmationActivity::class.java)
+        intent.putExtra("bookingItem", bookingItem)
         intent.putExtra("timeString", timeString)
         applicationContext.startActivity(intent)
 

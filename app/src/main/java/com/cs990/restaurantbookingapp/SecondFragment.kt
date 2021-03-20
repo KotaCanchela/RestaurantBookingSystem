@@ -1,7 +1,6 @@
 package com.cs990.restaurantbookingapp
 
-import android.app.AlertDialog
-import android.content.Context
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,17 +10,17 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.RestaurantItemAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentSecondBinding
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_second.*
+
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,7 +47,8 @@ class SecondFragment : Fragment() {
 
     //Firestore
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    var searchQuery: Query = db.collection("Restaurants").orderBy("name").startAt("").endAt("\uf8ff")
+    private var searchQuery: Query = db.collection("Restaurants").orderBy("name").startAt("").endAt("\uf8ff")
+
 
 
     //adapter
@@ -92,8 +92,9 @@ class SecondFragment : Fragment() {
         }
 
         binding.btnSearch.setOnClickListener {
-            setupRecyclerView2(binding.searchBar.query.toString())
 
+
+            refreshRecyclerView(binding.searchBar.query.toString())
             //hides keyboard
             val imm = view?.let { ContextCompat.getSystemService(it.context, InputMethodManager::class.java) }
             imm?.hideSoftInputFromWindow(view?.windowToken, 0)
@@ -104,23 +105,44 @@ class SecondFragment : Fragment() {
 
 
 
-    private fun setupRecyclerView2(searchText: String){
+    private fun refreshRecyclerView(searchText: String){
+
+        restaurantAdapter.stopListening();
 
         searchQuery = db.collection("Restaurants").orderBy("name").startAt(searchText).endAt("$searchText\uf8ff")
+
+        searchQuery.addSnapshotListener { value, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+
+            val cities = ArrayList<String>()
+            for (doc in value!!) {
+                doc.getString("name")?.let {
+                    cities.add(it)
+                }
+            }
+            Log.d(TAG, "Current cites in CA: $cities")
+        }
+
+
 
         var options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
                 .setQuery(searchQuery, RestaurantItem::class.java)
                 .build()
 
-        restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
 
-        recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+//        restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
 
-//        recyclerView.adapter = restaurantAdapter
+        restaurantAdapter.setItems(options)
         restaurantAdapter.notifyDataSetChanged()
+        restaurantAdapter.startListening();
+//        recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
+//
+//        recyclerView.adapter = restaurantAdapter
 
 
-//        recyclerView.notify
 
     }
 
@@ -134,9 +156,11 @@ class SecondFragment : Fragment() {
                 .build()
 
 
+
         //ViewHolder
 
         restaurantAdapter = RestaurantItemAdapter(this.requireContext(), options)
+
 
         recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
 

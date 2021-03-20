@@ -6,29 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".restaurantPage.BookingConfirmationActivity">
 
-    <Button
-        android:id="@+id/cancelButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/addText5"
-        android:layout_centerHorizontal="false"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_toRightOf="@id/editButton"
-        android:text="Edit Booking"
-        android:textSize="8sp" />
-
-    <Button
-        android:id="@+id/editButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/addText5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:text="Edit Booking"
-        android:textSize="8sp" />
-
     <TextView
         android:id="@+id/addText5"
         android:layout_width="wrap_content"
@@ -122,25 +99,45 @@
         android:text="Your Booking request has been sent"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/CalendarButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+    <LinearLayout
+        android:id="@+id/btn_container"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
         android:layout_below="@id/addText5"
-        android:layout_centerHorizontal="false"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_toLeftOf="@id/editButton"
-        android:text="Calendar"
+        android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btn_my_bookings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Bookings"
         android:textSize="8sp" />
+
+    <Button
+        android:id="@+id/btn_cancel_booking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/btn_my_bookings"
+        android:text="Cancel Booking"
+        android:textSize="8sp" />
+
+
+
+
+    </LinearLayout>
+
+
+
 
     <Button
         android:id="@+id/btn_home"
         android:layout_marginTop="30dp"
         android:layout_centerInParent="true"
-        android:layout_below="@id/CalendarButton"
+        android:layout_below="@id/btn_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Home"/>
+
 </RelativeLayout>

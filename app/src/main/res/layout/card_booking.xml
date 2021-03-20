@@ -19,10 +19,9 @@
 
         <ImageView
             android:id="@+id/booking_restaurantImage"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="60dp"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
             android:src="@mipmap/ic_launcher_round"/>
 
         <LinearLayout
@@ -76,13 +75,14 @@
                 android:id="@+id/booking_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="12/34/15"
                 android:layout_marginRight="10dp"
                 android:layout_gravity="right"
                 />
 
             <LinearLayout
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="bottom"
@@ -102,7 +102,7 @@
                     android:src="@drawable/ic_baseline_person_24"/>
 
                 <ImageView
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_watch_later_24"/>

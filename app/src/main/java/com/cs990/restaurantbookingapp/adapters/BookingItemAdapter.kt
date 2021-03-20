@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cs990.restaurantbookingapp.R
 import com.cs990.restaurantbookingapp.models.BookingItem
+import com.cs990.restaurantbookingapp.restaurantPage.BookingConfirmationActivity
 import com.cs990.restaurantbookingapp.restaurantPage.RestaurantPageActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -61,9 +62,11 @@ class BookingItemAdapter(
             .into(holder.restaurantImageItem.booking_restaurantImage)
 
         holder.itemView.setOnClickListener {
-            val intent = Intent(context, RestaurantPageActivity::class.java)
-            intent.putExtra("model", model.getRestaurantItem())
-
+            var timeString: String = "${model.getRestaurantItem().getName()} \n\n for ${model.getGuestNumber()} people \n\n" +
+                    " at ${model.getHour()}:${model.getMinute()} on ${model.getDay()}/${model.getMonth()}/${model.getYear()}"
+            val intent = Intent(context, BookingConfirmationActivity::class.java)
+            intent.putExtra("timeString", timeString)
+            intent.putExtra("bookingItem", model)
             context.startActivity(intent)
 
         }

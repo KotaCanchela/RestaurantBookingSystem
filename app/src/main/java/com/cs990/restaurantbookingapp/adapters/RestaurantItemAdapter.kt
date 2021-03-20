@@ -28,7 +28,7 @@ import java.util.concurrent.CompletableFuture.runAsync
 
 class RestaurantItemAdapter(
     val context: Context,
-    val options: FirestoreRecyclerOptions<RestaurantItem>
+    var options: FirestoreRecyclerOptions<RestaurantItem>
 ) :
     FirestoreRecyclerAdapter<RestaurantItem, RestaurantItemAdapter.RestaurantViewHolder>(options) {
 
@@ -152,6 +152,12 @@ class RestaurantItemAdapter(
             }
         }
 
+    }
+
+
+    fun setItems(options: FirestoreRecyclerOptions<RestaurantItem>){
+        this.options = options
+        super.onDataChanged()
     }
 
     inner class RestaurantViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

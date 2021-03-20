@@ -1,20 +1,24 @@
 package com.cs990.restaurantbookingapp.models
 
-class BookingItem(restaurantItem: RestaurantItem, guestNumber: String, day: String,
-                  month: String, year: String, hour: String, minute: String) {
+import android.os.Parcel
+import android.os.Parcelable
+import com.google.firebase.firestore.PropertyName
 
-    constructor(): this(RestaurantItem("", "", 0, 0,
-            "", "", "", "", false), "", "", "", "", "","")
+class BookingItem(restaurant: RestaurantItem, guestNumber: String, day: String,
+                  month: String, year: String, hour: String, minute: String): Parcelable {
 
-    private var restaurantItemName = restaurantItem.getName()
-    private var restaurantItemImage = restaurantItem.getRestaurantImage()
-    private var restaurantItemPrice = restaurantItem.getPrice()
-    private var restaurantItemRating = restaurantItem.getRating()
-    private var restaurantItemGeohash = restaurantItem.getGeoHash()
-    private var restaurantItemLongitude = restaurantItem.getLongitude()
-    private var restaurantItemLatitude = restaurantItem.getLatitude()
-    private var restaurantItemCuisine = restaurantItem.getCuisine()
-    private var restaurantItemDietary = restaurantItem.getDietaryFriendly()
+    constructor(): this(RestaurantItem(), "", "", "", "", "","")
+
+    private var restaurantItemName = restaurant.getName()
+    private var restaurantItemImage = restaurant.getRestaurantImage()
+    private var restaurantItemPrice = restaurant.getPrice()
+    private var restaurantItemRating = restaurant.getRating()
+    private var restaurantItemGeohash = restaurant.getGeoHash()
+    private var restaurantItemLongitude = restaurant.getLongitude()
+    private var restaurantItemLatitude = restaurant.getLatitude()
+    private var restaurantItemCuisine = restaurant.getCuisine()
+    private var restaurantItemDietary = restaurant.getDietaryFriendly()
+
     private var restaurantItem: RestaurantItem = RestaurantItem(
             restaurantItemName,
             restaurantItemImage,
@@ -33,6 +37,24 @@ class BookingItem(restaurantItem: RestaurantItem, guestNumber: String, day: Stri
     private var hour: String = hour
     private var minute: String = minute
 
+    constructor(parcel: Parcel) : this() {
+        restaurantItemName = parcel.readString().toString()
+        restaurantItemImage = parcel.readString().toString()
+        restaurantItemPrice = parcel.readLong()
+        restaurantItemRating = parcel.readLong()
+        restaurantItemGeohash = parcel.readString().toString()
+        restaurantItemLongitude = parcel.readString().toString()
+        restaurantItemLatitude = parcel.readString().toString()
+        restaurantItemCuisine = parcel.readString().toString()
+        restaurantItemDietary = parcel.readByte() != 0.toByte()
+        restaurantItem = parcel.readParcelable(RestaurantItem::class.java.classLoader)!!
+        guestNumber = parcel.readString().toString()
+        day = parcel.readString().toString()
+        month = parcel.readString().toString()
+        year = parcel.readString().toString()
+        hour = parcel.readString().toString()
+        minute = parcel.readString().toString()
+    }
 
 
     fun getRestaurantItem(): RestaurantItem{
@@ -69,5 +91,38 @@ class BookingItem(restaurantItem: RestaurantItem, guestNumber: String, day: Stri
 
     fun getMinute(): String{
         return this.minute
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(restaurantItemName)
+        parcel.writeString(restaurantItemImage)
+        parcel.writeLong(restaurantItemPrice)
+        parcel.writeLong(restaurantItemRating)
+        parcel.writeString(restaurantItemGeohash)
+        parcel.writeString(restaurantItemLongitude)
+        parcel.writeString(restaurantItemLatitude)
+        parcel.writeString(restaurantItemCuisine)
+        parcel.writeByte(if (restaurantItemDietary) 1 else 0)
+        parcel.writeParcelable(restaurantItem, flags)
+        parcel.writeString(guestNumber)
+        parcel.writeString(day)
+        parcel.writeString(month)
+        parcel.writeString(year)
+        parcel.writeString(hour)
+        parcel.writeString(minute)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<BookingItem> {
+        override fun createFromParcel(parcel: Parcel): BookingItem {
+            return BookingItem(parcel)
+        }
+
+        override fun newArray(size: Int): Array<BookingItem?> {
+            return arrayOfNulls(size)
+        }
     }
 }

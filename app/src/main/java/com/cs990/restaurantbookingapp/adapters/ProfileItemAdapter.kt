@@ -2,11 +2,14 @@ package com.cs990.restaurantbookingapp.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.*
@@ -80,9 +83,12 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
 //                context.finish()
             }
             if(position == 5) {
-                FirebaseAuth.getInstance().signOut()
-                val logout = Intent(context, LoginActivity::class.java)
-                context.startActivity(logout)
+                Toast.makeText(context, "Successfully logged out", Toast.LENGTH_SHORT).show()
+                Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                    FirebaseAuth.getInstance().signOut()
+                    val logout = Intent(context, LoginActivity::class.java)
+                    context.startActivity(logout)
+                }, 1000)
 //                context.finish()
             }
         }
