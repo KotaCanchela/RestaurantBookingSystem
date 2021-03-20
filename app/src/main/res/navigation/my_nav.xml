@@ -21,12 +21,12 @@
         android:label="Username"
         tools:layout="@layout/fragment_third" />
     <fragment
-        android:id="@+id/favouriteFragment"
-        android:name="com.cs990.restaurantbookingapp.favouriteFragment"
+        android:id="@+id/FavouriteFragment"
+        android:name="com.cs990.restaurantbookingapp.FavouriteFragment"
         android:label="fragment_favourite"
         tools:layout="@layout/fragment_favourite" />
     <fragment
-        android:id="@+id/myBookingFragment"
+        android:id="@+id/MyBookingFragment"
         android:name="com.cs990.restaurantbookingapp.myBookingFragment"
         android:label="fragment_my_booking"
         tools:layout="@layout/fragment_my_booking" />

@@ -1,19 +1,15 @@
 package com.cs990.restaurantbookingapp
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cs990.restaurantbookingapp.databinding.ActivityMainBinding
 import com.cs990.restaurantbookingapp.firebase.FirestoreClass
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.toolbar.*
 
 class MainActivity : BaseActivity() {
 
@@ -30,10 +26,15 @@ class MainActivity : BaseActivity() {
         val view = binding.root
         setContentView(view)
 
+        val myToolbar = findViewById<Toolbar>(R.id.myToolbar)
+        setSupportActionBar(myToolbar)
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.BottomNavigationView)
         val navController = findNavController(R.id.fragment)
 
         bottomNavigationView.setupWithNavController(navController)
+
+
 
         var currentUserID = FirestoreClass().getCurrentUserId()
 
@@ -46,8 +47,6 @@ class MainActivity : BaseActivity() {
             startActivity(loginPage)
             finish()
         }
-
-
     }
 
 

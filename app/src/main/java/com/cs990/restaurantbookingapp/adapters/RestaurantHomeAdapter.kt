@@ -78,7 +78,9 @@ class RestaurantHomeAdapter(
             intent.putExtra("model", model)
             context.startActivity(intent)
         }
-    }
+
+
+        }
 
 }
 

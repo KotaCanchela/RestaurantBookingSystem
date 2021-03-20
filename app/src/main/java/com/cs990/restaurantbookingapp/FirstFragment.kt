@@ -2,18 +2,21 @@ package com.cs990.restaurantbookingapp
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.RestaurantCuisineHomeAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentFirstBinding
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_searchfilter.*
@@ -55,6 +58,7 @@ class FirstFragment : Fragment() {
         }
     }
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -76,6 +80,7 @@ class FirstFragment : Fragment() {
         return binding.root
 
     }
+
     fun setupRecyclerView2() {
 
         //Query
@@ -148,18 +153,51 @@ class FirstFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         restaurantAdapter.startListening()
         restaurantAdapter2.startListening()
+        myToolbar.setNavigationOnClickListener {
+            // do something when click navigation
 
+        }
+        myToolbar.inflateMenu(R.menu.menu_home)
+        myToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_profile -> {
+
+
+                    true
+                }
+                R.id.action_book -> {
+                    // do something
+                    true
+                }
+                R.id.action_favourite -> {
+                    // do something
+                    true
+                }
+                R.id.action_log_out -> {
+                    val log = Intent(this.requireContext(), LoginActivity::class.java)
+                    FirebaseAuth.getInstance().signOut()
+                    startActivity(log)
+
+                    true
+                }
+                else -> {
+                    super.onOptionsItemSelected(it)
+                }
+
+            }
+        }
     }
 
-    override fun onStop() {
-        super.onStop()
-        restaurantAdapter.stopListening()
-        restaurantAdapter2.startListening()
+        override fun onStop() {
+            super.onStop()
+            restaurantAdapter.stopListening()
+            restaurantAdapter2.startListening()
+
+        }
 
     }
-
-}
 
 
