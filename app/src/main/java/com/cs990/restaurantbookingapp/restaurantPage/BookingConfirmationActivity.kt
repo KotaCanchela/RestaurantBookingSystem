@@ -102,7 +102,7 @@ class BookingConfirmationActivity : BaseActivity() {
                 Toast.makeText(this, "Booking cancelled", Toast.LENGTH_SHORT).show()
                 Handler(mainLooper).postDelayed(Runnable {
                     goHome()
-                }, 1500)
+                }, 1000)
 
 
             } else {

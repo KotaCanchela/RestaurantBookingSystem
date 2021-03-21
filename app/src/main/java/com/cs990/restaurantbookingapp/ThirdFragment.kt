@@ -171,7 +171,6 @@ class ThirdFragment : Fragment() {
 
         list.add(ProfileItem("Favourites", R.drawable.ic_baseline_restaurant_24))
         list.add(ProfileItem("Bookings", R.drawable.ic_baseline_menu_book_24))
-        list.add(ProfileItem("Requests", R.drawable.ic_baseline_chat_bubble_24))
         list.add(ProfileItem("Payment Details", R.drawable.ic_baseline_credit_card_24))
         list.add(ProfileItem("Your ratings", R.drawable.ic_baseline_star_rate_24))
         list.add(ProfileItem("Logout", R.drawable.ic_baseline_exit_to_app_24))

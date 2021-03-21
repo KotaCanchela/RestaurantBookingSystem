@@ -224,6 +224,6 @@
         android:layout_below="@id/exp_and_cvc_view"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Pay £0.00"
+        android:text="Save Details"
         android:textSize="24sp" />
 </RelativeLayout>

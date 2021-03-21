@@ -68,27 +68,22 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
 //                context.finish()
             }
             if(position == 2) {
-                val myTable = Intent(context, MyRequests::class.java)
-                context.startActivity(myTable)
-//                context.finish()
-            }
-            if(position == 3) {
                 val myPaymentActivity = Intent(context, MyPaymentActivity::class.java)
                 context.startActivity(myPaymentActivity)
 //                context.finish()
             }
-            if(position == 4) {
+            if(position == 3) {
                 val myRatings = Intent(context, MyRatings::class.java)
                 context.startActivity(myRatings)
 //                context.finish()
             }
-            if(position == 5) {
+            if(position == 4) {
                 Toast.makeText(context, "Successfully logged out", Toast.LENGTH_SHORT).show()
                 Handler(Looper.getMainLooper()).postDelayed(Runnable {
                     FirebaseAuth.getInstance().signOut()
                     val logout = Intent(context, LoginActivity::class.java)
                     context.startActivity(logout)
-                }, 1000)
+                }, 500)
 //                context.finish()
             }
         }
