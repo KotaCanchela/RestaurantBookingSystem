@@ -171,14 +171,6 @@
                 android:orientation="horizontal"
                 android:layout_centerInParent="true">
 
-            <TextView
-                android:paddingStart="30dp"
-                android:id="@+id/review_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="18sp"
-                tools:text="Reviews ( xx)"/>
 
             </LinearLayout>
 
@@ -285,6 +277,18 @@
                     </LinearLayout>
 
                 </RelativeLayout>
+
+                <TextView
+                    android:paddingStart="30dp"
+                    android:id="@+id/review_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="80dp"
+                    android:layout_marginBottom="80dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:text="Reviews ( xx)"/>
 
                 <RatingBar
                     android:layout_gravity="center"
