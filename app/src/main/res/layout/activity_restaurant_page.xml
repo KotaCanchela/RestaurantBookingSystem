@@ -316,7 +316,7 @@
                         android:layout_width="400dp"
                         android:layout_height="160dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@drawable/full_traditional_scottish_breakfast_lauripatterson"/>
+                        android:src="@drawable/ic_map_view_holder"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
