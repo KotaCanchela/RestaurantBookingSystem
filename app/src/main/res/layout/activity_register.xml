@@ -101,13 +101,26 @@
                 app:layout_constraintTop_toBottomOf="@+id/editPassword" />
 
             <TextView
-                android:id="@+id/loginText"
+                android:id="@+id/loginText1"
                 android:layout_width="199dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:text="Already Registered? Login here."
                 android:gravity="center"
+                android:inputType="text"
+                android:text="Already Registered?"
+                tools:layout_editor_absoluteX="97dp"
+                tools:layout_editor_absoluteY="555dp" />
+
+            <TextView
+                android:id="@+id/loginText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="text"
+                android:text="Login Here"
+                android:textColor="#0000EE"
+                android:textSize="18sp"
                 tools:layout_editor_absoluteX="97dp"
                 tools:layout_editor_absoluteY="555dp" />
 
