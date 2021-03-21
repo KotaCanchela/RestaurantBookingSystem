@@ -23,5 +23,10 @@
     <string name="tab_text_2">Tab 2</string>
     <string name="action_request">My Requests</string>
 
+    <!-- Restaurant Description -->
+    <string name="restaurant_description">
+This is a description of this restaurant. Here it will be detailed the wonderful food that you can eat. You can decide from this description if want to book a table.
+</string>
+
 
 </resources>

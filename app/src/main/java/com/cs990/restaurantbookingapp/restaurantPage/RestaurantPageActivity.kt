@@ -85,6 +85,8 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         val restaurantCuisine = binding.restaurantCuisine
         restaurantCuisine.text = restaurantItem.getCuisine()
 
+
+
         val textView1 = binding.address1
         textView1.text = "12/28"
         val textView2 = binding.address2
@@ -93,8 +95,14 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         textView3.text = "G1 G2G"
         val textView4 = binding.reviewCount
         textView4.text = "1,024 reviews"
-        val textView5 = binding.telNo
-        textView5.text = "tel: 12345678910"
+       // val textView5 = binding.telNo
+       // textView5.text = "tel: 12345678910"
+
+        val cuisineDescription = binding.tvCuisine
+        cuisineDescription.text = restaurantItem.getCuisine()
+
+        val priceDescription = binding.tvPrice
+        priceDescription.text = restaurantItem.getPrice().toString()
 
         val bookButton = binding.bookButton
 
