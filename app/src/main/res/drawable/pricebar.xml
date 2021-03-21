@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background"
-        android:drawable="@drawable/ic_price_bar_empty" />
-
-    <item android:id="@android:id/secondaryProgress"
-        android:drawable="@drawable/ic_price_bar_empty" />
-
-    <item android:id="@android:id/progress"
-        android:drawable="@drawable/ic_price_bar_full" />
-
+    <item android:id="@android:id/background">
+        <bitmap
+            android:src="@drawable/ic_pound_rating_26"
+            android:tint="?attr/colorControlNormal" />
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <bitmap
+            android:src="@drawable/ic_pound_rating_26"
+            android:tint="?attr/colorControlHighlight" />
+    </item>
+    <item android:id="@android:id/progress">
+        <bitmap
+            android:src="@drawable/ic_pound_rating_26"
+            android:tint="?attr/colorControlActivated" />
+    </item>
 </layer-list>

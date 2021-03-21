@@ -1,0 +1,82 @@
+[
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_register.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/activity_register.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_my_booking.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/fragment_my_booking.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/row_profile.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/row_profile.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/card_home_restaurant.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/card_home_restaurant.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_restaurant_page.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/activity_restaurant_page.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_filter.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/dialog_filter.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/imageitem.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/imageitem.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_booking_confirmation.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/activity_booking_confirmation.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/booking_dialog.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/booking_dialog.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_first.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/fragment_first.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_searchfilter.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/activity_searchfilter.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_favourite.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/fragment_favourite.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/dialog_progress.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/dialog_progress.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_second.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/fragment_second.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/card_restaurant.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/card_restaurant.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_login.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/activity_login.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/restaurant_page_image.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/restaurant_page_image.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_third.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/fragment_third.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/card_home_cuisine.xml",
+        "source": "/Users/Kota/Desktop/Programming/Kotlin/RestaurantBooking/book/RestaurantBookingSystem/app/src/main/res/layout/card_home_cuisine.xml"
+    }
+]

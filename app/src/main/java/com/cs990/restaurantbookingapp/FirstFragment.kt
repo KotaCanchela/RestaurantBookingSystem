@@ -1,21 +1,31 @@
 package com.cs990.restaurantbookingapp
 
 import android.content.ContentValues
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.method.TextKeyListener.clear
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.adapters.RestaurantCuisineHomeAdapter
 import com.cs990.restaurantbookingapp.databinding.FragmentFirstBinding
+import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
+import com.cs990.restaurantbookingapp.profilePages.MyBookings
+import com.cs990.restaurantbookingapp.profilePages.MyFavourites
+import com.cs990.restaurantbookingapp.profilePages.MyRequests
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_searchfilter.*
 import kotlinx.android.synthetic.main.fragment_first.*
 
@@ -42,9 +52,20 @@ class FirstFragment : Fragment() {
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     var query: CollectionReference = db.collection("Restaurants")
 
+
+    //Firestore Username
+    private lateinit var usernameText: TextView
+    private lateinit var currentUser: FirebaseUser
+    private var dbUsernameRef: CollectionReference = db.collection("Users")
+    private lateinit var usernameQuery: Task<DocumentSnapshot>
+
+
+
     //adapter
     lateinit var restaurantAdapter: RestaurantHomeAdapter
     lateinit var restaurantAdapter2: RestaurantCuisineHomeAdapter
+
+    var toolbarIsInstanciated: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +75,7 @@ class FirstFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,15 +89,16 @@ class FirstFragment : Fragment() {
 
         recyclerView2 = binding.rvCuisineHome
 
-        // init recyclerView
+        usernameText = binding.usernameText
+
         setupRecyclerView()
         setupRecyclerView2()
-        //setupSpinner()
 
 
         return binding.root
 
     }
+
     fun setupRecyclerView2() {
 
         //Query
@@ -146,20 +169,80 @@ class FirstFragment : Fragment() {
     }
 
 
+
+
     override fun onStart() {
         super.onStart()
-        restaurantAdapter.startListening()
-        restaurantAdapter2.startListening()
+        if(!toolbarIsInstanciated) {
+            toolbarIsInstanciated = true
+
+            restaurantAdapter.startListening()
+            restaurantAdapter2.startListening()
+            myToolbar.setNavigationOnClickListener {
+                super.onCreate(null)
+            }
+
+            //Dynamic username display
+            currentUser = FirebaseAuth.getInstance().currentUser!!
+
+            dbUsernameRef.document(currentUser.uid).get().addOnCompleteListener{ task ->
+                if(task.isSuccessful) {
+
+                    usernameText.text = task.result?.get("password").toString()
+
+                } else {
+                    Toast.makeText(this.requireContext(), "An error has occurred when looking for your username", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            myToolbar.inflateMenu(R.menu.menu_home)
+            myToolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_request -> {
+                        super.onCreate(null)
+                        val goRequests = Intent(this.requireContext(), MyRequests::class.java)
+                        startActivity(goRequests)
+
+                        true
+                    }
+                    R.id.action_book -> {
+                        super.onCreate(null)
+                        val goBook = Intent(this.requireContext(), MyBookings::class.java)
+                        startActivity(goBook)
+
+                        true
+                    }
+                    R.id.action_favourite -> {
+                        super.onCreate(null)
+                        val goFavourite = Intent(this.requireContext(), MyFavourites::class.java)
+                        startActivity(goFavourite)
+
+                        true
+                    }
+                    R.id.action_log_out -> {
+                        val log = Intent(this.requireContext(), LoginActivity::class.java)
+                        FirebaseAuth.getInstance().signOut()
+                        startActivity(log)
+
+                        true
+                    }
+                    else -> {
+                        super.onOptionsItemSelected(it)
+                    }
+
+                }
+            }
+        }
 
     }
 
-    override fun onStop() {
-        super.onStop()
-        restaurantAdapter.stopListening()
-        restaurantAdapter2.startListening()
+        override fun onStop() {
+            super.onStop()
+            restaurantAdapter.stopListening()
+            restaurantAdapter2.startListening()
+
+        }
 
     }
-
-}
 
 

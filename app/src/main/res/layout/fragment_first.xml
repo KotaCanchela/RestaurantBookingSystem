@@ -7,6 +7,29 @@
     android:orientation="vertical"
     tools:context=".FirstFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myToolbar"
+        android:background="@drawable/ic_row_profile_underline">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleY="0.6"
+            android:scaleX="0.6"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_logo_two"/>
+
+        <TextView
+            android:id="@+id/usernameText"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            android:layout_marginStart="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.appcompat.widget.Toolbar>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

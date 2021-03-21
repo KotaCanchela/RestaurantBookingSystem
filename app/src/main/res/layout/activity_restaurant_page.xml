@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RestaurantPageActivity">
+    tools:context=".restaurantPage.RestaurantPageActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/action_bar"
@@ -48,7 +48,7 @@
                     android:text="Hello"/>
 
                 <RatingBar
-                    android:progressTint="@color/starYellow"
+                    android:progressTint="@color/starYellow2"
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
@@ -61,7 +61,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:theme="@style/RatingBar"
                     app:layout_collapseMode="parallax"/>
 
             </LinearLayout>
@@ -91,12 +90,17 @@
                     style="@style/CustomRatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="7dp"
                     android:layout_marginBottom="10dp"
                     android:isIndicator="true"
-                    android:theme="@style/RatingBar"
+                    android:rating="4"
+                    android:progressBackgroundTintMode="src_in"
+                    android:scaleX="0.7"
+                    android:scaleY="0.7"
+                    android:theme="@style/CustomRatingBar"
                     app:layout_collapseMode="parallax" />
+
+
             </LinearLayout>
 
 
@@ -141,8 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
-                    android:padding="0dp">>
-
+                    android:padding="0dp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/restaurant_page_image_list"
@@ -168,14 +171,6 @@
                 android:orientation="horizontal"
                 android:layout_centerInParent="true">
 
-            <TextView
-                android:paddingStart="30dp"
-                android:id="@+id/review_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="18sp"
-                tools:text="Reviews ( xx)"/>
 
             </LinearLayout>
 
@@ -203,20 +198,19 @@
 
 
 
-
             </LinearLayout>
 
             <LinearLayout
                 android:gravity="center"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="8dp"
                 android:layout_below="@id/menu_and_booking"
                 android:orientation="vertical"
                 android:id="@+id/address_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-            <TextView
+            <!--TextView
                 android:id="@+id/tel_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -224,36 +218,7 @@
                 android:text="TextView"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                tools:text="tel: 12345678910" />
-
-            <TextView
-                android:id="@+id/address1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="TextView"
-                android:textSize="14sp"
-                tools:text="Address line 1" />
-
-            <TextView
-                android:id="@+id/address2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="TextView"
-                android:textSize="14sp"
-                tools:text="Address line 2" />
-
-            <TextView
-                android:id="@+id/address3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="TextView"
-                android:textSize="14sp"
-                tools:text="Postcode" />
-
-
+                tools:text="tel: 12345678910" -->
 
 
             <androidx.cardview.widget.CardView
@@ -270,13 +235,13 @@
                 android:layout_marginBottom="40dp">
 
                 <RelativeLayout
-                    android:id="@+id/rl_wrapper"
+                    android:id="@+id/booking_wrapper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="20dp">
+                    android:padding="10dp">
 
                     <ImageView
-                        android:id="@+id/iv_restaurantImage"
+                        android:id="@+id/booking_restaurantImage"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_centerVertical="true"
@@ -286,9 +251,9 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/iv_restaurantImage"
-                        android:layout_alignBottom="@id/iv_restaurantImage"
-                        android:layout_toEndOf="@id/iv_restaurantImage"
+                        android:layout_alignTop="@+id/booking_restaurantImage"
+                        android:layout_alignBottom="@id/booking_restaurantImage"
+                        android:layout_toEndOf="@id/booking_restaurantImage"
                         android:orientation="vertical">
 
                         <TextView
@@ -313,14 +278,245 @@
 
                 </RelativeLayout>
 
+                <TextView
+                    android:paddingStart="30dp"
+                    android:id="@+id/review_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginHorizontal="80dp"
+                    android:layout_marginBottom="80dp"
+                    android:text="TextView"
+                    android:textSize="18sp"
+                    tools:text="Reviews ( xx)"/>
+
                 <RatingBar
                     android:layout_gravity="center"
                     android:layout_marginTop="75dp"
                     android:id="@+id/large_rating_bar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:theme="@style/RatingBar"
+                    android:isIndicator="true"
+                    android:progressTint="@color/starYellow2"/>
 
             </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="10dp"
+                    android:outlineAmbientShadowColor="@color/black"
+                    android:outlineSpotShadowColor="@color/black">
+
+                    <ImageView
+                        android:id="@+id/map_view"
+                        android:layout_width="400dp"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/full_traditional_scottish_breakfast_lauripatterson"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:orientation="vertical"
+                        android:layout_margin="20dp">
+                        <TextView
+                            android:id="@+id/address1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+
+                            android:text="TextView"
+                            android:textSize="14sp"
+                            tools:text="Address line 1" />
+
+                        <TextView
+                            android:id="@+id/address2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="TextView"
+                            android:textSize="14sp"
+                            tools:text="Address line 2" />
+
+                        <TextView
+                            android:id="@+id/address3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="TextView"
+                            android:textSize="14sp"
+                            tools:text="Postcode" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_title_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Phone"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/nunito_bold"
+                        android:drawableStart="@drawable/ic_baseline_phone_24"
+                        android:drawableTint="@color/orange_Theme"
+                        android:drawablePadding="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:textColor="@color/orange_Theme"
+                        android:textSize="16sp"
+                        android:text="0141 332 9564"/>
+
+                    <TextView
+                        android:id="@+id/tv_title_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Price"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/ic_pound_rating_26"
+                        android:drawableTint="@color/orange_Theme"
+                        android:drawablePadding="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:textSize="16sp"
+                        android:text="Daily: 12:00 - 22:00"/>
+
+                    <TextView
+                        android:id="@+id/tv_title_cuisine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Cuisine"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/nunito_extra_bold"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/ic_baseline_menu_book_24"
+                        android:drawableTint="@color/orange_Theme"
+                        android:drawablePadding="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_cuisine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:textSize="16sp"
+                        android:text="Daily: 12:00 - 22:00"/>
+
+                    <TextView
+                        android:id="@+id/tv_title_opening_hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Hours"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/nunito_extra_bold"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/ic_baseline_hours_24"
+                        android:drawablePadding="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_opening_hours"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:textSize="16sp"
+                        android:text="Daily: 12:00 - 22:00"/>
+
+                    <TextView
+                        android:id="@+id/tv_title_payment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Payment"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/nunito_extra_bold"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/ic_baseline_credit_card_24"
+                        android:drawableTint="@color/orange_Theme"
+                        android:drawablePadding="10dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_payment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:textSize="16sp"
+                        android:text="Mastercard, Visa"/>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Parking"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/nunito_extra_bold"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/ic_baseline_car_24"
+                        android:drawableTint="@color/orange_Theme"
+                        android:drawablePadding="10dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_parking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="45dp"
+                        android:textSize="16sp"
+                        android:text="None"/>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="Description"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/nunito_extra_bold"
+                        android:textColor="@color/black"
+                        android:drawableStart="@drawable/ic_baseline_menu_book_24"
+                        android:drawableTint="@color/orange_Theme"
+                        android:drawablePadding="10dp"/>
+                    <TextView
+                        android:id="@+id/tv_restaurant_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="35dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingHorizontal="10dp"
+                        android:textSize="16sp"
+                        android:text="@string/restaurant_description"/>
+
+                </LinearLayout>
 
 
 

@@ -12,13 +12,13 @@
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
-        android:id="@+id/rl_wrapper"
+        android:id="@+id/booking_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp">
 
         <ImageView
-            android:id="@+id/iv_restaurantImage"
+            android:id="@+id/booking_restaurantImage"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_centerVertical="true"
@@ -26,15 +26,16 @@
             android:src="@mipmap/ic_launcher_round"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/restaurant_details"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/iv_restaurantImage"
-            android:layout_alignBottom="@id/iv_restaurantImage"
-            android:layout_toEndOf="@id/iv_restaurantImage"
+            android:layout_alignTop="@+id/booking_restaurantImage"
+            android:layout_alignBottom="@id/booking_restaurantImage"
+            android:layout_toEndOf="@id/booking_restaurantImage"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_restaurantName"
+                android:id="@+id/booking_restaurant_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -42,7 +43,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
             <RatingBar
-                android:id="@+id/rb_ratingBar"
+                android:id="@+id/booking_ratingBar"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,7 +52,7 @@
                 android:progressTint="#FFEB3B" />
 
             <TextView
-                android:id="@+id/tv_distance"
+                android:id="@+id/booking_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -61,6 +62,26 @@
 
 
         </LinearLayout>
+
+        <LinearLayout
+            android:gravity="right"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/booking_restaurantImage"
+            android:layout_alignBottom="@id/booking_restaurantImage"
+            android:layout_toEndOf="@id/restaurant_details">
+
+            <CheckBox
+                android:id="@+id/btn_favourite"
+                android:button="@drawable/custom_checkbox_fav"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
+                android:layout_height="wrap_content"
+                style="@style/CustomFav"
+                android:layout_width="wrap_content"/>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

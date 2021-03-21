@@ -2,11 +2,7 @@ package com.cs990.restaurantbookingapp
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Build
-import android.provider.MediaStore.Images.Media.getBitmap
-import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +11,11 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.cs990.restaurantbookingapp.models.RestaurantItem
+import com.cs990.restaurantbookingapp.restaurantPage.RestaurantPageActivity
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import kotlinx.android.synthetic.main.card_home_cuisine.view.*
 import kotlinx.android.synthetic.main.card_home_restaurant.view.*
-import kotlinx.android.synthetic.main.card_restaurant.view.*
-import java.net.URL
-import java.util.concurrent.CompletableFuture.runAsync as runAsync
 
 
 class RestaurantHomeAdapter(
@@ -32,6 +27,7 @@ class RestaurantHomeAdapter(
 
     class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val restaurantNameText: TextView = itemView.findViewById(R.id.tv_restaurantName_home)
+        val restaurantCuisineText: TextView = itemView.findViewById(R.id.tv_cuisine_home)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_home_restaurant)
         val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.rb_ratingBarHome)
 
@@ -60,14 +56,13 @@ class RestaurantHomeAdapter(
 //          Changed name to show image string (everything else is being reset to zero
         holder.restaurantNameText.tv_restaurantName_home.text = model.getName()
         holder.restaurantRatingBar.rb_ratingBarHome.rating = model.getRating()?.toFloat()!!
-
+        holder.restaurantCuisineText.tv_cuisine_home.text = model.getCuisine()
 
         val url = model.getRestaurantImage()
         Glide
             .with(holder.restaurantImageItem)
             .load(url)
             .into(holder.restaurantImageItem.iv_home_restaurant)
-
 
 
 
@@ -78,7 +73,9 @@ class RestaurantHomeAdapter(
             intent.putExtra("model", model)
             context.startActivity(intent)
         }
-    }
+
+
+        }
 
 }
 

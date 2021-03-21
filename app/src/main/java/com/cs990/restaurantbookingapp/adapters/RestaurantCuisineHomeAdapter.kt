@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.bumptech.glide.Glide
 import com.cs990.restaurantbookingapp.R
-import com.cs990.restaurantbookingapp.RestaurantPageActivity
+import com.cs990.restaurantbookingapp.restaurantPage.RestaurantPageActivity
 import com.cs990.restaurantbookingapp.models.RestaurantItem
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions

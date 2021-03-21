@@ -16,6 +16,18 @@
     <string name="registerHere1">Don\'t have an account?</string>
     <string name="registerHere2">Register Here</string>
     <string name="please_wait">Please Wait&#8230;</string>
+    <string name="My_Bookings">My Bookings</string>
+    <string name="My_Favourites">My Favourites</string>
+    <string name="Log_out">Log out</string>
+    <string name="title_activity_my_table">MyTable</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="action_request">My Requests</string>
+
+    <!-- Restaurant Description -->
+    <string name="restaurant_description">
+This is a description of this restaurant. Here it will be detailed the wonderful food that you can eat. You can decide from this description if want to book a table.
+</string>
 
 
 </resources>

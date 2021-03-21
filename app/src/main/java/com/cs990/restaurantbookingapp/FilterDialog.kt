@@ -20,7 +20,7 @@ class FilterDialog(context: Context) : Dialog(context){
     //rating default of 0, if rating slider not enabled
     private var ratingSelected = 0
     //String list for the price NumberPicker
-    private var dolValues= arrayOf("$", "$$", "$$$", "$$$$", "$$$$$")
+    private var dolValues= arrayOf("£", "££", "£££", "££££", "£££££")
 
     //Button setup
     private lateinit var seekBar: SeekBar
@@ -39,8 +39,6 @@ class FilterDialog(context: Context) : Dialog(context){
         setupBindings()
         setupUI()
     }
-
-
 
 
     fun setupBindings(){
@@ -66,7 +64,7 @@ class FilterDialog(context: Context) : Dialog(context){
         r2.isEnabled = false
         val r3 = findViewById<View>(R.id.dairy_button) as RadioButton
         r3.isEnabled = false
-        val r4 = findViewById<View>(R.id.glutton_button) as RadioButton
+        val r4 = findViewById<View>(R.id.gluten_button) as RadioButton
         r4.isEnabled = false
         val r5 = findViewById<View>(R.id.nut_button) as RadioButton
         r5.isEnabled = false
@@ -154,7 +152,7 @@ class FilterDialog(context: Context) : Dialog(context){
             r2.isEnabled = false
             val r3 = findViewById<View>(R.id.dairy_button) as RadioButton
             r3.isEnabled = false
-            val r4 = findViewById<View>(R.id.glutton_button) as RadioButton
+            val r4 = findViewById<View>(R.id.gluten_button) as RadioButton
             r4.isEnabled = false
             val r5 = findViewById<View>(R.id.nut_button) as RadioButton
             r5.isEnabled = false
@@ -183,7 +181,7 @@ class FilterDialog(context: Context) : Dialog(context){
             val r3 = findViewById<View>(R.id.dairy_button) as RadioButton
             r3.isEnabled = false
             r3.isChecked = false
-            val r4 = findViewById<View>(R.id.glutton_button) as RadioButton
+            val r4 = findViewById<View>(R.id.gluten_button) as RadioButton
             r4.isEnabled = false
             r4.isChecked = false
             val r5 = findViewById<View>(R.id.nut_button) as RadioButton
