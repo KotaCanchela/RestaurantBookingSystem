@@ -6,7 +6,9 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.*
+import android.widget.DatePicker
+import android.widget.EditText
+import android.widget.TimePicker
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.BaseActivity
@@ -22,7 +24,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.collections.ArrayList
 
-class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
+class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
+    TimePickerDialog.OnTimeSetListener {
 
     private lateinit var binding: ActivityRestaurantPageBinding
     private lateinit var restaurantItem: RestaurantItem
@@ -50,8 +53,7 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
     var savedHour = 0
     var savedMinute = 0
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityRestaurantPageBinding.inflate(layoutInflater)
@@ -67,7 +69,7 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
 
     }
 
-    private fun setupUIViews(){
+    private fun setupUIViews() {
         restaurantImageView = binding.restaurantPageImageList
 
         val restaurantName = binding.restaurantName
@@ -86,7 +88,6 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         restaurantCuisine.text = restaurantItem.getCuisine()
 
 
-
         val textView1 = binding.address1
         textView1.text = "12/28"
         val textView2 = binding.address2
@@ -95,20 +96,21 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         textView3.text = "G1 G2G"
         val textView4 = binding.reviewCount
         textView4.text = "1,024 reviews"
-       // val textView5 = binding.telNo
-       // textView5.text = "tel: 12345678910"
+        // val textView5 = binding.telNo
+        // textView5.text = "tel: 12345678910"
 
         val cuisineDescription = binding.tvCuisine
         cuisineDescription.text = restaurantItem.getCuisine()
 
-        val priceDescription = binding.tvPrice
-        priceDescription.text = restaurantItem.getPrice().toString()
+        //val priceDescription = binding.tvPrice
+        //priceDescription.text = restaurantItem.getPrice().toString()
+        setPriceDescription()
 
         val bookButton = binding.bookButton
 
-        bookButton.setOnClickListener(){
+        bookButton.setOnClickListener() {
 
-            numberGuests= ""
+            numberGuests = ""
 
             val builder = AlertDialog.Builder(this)
             val inflater = layoutInflater
@@ -117,12 +119,11 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
 
             with(builder) {
                 setTitle("Select the number of guests")
-                setPositiveButton("Ok"){
-                    dialog, which ->
+                setPositiveButton("Ok") { dialog, which ->
                     numberGuests = editText.text.toString()
                     startDateTime()
                 }
-                setNegativeButton("Cancel"){ dialog, which ->
+                setNegativeButton("Cancel") { dialog, which ->
                     Log.d("restaurant page", "Cancel booking dialog")
                 }
                 setView(dialogLayout)
@@ -130,12 +131,26 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
             }
 
 
+        }
+    }
 
+    private fun setPriceDescription() {
+        val priceDescription = binding.tvPrice
+        var restaurantPrice = restaurantItem.getPrice().toInt()
+        if ((restaurantPrice == 1) || (restaurantPrice == 2)) {
+            priceDescription.text = "£25 and Under"
+        } else if ((restaurantPrice == 3) || (restaurantPrice == 4)) {
+            priceDescription.text = "£26 to 40"
+        } else if (restaurantPrice == 5) {
+            priceDescription.text = "£41 and over"
+        } else {
+            priceDescription.text = restaurantItem.getPrice().toString()
         }
     }
 
     private fun setupHorizontalScroll() {
-        restaurantImageView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        restaurantImageView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         imageAdapter = RestaurantPageImageAdapter(this, getItemsList())
         restaurantImageView.adapter = imageAdapter
     }
@@ -153,7 +168,7 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         return list
     }
 
-    private fun startDateTime(){
+    private fun startDateTime() {
         getDateTimeCalendar()
         DatePickerDialog(this, this, year, month, day).show()
     }
@@ -186,14 +201,23 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
 
 
         //creating instance of bookingItem and writing to database
-        var bookingItem: BookingItem = BookingItem(restaurantItem, numberGuests, day.toString(), month.toString(), year.toString(), hour.toString(), minute.toString())
+        var bookingItem: BookingItem = BookingItem(
+            restaurantItem,
+            numberGuests,
+            day.toString(),
+            month.toString(),
+            year.toString(),
+            hour.toString(),
+            minute.toString()
+        )
         bookingRef.document(currentUser.uid)
-                .collection("Bookings")
-                .add(bookingItem)
+            .collection("Bookings")
+            .add(bookingItem)
 
 
         //changing activity to display confirmation
-        var timeString: String = "${restaurantItem.getName()} \n\n for $numberGuests people \n\n at $savedHour:$savedMinute on $savedDay/$savedMonth/$savedYear"
+        var timeString: String =
+            "${restaurantItem.getName()} \n\n for $numberGuests people \n\n at $savedHour:$savedMinute on $savedDay/$savedMonth/$savedYear"
         val intent = Intent(applicationContext, BookingConfirmationActivity::class.java)
         intent.putExtra("bookingItem", bookingItem)
         intent.putExtra("timeString", timeString)
