@@ -22,7 +22,9 @@ import com.cs990.restaurantbookingapp.profilePages.MyBookings
 import com.cs990.restaurantbookingapp.profilePages.MyFavourites
 import com.cs990.restaurantbookingapp.profilePages.MyRequests
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.fragment_second.*
 
 import com.google.firebase.database.ValueEventListener
@@ -58,7 +60,14 @@ class SecondFragment : Fragment() {
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var searchQuery: Query = db.collection("Restaurants").orderBy("name").startAt("").endAt("\uf8ff")
 
+    //Firestore Username
+    private lateinit var usernameText: TextView
+    private lateinit var currentUser: FirebaseUser
+    private var dbUsernameRef: CollectionReference = db.collection("Users")
+    private lateinit var usernameQuery: Task<DocumentSnapshot>
 
+    //toolbar
+    var toolbarIsInstanciated: Boolean = false
 
     //adapter
     lateinit var restaurantAdapter: RestaurantItemAdapter
@@ -92,6 +101,9 @@ class SecondFragment : Fragment() {
     }
 
     fun setupUI(){
+
+        usernameText = binding.usernameText
+
         binding.btnFilter.setOnClickListener(){
 
             val dialog = FilterDialog(this.requireContext())
@@ -178,49 +190,65 @@ class SecondFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        myToolbar.setNavigationOnClickListener {
-            super.onCreate(null)
-        }
-
-        myToolbar.inflateMenu(R.menu.menu_home)
-        myToolbar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.action_request -> {
-                    super.onCreate(null)
-                    val goRequests = Intent(this.requireContext(), MyRequests::class.java)
-                    startActivity(goRequests)
-
-                    true
-                }
-                R.id.action_book -> {
-                    super.onCreate(null)
-                    val goBook = Intent(this.requireContext(), MyBookings::class.java)
-                    startActivity(goBook)
-
-                    true
-                }
-                R.id.action_favourite -> {
-                    super.onCreate(null)
-                    val goFavourite = Intent(this.requireContext(), MyFavourites::class.java)
-                    startActivity(goFavourite)
-
-                    true
-                }
-                R.id.action_log_out -> {
-                    val log = Intent(this.requireContext(), LoginActivity::class.java)
-                    FirebaseAuth.getInstance().signOut()
-                    startActivity(log)
-
-                    true
-                }
-                else -> {
-                    super.onOptionsItemSelected(it)
-                }
-
+        if(!toolbarIsInstanciated) {
+            toolbarIsInstanciated = true
+            myToolbar.setNavigationOnClickListener {
+                super.onCreate(null)
             }
-        }
 
-        restaurantAdapter.startListening()
+            //Dynamic username display
+            currentUser = FirebaseAuth.getInstance().currentUser!!
+
+            dbUsernameRef.document(currentUser.uid).get().addOnCompleteListener{ task ->
+                if(task.isSuccessful) {
+
+                    usernameText.text = task.result?.get("password").toString()
+
+                } else {
+                    Toast.makeText(this.requireContext(), "An error has occurred when looking for your username", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            myToolbar.inflateMenu(R.menu.menu_home)
+            myToolbar.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_request -> {
+                        super.onCreate(null)
+                        val goRequests = Intent(this.requireContext(), MyRequests::class.java)
+                        startActivity(goRequests)
+
+                        true
+                    }
+                    R.id.action_book -> {
+                        super.onCreate(null)
+                        val goBook = Intent(this.requireContext(), MyBookings::class.java)
+                        startActivity(goBook)
+
+                        true
+                    }
+                    R.id.action_favourite -> {
+                        super.onCreate(null)
+                        val goFavourite = Intent(this.requireContext(), MyFavourites::class.java)
+                        startActivity(goFavourite)
+
+                        true
+                    }
+                    R.id.action_log_out -> {
+                        val log = Intent(this.requireContext(), LoginActivity::class.java)
+                        FirebaseAuth.getInstance().signOut()
+                        startActivity(log)
+
+                        true
+                    }
+                    else -> {
+                        super.onOptionsItemSelected(it)
+                    }
+
+                }
+            }
+
+            restaurantAdapter.startListening()
+        }
     }
 
     override fun onStop() {

@@ -16,8 +16,12 @@ import com.cs990.restaurantbookingapp.models.ProfileItem
 import com.cs990.restaurantbookingapp.profilePages.MyBookings
 import com.cs990.restaurantbookingapp.profilePages.MyFavourites
 import com.cs990.restaurantbookingapp.profilePages.MyRequests
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.android.synthetic.main.fragment_third.*
 import kotlinx.android.synthetic.main.fragment_third.myToolbar
@@ -47,6 +51,15 @@ class ThirdFragment : Fragment() {
     private lateinit var profileListView: RecyclerView
     lateinit var itemAdapter: ProfileItemAdapter
 
+    //Firestore Username
+    private lateinit var usernameText: TextView
+    private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private var dbUsernameRef: CollectionReference = db.collection("Users")
+    private lateinit var usernameQuery: Task<DocumentSnapshot>
+
+    //toolbar
+    var toolbarIsInstanciated: Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -61,6 +74,8 @@ class ThirdFragment : Fragment() {
     ): View? {
         _binding = FragmentThirdBinding.inflate(inflater, container, false)
         profileListView = binding.profileListView
+
+        usernameText = binding.usernameText
 
         listView()
 
@@ -85,11 +100,27 @@ class ThirdFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        toolbar()
+        if(!toolbarIsInstanciated) {
+            toolbar()
+        }
     }
     fun toolbar() {
+        toolbarIsInstanciated = true
         myToolbar.setNavigationOnClickListener {
             super.onCreate(null)
+        }
+
+        //Dynamic username display
+        currentUser = FirebaseAuth.getInstance().currentUser!!
+
+        dbUsernameRef.document(currentUser.uid).get().addOnCompleteListener{ task ->
+            if(task.isSuccessful) {
+
+                usernameText.text = task.result?.get("password").toString()
+
+            } else {
+                Toast.makeText(this.requireContext(), "An error has occurred when looking for your username", Toast.LENGTH_SHORT).show()
+            }
         }
 
         myToolbar.inflateMenu(R.menu.menu_home)
