@@ -30,6 +30,7 @@ class RestaurantHomeAdapter(
         val restaurantCuisineText: TextView = itemView.findViewById(R.id.tv_cuisine_home)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.iv_home_restaurant)
         val restaurantRatingBar: RatingBar = itemView.findViewById(R.id.rb_ratingBarHome)
+        val restaurantPriceBar: RatingBar = itemView.findViewById(R.id.price_bar)
 
     }
 
@@ -57,6 +58,7 @@ class RestaurantHomeAdapter(
         holder.restaurantNameText.tv_restaurantName_home.text = model.getName()
         holder.restaurantRatingBar.rb_ratingBarHome.rating = model.getRating()?.toFloat()!!
         holder.restaurantCuisineText.tv_cuisine_home.text = model.getCuisine()
+        holder.restaurantRatingBar.rb_ratingBarHome.rating = model.getPrice()?.toFloat()!!
 
         val url = model.getRestaurantImage()
         Glide
