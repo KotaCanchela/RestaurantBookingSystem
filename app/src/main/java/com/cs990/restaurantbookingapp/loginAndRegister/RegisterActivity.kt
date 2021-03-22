@@ -22,7 +22,7 @@ class RegisterActivity : BaseActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.loginText.setOnClickListener{
+        binding.loginText2.setOnClickListener{
             val loginPage = Intent(this, LoginActivity::class.java)
             startActivity(loginPage)
             finish()

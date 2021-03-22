@@ -12,7 +12,7 @@
                 </shape>
             </item>
 
-            <item android:gravity="end|center_vertical" android:drawable="@drawable/ic_user"></item>
+            <item android:gravity="right|center_vertical" android:drawable="@drawable/ic_user" ></item>
         </layer-list>
     </item>
 </selector>
