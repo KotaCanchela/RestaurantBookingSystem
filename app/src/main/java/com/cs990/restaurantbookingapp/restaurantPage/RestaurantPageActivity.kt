@@ -134,6 +134,7 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         }
     }
 
+
     private fun setPriceDescription() {
         val priceDescription = binding.tvPrice
         var restaurantPrice = restaurantItem.getPrice().toInt()
