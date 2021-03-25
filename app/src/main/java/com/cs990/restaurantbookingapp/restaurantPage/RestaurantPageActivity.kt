@@ -23,7 +23,12 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.collections.ArrayList
-
+/**
+ * An Android Activity Class that provides functionality for a Restaurant Information Page.
+ *
+ * @author Group 1
+ * @version 1.0
+ */
 class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListener,
     TimePickerDialog.OnTimeSetListener {
 
@@ -53,6 +58,9 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
     var savedHour = 0
     var savedMinute = 0
 
+    /**
+     * onCreate method for this Activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -64,11 +72,13 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         restaurantItem = intent.getParcelableExtra<RestaurantItem>("model")!!
 
         setupUIViews()
-
         setupHorizontalScroll()
-
     }
 
+    /**
+     * Sets initial values of text views visible in this Activity. Also adds and configures Click
+     * Listeners for all button elements in this Activity.
+     */
     private fun setupUIViews() {
         restaurantImageView = binding.restaurantPageImageList
 
@@ -86,7 +96,6 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
 
         val restaurantCuisine = binding.restaurantCuisine
         restaurantCuisine.text = restaurantItem.getCuisine()
-
 
         val textView1 = binding.address1
         textView1.text = "12/28"
@@ -129,12 +138,12 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
                 setView(dialogLayout)
                 show()
             }
-
-
         }
     }
 
-
+    /**
+     * Updates Price Description text to a price-range String, rather than an exact value.
+     */
     private fun setPriceDescription() {
         val priceDescription = binding.tvPrice
         var restaurantPrice = restaurantItem.getPrice().toInt()
@@ -149,6 +158,9 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         }
     }
 
+    /**
+     * Configures horizontal image scrolling pane using an adapter.
+     */
     private fun setupHorizontalScroll() {
         restaurantImageView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -156,6 +168,10 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         restaurantImageView.adapter = imageAdapter
     }
 
+    /**
+     * Returns an ArrayList of drawable images for this Activity.
+     * @return  list    ArrayList of drawable items
+     */
     private fun getItemsList(): ArrayList<Int> {
         var list = ArrayList<Int>()
 
@@ -169,11 +185,17 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         return list
     }
 
+    /**
+     * Configures an Action Listener for the calendar/date picker.
+     */
     private fun startDateTime() {
         getDateTimeCalendar()
         DatePickerDialog(this, this, year, month, day).show()
     }
 
+    /**
+     * Captures initial yyyy-mm-dd-hh:mm values from the Calendar instance.
+     */
     private fun getDateTimeCalendar() {
         val cal: Calendar = Calendar.getInstance()
         day = cal.get(Calendar.DAY_OF_MONTH)
@@ -183,24 +205,26 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         minute = cal.get(Calendar.MINUTE)
     }
 
-
+    /**
+     * Saves chosen date information for use in a booking.
+     */
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         savedDay = day
         savedMonth = month
         savedYear = year
 
-
-
         TimePickerDialog(this, this, hour, minute, true).show()
     }
 
+    /**
+     * Saves chosen time information and uses this to create a BookingItem Object before moving
+     * user to the Booking Confirmation Activity.
+     */
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         savedHour = hour
         savedMinute = minute
 
         //Get the current user id
-
-
         //creating instance of bookingItem and writing to database
         var bookingItem: BookingItem = BookingItem(
             restaurantItem,
@@ -215,7 +239,6 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
             .collection("Bookings")
             .add(bookingItem)
 
-
         //changing activity to display confirmation
         var timeString: String =
             "${restaurantItem.getName()} \n\n for $numberGuests people \n\n at $savedHour:$savedMinute on $savedDay/$savedMonth/$savedYear"
@@ -223,6 +246,5 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         intent.putExtra("bookingItem", bookingItem)
         intent.putExtra("timeString", timeString)
         applicationContext.startActivity(intent)
-
     }
 }

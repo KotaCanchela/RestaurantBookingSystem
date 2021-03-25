@@ -11,17 +11,22 @@ import com.cs990.restaurantbookingapp.firebase.FirestoreClass
 import com.cs990.restaurantbookingapp.loginAndRegister.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.toolbar.*
-
+/**
+ * The Main Activity Class for this project. Acts as a Home Page for users navigating the
+ * application
+ * @author Group 1
+ * @version 1.0
+ */
 class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding;
 
-
+    /**
+     * onCreate method for this Activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
 
-
         super.onCreate(savedInstanceState)
-
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
@@ -35,8 +40,6 @@ class MainActivity : BaseActivity() {
 
         bottomNavigationView.setupWithNavController(navController)
 
-
-
         var currentUserID = FirestoreClass().getCurrentUserId()
 
         if (currentUserID.isNotEmpty()) {
@@ -49,7 +52,4 @@ class MainActivity : BaseActivity() {
             finish()
         }
     }
-
-
-
 }

@@ -19,7 +19,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.util.*
 import kotlin.concurrent.schedule
-
+/**
+ * An Android Activity Class that provides functionality for a Booking Confirmation Page.
+ *
+ * @author Group 1
+ * @version 1.0
+ */
 class BookingConfirmationActivity : BaseActivity() {
 
     private lateinit var bookingString: String
@@ -29,7 +34,7 @@ class BookingConfirmationActivity : BaseActivity() {
     private lateinit var myBookings: Button
     private lateinit var cancelBookingBtn: Button
     private lateinit var mProgressDialog: Dialog
-
+    // Firebase
     private var currentUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var bookingRef: CollectionReference = db.collection("Users").document(currentUser.uid)
@@ -37,7 +42,11 @@ class BookingConfirmationActivity : BaseActivity() {
     private lateinit var query: Query
     private var bookingID: String? = null
 
-
+    /**
+     * onCreate method for this Activity. Accepts a Bundle containing state information for about
+     * the target booking. Also ensures data pertaining to the target booking is loaded from the
+     * database correctly
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_booking_confirmation)
@@ -49,7 +58,6 @@ class BookingConfirmationActivity : BaseActivity() {
         setupUI()
 
         query = bookingRef.whereEqualTo("restaurantItem.name", bookingItem.getRestaurantItem().getName())
-
         query.get().addOnCompleteListener{
             if(it.result?.isEmpty == false) {
 
@@ -60,20 +68,20 @@ class BookingConfirmationActivity : BaseActivity() {
                 Toast.makeText(this, "An error has occurred when looking for you booking", Toast.LENGTH_SHORT).show()
             }
         }
-
         setupListeners()
-
-
-
     }
 
+    /**
+     * Activity switch method. Returns user to the Main Activity
+     */
     private fun goHome(){
-
         val home = Intent(this, MainActivity::class.java)
         this.startActivity(home)
     }
 
-
+    /**
+     * Instantiates all dynamic views in this Activity
+     */
     private fun setupUI(){
         cancelBookingBtn = findViewById(R.id.btn_cancel_booking)
         timeDate = findViewById(R.id.TimeAndDate)
@@ -82,6 +90,9 @@ class BookingConfirmationActivity : BaseActivity() {
         timeDate.text = bookingString
     }
 
+    /**
+     * Adds and configures Click Listeners for all button elements in this Activity.
+     */
     private fun setupListeners(){
 
         home.setOnClickListener{
@@ -104,13 +115,9 @@ class BookingConfirmationActivity : BaseActivity() {
                     goHome()
                 }, 1000)
 
-
             } else {
                 Toast.makeText(this, "Error when cancelling your booking", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
-
-
 }

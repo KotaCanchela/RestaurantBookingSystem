@@ -14,6 +14,12 @@ import com.cs990.restaurantbookingapp.databinding.ActivityLoginBinding
 import com.cs990.restaurantbookingapp.models.User
 import com.google.firebase.auth.FirebaseAuth
 
+/**
+ *  An Android Activity Class that provides functionality for the login page. Allows users to
+ *  either login using their credentials, or register a new user account.
+ * @author Group 1
+ * @version 1.0
+ */
 class LoginActivity : BaseActivity() {
 
     private lateinit var binding: ActivityLoginBinding
@@ -21,6 +27,10 @@ class LoginActivity : BaseActivity() {
     lateinit var email: String
     lateinit var password: String
 
+    /**
+     * onCreate method for this Activity. Moves user to the Main Activity (the "home page") if the
+     * user is already logged in.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -31,14 +41,13 @@ class LoginActivity : BaseActivity() {
             startActivity(homePage)
             finish()
         }
-
-
         setUIViews()
         setClickListeners()
-
-
     }
 
+    /**
+     * Moves user to the Main Activity (the "home page") upon successful login
+     */
     fun loginSuccess(user: User){
         hideProgressDialog()
         val homePage = Intent(this, MainActivity::class.java)
@@ -57,9 +66,7 @@ class LoginActivity : BaseActivity() {
                 .addOnCompleteListener { task ->
 
                     hideProgressDialog()
-
                     if (task.isSuccessful) {
-
                         Toast.makeText(
                             this,
                             "You have successfully signed in.",
@@ -69,7 +76,6 @@ class LoginActivity : BaseActivity() {
                         val homePage = Intent(this, MainActivity::class.java)
                         startActivity(homePage)
                         finish()
-
                     } else {
 
                         Toast.makeText(
@@ -78,10 +84,8 @@ class LoginActivity : BaseActivity() {
                         ).show()
                     }
                 }
-
         }
     }
-
 
     private fun validateForm( email: String, password: String): Boolean{
         return when {
@@ -98,12 +102,17 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-
+    /**
+     * DELETE CANDIDATE
+     */
     fun setUIViews(){
-
 
     }
 
+    /**
+     * Adds and configures Click Listeners and text watchers for the buttons and editable text
+     * views in this Activity.
+     */
     fun setClickListeners() {
 
         binding.editEmail.addTextChangedListener(object: TextWatcher {
@@ -150,7 +159,9 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-
+    /**
+     * Activity switch method. Navigates user to the Register Activity
+     */
     fun register(view: View) {
         val registerPage = Intent(this, RegisterActivity::class.java)
         startActivity(registerPage)
