@@ -41,7 +41,6 @@ class LoginActivity : BaseActivity() {
             startActivity(homePage)
             finish()
         }
-        setUIViews()
         setClickListeners()
     }
 
@@ -55,6 +54,10 @@ class LoginActivity : BaseActivity() {
         finish()
     }
 
+    /**
+     * Authenticates user and changes Activity to the Main Activity if successful or returns error
+     * text if not successful.
+     */
     private fun signInRegisteredUser() {
         email = binding.editEmail.text.toString().trim{it <= ' '}
         password = binding.editPassword.text.toString().trim{it <= ' '}
@@ -64,7 +67,6 @@ class LoginActivity : BaseActivity() {
 
             FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-
                     hideProgressDialog()
                     if (task.isSuccessful) {
                         Toast.makeText(
@@ -72,12 +74,11 @@ class LoginActivity : BaseActivity() {
                             "You have successfully signed in.",
                             Toast.LENGTH_LONG
                         ).show()
-
                         val homePage = Intent(this, MainActivity::class.java)
                         startActivity(homePage)
                         finish()
-                    } else {
 
+                    } else {
                         Toast.makeText(
                             this,"Sign in failed",
                             Toast.LENGTH_LONG
@@ -87,6 +88,9 @@ class LoginActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Displays error dialog if username or password is missing.
+     */
     private fun validateForm( email: String, password: String): Boolean{
         return when {
             TextUtils.isEmpty(email) ->{
@@ -103,59 +107,40 @@ class LoginActivity : BaseActivity() {
     }
 
     /**
-     * DELETE CANDIDATE
-     */
-    fun setUIViews(){
-
-    }
-
-    /**
      * Adds and configures Click Listeners and text watchers for the buttons and editable text
      * views in this Activity.
      */
     fun setClickListeners() {
 
         binding.editEmail.addTextChangedListener(object: TextWatcher {
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 s!!
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 s!!
             }
-
             override fun afterTextChanged(s: Editable?) {
                 email = s.toString()!!
             }
         })
-
         binding.editPassword.addTextChangedListener(object: TextWatcher {
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 s!!
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 s!!
             }
-
             override fun afterTextChanged(s: Editable?) {
                 password = s.toString()!!
             }
         })
-
         binding.loginButton.setOnClickListener {
             signInRegisteredUser()
-
         }
-
         binding.registerText2.setOnClickListener {
-
             val homePage = Intent(this, RegisterActivity::class.java)
             startActivity(homePage)
             finish()
-
         }
     }
 
@@ -166,6 +151,5 @@ class LoginActivity : BaseActivity() {
         val registerPage = Intent(this, RegisterActivity::class.java)
         startActivity(registerPage)
         finish()
-
     }
 }
