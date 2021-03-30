@@ -242,9 +242,9 @@ class RestaurantPageActivity : BaseActivity(), DatePickerDialog.OnDateSetListene
         //changing activity to display confirmation
         var timeString: String =
             "${restaurantItem.getName()} \n\n for $numberGuests people \n\n at $savedHour:$savedMinute on $savedDay/$savedMonth/$savedYear"
-        val intent = Intent(applicationContext, BookingConfirmationActivity::class.java)
+        val intent = Intent(this, BookingConfirmationActivity::class.java)
         intent.putExtra("bookingItem", bookingItem)
         intent.putExtra("timeString", timeString)
-        applicationContext.startActivity(intent)
+        startActivity(intent)
     }
 }
