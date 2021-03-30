@@ -15,8 +15,13 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
 
+/**
+ * An Android Activity Class that provides functionality the current user's Ratings history,
+ * accessible through the toolbar.
+ * @author Group 1
+ * @version 1.0
+ */
 class MyRatings : AppCompatActivity() {
-
 
     //Firestore
     private var currentUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
@@ -32,25 +37,25 @@ class MyRatings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_ratings)
-
         usernameText = findViewById(R.id.usernameText)
     }
+
+    /**
+     * Instantiate's display with values from firebase and configures Click Listeners for buttons
+     */
     override fun onStart() {
         super.onStart()
-
 
         if(!toolbarIsInstanciated) {
             toolbarIsInstanciated = true
             myToolbar.setNavigationOnClickListener {
                 super.onCreate(null)
             }
-
             //Dynamic username display
             currentUser = FirebaseAuth.getInstance().currentUser!!
 
             dbUsernameRef.document(currentUser.uid).get().addOnCompleteListener{ task ->
                 if(task.isSuccessful) {
-
                     usernameText.text = task.result?.get("password").toString()
 
                 } else {
@@ -93,11 +98,8 @@ class MyRatings : AppCompatActivity() {
                     else -> {
                         super.onOptionsItemSelected(it)
                     }
-
                 }
             }
-
         }
     }
-
 }

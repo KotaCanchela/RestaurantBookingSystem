@@ -13,10 +13,19 @@ import com.cs990.restaurantbookingapp.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
+/**
+ *  An Android Activity Class that provides functionality for the registration page.
+ * @author Group 1
+ * @version 1.0
+ */
 class RegisterActivity : BaseActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
 
+    /**
+     * onCreate method for this Activity. Configures click listeners for login and register
+     * buttons
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -34,10 +43,11 @@ class RegisterActivity : BaseActivity() {
             startActivity(homePage)
             finish()
         }
-
-
     }
 
+    /**
+     * Processes registration details and (if valid) adds information to firebase.
+     */
     private fun registerUser() {
         val username: String = binding.enterUsername.text.toString().trim(){it <= ' '}
         val email: String = binding.enterEmail.text.toString().trim(){it <= ' '}
@@ -49,11 +59,8 @@ class RegisterActivity : BaseActivity() {
                 .getInstance()
                 .createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-
                     hideProgressDialog()
-
                     if (task.isSuccessful) {
-
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         val registeredEmail = firebaseUser.email!!
                         val user = User(firebaseUser.uid, username, registeredEmail)
@@ -66,9 +73,13 @@ class RegisterActivity : BaseActivity() {
                     }
                 }
         }
-
     }
 
+    /**
+     * Checks that all required information has been input during the registration process. Returns
+     * true if all fields are filled out.
+     * @return  boolean true if all fields have data
+     */
     private fun validateForm(username: String, password: String, email: String): Boolean{
         return when {
             TextUtils.isEmpty(username) ->{
@@ -88,6 +99,9 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
+    /**
+     * Provides on-screen feedback upon successful registration and closes firebase session.
+     */
     fun userRegisteredSuccess(){
         Toast.makeText(
             this,
@@ -98,5 +112,4 @@ class RegisterActivity : BaseActivity() {
         FirebaseAuth.getInstance().signOut()
         finish()
     }
-
 }

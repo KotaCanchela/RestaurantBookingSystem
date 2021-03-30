@@ -36,6 +36,15 @@
         <item name="colorControlActivated">#F3F3F2</item>
     </style>
 
+    <!-- Pound Sign Rating Bar -->
+    <style name="CustomRatingBar2" parent="RatingBar">
+        <item name="android:progressDrawable">@drawable/pricebar</item>
+        <item name="android:minHeight">18dp</item>
+        <item name="android:maxHeight">20dp</item>
+        <item name="colorControlNormal">#F3F3F2</item>
+        <item name="colorControlActivated">#878787</item>
+    </style>
+
     <style name="CustomFav" parent="Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:progressDrawable">@drawable/custom_checkbox_fav</item>
         <item name="colorControlNormal">#878787</item>

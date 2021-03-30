@@ -353,6 +353,7 @@
                             tools:text="Postcode" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -509,10 +510,9 @@
                     <TextView
                         android:id="@+id/tv_restaurant_description"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="35dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingHorizontal="10dp"
+                        android:layout_height="140dp"
+                        android:layout_marginLeft="45dp"
+                        android:layout_marginBottom="20dp"
                         android:textSize="16sp"
                         android:text="@string/restaurant_description"/>
 

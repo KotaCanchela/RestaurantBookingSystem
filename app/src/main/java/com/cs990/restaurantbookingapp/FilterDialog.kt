@@ -11,12 +11,17 @@ import android.widget.SeekBar
 import kotlinx.android.synthetic.main.dialog_filter.*
 import kotlinx.android.synthetic.main.fragment_third.*
 
+/**
+ *  An Android Dialog Class that provides functionality for a filters screen. Defines a series
+ *  of interactive views that can capture user search options
+ * @author Group 1
+ * @version 1.0
+ */
 class FilterDialog(context: Context) : Dialog(context){
 
     init {
         setCancelable(true)
     }
-
     //rating default of 0, if rating slider not enabled
     private var ratingSelected = 0
     //String list for the price NumberPicker
@@ -32,6 +37,9 @@ class FilterDialog(context: Context) : Dialog(context){
     private var ratingButtonBoolean: Boolean = false
     private var dietaryButtonBoolean: Boolean = false
 
+    /**
+     * onCreate method for this Dialog. Triggers methods that instantiate interactive views
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dialog_filter)
@@ -40,7 +48,10 @@ class FilterDialog(context: Context) : Dialog(context){
         setupUI()
     }
 
-
+    /**
+     * Sets initial values and states of radio buttons, number picker and seek bar on the filters
+     * page. Also replaces number picker numeral values with Strings.
+     */
     fun setupBindings(){
         ratingRadioButton = findViewById(R.id.rating_radio_button)
         dietRadioButton = findViewById(R.id.spec_diet_radio_button)
@@ -77,15 +88,15 @@ class FilterDialog(context: Context) : Dialog(context){
         ds.value = 0
     }
 
-
-
+    /**
+     * Configures click listeners for the rating and dietary requirements radio buttons that
+     * enable/disable other radio button options. Also adds a change listener for the seek bard
+     * and records the current value selected by the user.
+     */
     fun setupUI(){
-
         ratingRadioButton.setOnClickListener(){
             ratingRadioButtonOnClick(ratingRadioButton)
         }
-
-
 
         seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean)
@@ -93,29 +104,17 @@ class FilterDialog(context: Context) : Dialog(context){
                 //bounds are 0-4, so add 1 to get the final rating requested
                 ratingSelected = progress + 1
             }
-
             override fun onStartTrackingTouch(seekBar: SeekBar)
             {
             }
-
             override fun onStopTrackingTouch(seekBar: SeekBar)
             {
             }
         })
 
-        /**
-         * onClick() method for the "filter by rating" checkbox. Implemented as an onClick
-         * rather than action listener due to lack of group. Makes the "Rating Seek Bar"
-         * editable when active
-         * @param view
-         */
-
-
         dietRadioButton.setOnClickListener(){
             specDietRadioButtonOnClick(dietRadioButton)
         }
-
-
     }
 
 
@@ -132,7 +131,6 @@ class FilterDialog(context: Context) : Dialog(context){
             ratingButtonBoolean = false
         }
     }
-
 
     /**
      * onClick() method for the "Special Dietary Needs" checkbox. Implemented as an onClick

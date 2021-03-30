@@ -19,14 +19,17 @@ import com.cs990.restaurantbookingapp.profilePages.*
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.row_profile.view.*
 
+/**
+ *  An Adapter Class that provides functionality for Profile Items.
+ * @author Group 1
+ * @version 1.0
+ */
 class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>):
     RecyclerView.Adapter<ProfileItemAdapter.ProfileViewHolder>() {
 
 
     /**
-     * Inflates the item views which is designed in xml layout file
-     *
-     * create a new
+     * onCreate method for this Class. Inflates the item views which is designed in xml layout file
      * {@link ViewHolder} and initializes some private fields to be used by RecyclerView.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileViewHolder {
@@ -49,7 +52,6 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
      * of the given type. You can either create a new View manually or inflate it from an XML
      * layout file.
      */
-
     override fun onBindViewHolder(holderProfile: ProfileViewHolder, position: Int) {
         val item = items[position]
 
@@ -90,7 +92,6 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
 
     }
 
-
     /**
      * Returns the size of the items list
      */
@@ -98,11 +99,9 @@ class ProfileItemAdapter(val context: Context, val items: ArrayList<ProfileItem>
         return items.size
     }
 
-
     /**
      * Inner class that describes an item view
      */
-
     class ProfileViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
         val profileItemText: TextView = view.profile_item.row_text

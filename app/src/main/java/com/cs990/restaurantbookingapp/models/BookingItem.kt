@@ -4,9 +4,19 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.firebase.firestore.PropertyName
 
+/**
+ * A Class that represents a single booking item. Accepts a restaurant item and date/time. Extends
+ * the Parcelable class.
+ * @author Group 1
+ * @version 1.0
+ */
 class BookingItem(restaurant: RestaurantItem, guestNumber: String, day: String,
                   month: String, year: String, hour: String, minute: String): Parcelable {
 
+    /**
+     * Base Constructor for this class. Instantiate's values based on the passed RestaurantItem
+     * Object.
+     */
     constructor(): this(RestaurantItem(), "", "", "", "", "","")
 
     private var restaurantItemName = restaurant.getName()
@@ -37,6 +47,10 @@ class BookingItem(restaurant: RestaurantItem, guestNumber: String, day: String,
     private var hour: String = hour
     private var minute: String = minute
 
+    /**
+     * Alternate Constructor for this class. Instantiate's values from a Parcel that is then
+     * converted to a series of Strings.
+     */
     constructor(parcel: Parcel) : this() {
         restaurantItemName = parcel.readString().toString()
         restaurantItemImage = parcel.readString().toString()
@@ -56,7 +70,9 @@ class BookingItem(restaurant: RestaurantItem, guestNumber: String, day: String,
         minute = parcel.readString().toString()
     }
 
-
+    /**
+     * Returns restaurant information in the form of a RestaurantItem object.
+     */
     fun getRestaurantItem(): RestaurantItem{
         this.restaurantItem.getName()
         this.restaurantItem.getRestaurantImage()
@@ -69,30 +85,52 @@ class BookingItem(restaurant: RestaurantItem, guestNumber: String, day: String,
         this.restaurantItem.getDietaryFriendly()
         return this.restaurantItem
     }
+
+    /**
+     * Returns the number of guests in this booking
+     */
     fun getGuestNumber(): String {
         return this.guestNumber
     }
 
+    /**
+     * Returns the day this booking is for
+     */
     fun getDay(): String{
         return this.day
     }
 
+    /**
+     * Returns the month this booking is for
+     */
     fun getMonth(): String{
         return this.month
     }
 
+    /**
+     * Returns the year this booking is for
+     */
     fun getYear(): String{
         return this.year
     }
 
+    /**
+     * Returns the hour this booking is for
+     */
     fun getHour(): String{
         return this.hour
     }
 
+    /**
+     * Returns the minute this booking is for
+     */
     fun getMinute(): String{
         return this.minute
     }
 
+    /**
+     * Writes to and returns the current values of this Booking Item to a Parcel
+     */
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(restaurantItemName)
         parcel.writeString(restaurantItemImage)
@@ -112,6 +150,9 @@ class BookingItem(restaurant: RestaurantItem, guestNumber: String, day: String,
         parcel.writeString(minute)
     }
 
+    /**
+     * Contents description method inherited from Parcel
+     */
     override fun describeContents(): Int {
         return 0
     }

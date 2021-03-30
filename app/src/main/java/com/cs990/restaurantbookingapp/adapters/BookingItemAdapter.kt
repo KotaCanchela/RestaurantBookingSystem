@@ -25,17 +25,19 @@ import kotlinx.android.synthetic.main.card_restaurant.view.booking_restaurantIma
 import kotlinx.android.synthetic.main.card_restaurant.view.booking_restaurant_name
 import java.util.concurrent.CompletableFuture
 
+/**
+ *  An Adapter Class that provides functionality for Booking Items.
+ * @author Group 1
+ * @version 1.0
+ */
 class BookingItemAdapter(
     val context: Context,
     val options: FirestoreRecyclerOptions<BookingItem>): FirestoreRecyclerAdapter<BookingItem, BookingItemAdapter.BookingViewHolder>(options) {
 
-
-
-
-
-
-
-
+    /**
+     * onCreateViewHolder for this Class. Inflates the item views which is designed in xml
+     * layout file
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingViewHolder {
         return BookingViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -46,6 +48,16 @@ class BookingItemAdapter(
         )
     }
 
+    /**
+     * Binds each item in the ArrayList to a view
+     *
+     * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
+     * an item.
+     *
+     * This new ViewHolder should be constructed with a new View that can represent the items
+     * of the given type. You can either create a new View manually or inflate it from an XML
+     * layout file.
+     */
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int, model: BookingItem) {
         holder.restaurantNameText.booking_restaurant_name.text = model.getRestaurantItem().getName()
@@ -68,7 +80,6 @@ class BookingItemAdapter(
             intent.putExtra("timeString", timeString)
             intent.putExtra("bookingItem", model)
             context.startActivity(intent)
-
         }
 
         CompletableFuture.runAsync {
@@ -78,11 +89,13 @@ class BookingItemAdapter(
                     .with(holder.restaurantImageItem)
                     .load(url)
                     .into(holder.restaurantImageItem.booking_restaurantImage)
-
             }
         }
     }
 
+    /**
+     * Inner class that describes an item view
+     */
     inner class BookingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val restaurantNameText: TextView = itemView.findViewById(R.id.booking_restaurant_name)
         val restaurantImageItem: ImageView = itemView.findViewById(R.id.booking_restaurantImage)
@@ -91,6 +104,5 @@ class BookingItemAdapter(
         val bookingTime: TextView = itemView.findViewById(R.id.booking_time)
         val bookingDate: TextView = itemView.findViewById(R.id.booking_date)
         val numberGuests: TextView = itemView.findViewById(R.id.number_guests)
-
     }
 }
