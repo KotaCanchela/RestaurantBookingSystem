@@ -23,17 +23,20 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_second.*
 
+/**
+ *  An Android Layout Class that provides functionality for the user's Favourites section
+ * @author Group 1
+ * @version 1.0
+ */
 class MyFavourites : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyFavouritesBinding
-
     //recyclerview for list
     lateinit var recyclerView: RecyclerView
 
     //Firestore
     private var currentUser: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
-
     var query: CollectionReference = db
             .collection("Users")
             .document(currentUser.uid)
@@ -50,6 +53,9 @@ class MyFavourites : AppCompatActivity() {
     //toolbar
     var toolbarIsInstanciated: Boolean = false
 
+    /**
+     * onCreate method for this Layout. Configures UI
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyFavouritesBinding.inflate(layoutInflater)
@@ -57,46 +63,47 @@ class MyFavourites : AppCompatActivity() {
         setupUI()
         setContentView(view)
 
-
         setupRecyclerView()
     }
 
-
+    /**
+     * Configures the UI bindings
+     */
     private fun setupUI() {
         recyclerView = binding.favouriteList
         usernameText = binding.usernameText
     }
 
+    /**
+     * Retrieves favourites from firebase and adds them to the displayed list
+     */
     private fun setupRecyclerView() {
 
         val options: FirestoreRecyclerOptions<RestaurantItem> = FirestoreRecyclerOptions.Builder<RestaurantItem>()
                 .setQuery(query, RestaurantItem::class.java)
                 .build()
-
-
         restaurantAdapter = RestaurantItemAdapter(this, options)
-
         recyclerView.layoutManager = LinearLayoutManager(this)
-
         recyclerView.adapter = restaurantAdapter
     }
 
+    /**
+     * Configures Action Listener for this layout and configures the toolbar upon detecting
+     * instanciation.
+     */
     override fun onStart() {
         super.onStart()
         restaurantAdapter.startListening()
-
         if(!toolbarIsInstanciated) {
             toolbarIsInstanciated = true
             myToolbar.setNavigationOnClickListener {
                 super.onCreate(null)
             }
-
             //Dynamic username display
             currentUser = FirebaseAuth.getInstance().currentUser!!
 
             dbUsernameRef.document(currentUser.uid).get().addOnCompleteListener{ task ->
                 if(task.isSuccessful) {
-
                     usernameText.text = task.result?.get("password").toString()
 
                 } else {
@@ -139,13 +146,14 @@ class MyFavourites : AppCompatActivity() {
                     else -> {
                         super.onOptionsItemSelected(it)
                     }
-
                 }
             }
-
         }
     }
 
+    /**
+     * Disables Action Listener onStop.
+     */
     override fun onStop() {
         super.onStop()
         restaurantAdapter.stopListening()

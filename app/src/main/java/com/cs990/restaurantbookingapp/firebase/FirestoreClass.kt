@@ -9,10 +9,19 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
 
+/**
+ *  Control Class for Firebase access. Generates a login session that is used for pulling values
+ *  from the Database
+ * @author Group 1
+ * @version 1.0
+ */
 class FirestoreClass {
 
     private val mFireStore = FirebaseFirestore.getInstance()
 
+    /**
+     * Registers a new firebase user.
+     */
     fun registerUser(activity: RegisterActivity, userInfo: User) {
         mFireStore.collection("Users")
             .document(getCurrentUserId()).set(userInfo, SetOptions.merge())
@@ -21,6 +30,10 @@ class FirestoreClass {
             }
     }
 
+    /**
+     * Gets the current user logged in
+     * @return  UserId
+     */
     fun getCurrentUserId(): String {
         var currentUser = FirebaseAuth.getInstance().currentUser
         var currentUserID = ""
@@ -30,6 +43,9 @@ class FirestoreClass {
         return currentUserID
     }
 
+    /**
+     * Signs a user into the application from the login Activity
+     */
     fun signInUser(activity: LoginActivity){
         mFireStore.collection("Users")
         .document(getCurrentUserId())
@@ -43,6 +59,9 @@ class FirestoreClass {
             }
     }
 
+    /**
+     * Returns a list of restaurant's stored in the database
+     */
     fun getRestaurantsList(activity: Activity){
         mFireStore.collection("Restaurants")
             .whereArrayContains("Assigned to", getCurrentUserId())
