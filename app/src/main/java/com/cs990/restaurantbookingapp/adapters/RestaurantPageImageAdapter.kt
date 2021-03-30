@@ -9,13 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cs990.restaurantbookingapp.R
 import kotlinx.android.synthetic.main.restaurant_page_image.view.*
 
+/**
+ *  An Adapter Class that provides functionality for Images presented on Restarant pages.
+ * @author Group 1
+ * @version 1.0
+ */
 class RestaurantPageImageAdapter(val context: Context, val items: ArrayList<Int>):
     RecyclerView.Adapter<RestaurantPageImageAdapter.RestaurantPageImageViewHolder>() {
 
     /**
-     * Inflates the item views which is designed in xml layout file
-     *
-     * create a new
+     * onCreate method for this Class. Inflates the item views which is designed in xml layout file
      * {@link ViewHolder} and initializes some private fields to be used by RecyclerView.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantPageImageViewHolder {
@@ -38,26 +41,24 @@ class RestaurantPageImageAdapter(val context: Context, val items: ArrayList<Int>
      * of the given type. You can either create a new View manually or inflate it from an XML
      * layout file.
      */
-
     override fun onBindViewHolder(holder: RestaurantPageImageViewHolder, position: Int) {
         val item = items[position]
 
         holder.restaurantPageImage.setImageResource(item)
     }
 
+    /**
+     * Returns the current size of the image list
+     * @return itemsSize
+     */
     override fun getItemCount(): Int {
         return items.size
     }
 
-
     /**
      * Inner class that describes an item view
      */
-
     class RestaurantPageImageViewHolder(view: View) : RecyclerView.ViewHolder(view){
-
         val restaurantPageImage: ImageView = view.restaurant_image.rest_image
-
     }
-
 }
