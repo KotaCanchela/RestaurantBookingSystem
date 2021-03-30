@@ -57,7 +57,6 @@ class MyBookings : AppCompatActivity() {
 
     /**
      * onCreate method for this Layout.
-     * buttons
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

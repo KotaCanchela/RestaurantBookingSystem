@@ -10,7 +10,7 @@ import com.cs990.restaurantbookingapp.R
 import kotlinx.android.synthetic.main.restaurant_page_image.view.*
 
 /**
- *  An Adapter Class that provides functionality for Images presented on Restarant pages.
+ *  An Adapter Class that provides functionality for Images presented on Restaurant pages.
  * @author Group 1
  * @version 1.0
  */
